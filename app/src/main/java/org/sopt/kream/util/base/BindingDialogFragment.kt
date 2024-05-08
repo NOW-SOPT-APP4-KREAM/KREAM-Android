@@ -16,7 +16,7 @@ abstract class BindingDialogFragment<T : ViewBinding>(private val inflater: (Lay
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = inflater(layoutInflater)
         return binding.root
@@ -26,7 +26,7 @@ abstract class BindingDialogFragment<T : ViewBinding>(private val inflater: (Lay
         super.onStart()
         dialog?.window?.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.MATCH_PARENT
+            WindowManager.LayoutParams.MATCH_PARENT,
         )
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog?.setCancelable(false)

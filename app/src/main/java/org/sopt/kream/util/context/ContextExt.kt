@@ -9,7 +9,10 @@ import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 
-fun Context.showToast(message: String, isShort: Boolean = true) {
+fun Context.showToast(
+    message: String,
+    isShort: Boolean = true,
+) {
     val duration = if (isShort) Toast.LENGTH_SHORT else Toast.LENGTH_LONG
     Toast.makeText(this, message, duration).show()
 }
@@ -20,6 +23,10 @@ fun Context.hideKeyboard(view: View) {
     view.clearFocus()
 }
 
-fun Context.stringOf(@StringRes resId: Int) = getString(resId)
+fun Context.stringOf(
+    @StringRes resId: Int,
+) = getString(resId)
 
-fun Context.colorOf(@ColorRes resId: Int) = ContextCompat.getColor(this, resId)
+fun Context.colorOf(
+    @ColorRes resId: Int,
+) = ContextCompat.getColor(this, resId)
