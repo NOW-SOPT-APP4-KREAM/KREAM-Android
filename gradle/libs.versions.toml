@@ -1,9 +1,12 @@
 [versions]
 # Kotlin
 agp = "8.3.2"
-kotlin = "1.9.20"
+kotlin = "1.9.23"
 kotlinSerializationJson = "1.5.1"
 kotlinxCoroutines = "1.7.3"
+
+# Compose
+composeBom = "2024.05.00"
 
 # AndroidX
 appcompat = "1.6.1"
@@ -41,6 +44,7 @@ compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling
 compose-meterial3 = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 
 # AndroidX
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,10 +54,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
-
-# Compose Androidx
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
-
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -91,5 +92,5 @@ androidx = [
 ]
 okhttp = ["okhttp", "okhttp-logging-interceptor"]
 retrofit = ["retrofit", "retrofit-kotlin-serialization-converter"]
-compose = ["androidx-activity-compose", "compose-ui", "compose-ui-graphics", "compose-ui-tooling-preview", "compose-meterial3"]
+compose = ["androidx-activity-compose", "compose-ui", "compose-ui-graphics", "compose-ui-tooling-preview", "compose-meterial3", "compose-bom"]
 
