@@ -48,12 +48,22 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
 }
 
 dependencies {
 
     implementation(libs.bundles.androidx)
+
+    implementation(libs.bundles.compose)
+
+    // Compose
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
     // Test
     testImplementation(libs.junit)
