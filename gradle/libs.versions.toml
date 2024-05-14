@@ -1,9 +1,12 @@
 [versions]
 # Kotlin
 agp = "8.3.2"
-kotlin = "1.9.20"
+kotlin = "1.9.23"
 kotlinSerializationJson = "1.5.1"
 kotlinxCoroutines = "1.7.3"
+
+# Compose
+composeBom = "2024.05.00"
 
 # AndroidX
 appcompat = "1.6.1"
@@ -12,6 +15,7 @@ activity = "1.9.0"
 constraintlayout = "2.1.4"
 fragment = "1.7.0"
 navigation = "2.7.7"
+material3Android = "1.2.1"
 
 # Test
 junit = "4.13.2"
@@ -33,14 +37,24 @@ retrofitKotlinSerializationConverter = "1.0.0"
 kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
 kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 
-# AdnroidX
+# Compose
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-meterial3 = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+
+# AndroidX
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
-androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation"}
-androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation"}
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -78,4 +92,5 @@ androidx = [
 ]
 okhttp = ["okhttp", "okhttp-logging-interceptor"]
 retrofit = ["retrofit", "retrofit-kotlin-serialization-converter"]
+compose = ["androidx-activity-compose", "compose-ui", "compose-ui-graphics", "compose-ui-tooling-preview", "compose-meterial3", "compose-bom"]
 
