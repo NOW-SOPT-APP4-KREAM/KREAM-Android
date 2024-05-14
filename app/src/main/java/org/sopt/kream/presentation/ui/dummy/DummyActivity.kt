@@ -11,7 +11,6 @@ class DummyActivity : BindingActivity<ActivityDummyBinding>({ ActivityDummyBindi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         dummyViewModel.getDummyUserList()
     }
 }
