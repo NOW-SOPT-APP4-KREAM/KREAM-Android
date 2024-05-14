@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Uncategorized -->
+    <color name="white">#FFFFFF</color>
+
+    <color name="green01">#02E16A</color>
+    <color name="green04">#316D4D</color>
+    <color name="green05">#F2F9F6</color>
+    <color name="green06">#3CAA6F</color>
+
+    <color name="yellow01">#F1F1EA</color>
+    <color name="red01">#F6EEED</color>
+    <color name="red03">#88423A</color>
+    <color name="red04">#DC5A4C</color>
+
+    <color name="orange">#E76D55</color>
+    <color name="blue03">#EBF0F5</color>
+    <color name="purple">#7C72EE</color>
+    <color name="pink">#E36686</color>
+
+    <!-- Font Black -->
+    <color name="black01">#000000</color>
+    <color name="black02">#222222</color>
+    <color name="black03">#333333</color>
+    <color name="black04">#4C4C4C</color>
+    <color name="black05">#646A76</color>
+    <color name="black06">#909090</color>
+    <color name="black07">#969696</color>
+    <color name="black08">#A6A6A6</color>
+    <color name="black09">#C7C7C7</color>
+
+    <!-- Gray -->
+    <color name="gray02">#A3A3A3</color>
+    <color name="gray03">#BDBDBD</color>
+    <color name="gray04">#E9E9E9</color>
+    <color name="gray05">#F0F0F0</color>
+    <color name="gray06">#F4F4F4</color>
+    <color name="gray07">#FAFAFA</color>
+
+    <!-- Font Other -->
+    <color name="blue01">#297DCB</color>
+    <color name="blue02">#2588E4</color>
+    <color name="brown">#CC6E00</color>
+    <color name="red02">#EF6253</color>
+    <color name="green02">#00B856</color>
+    <color name="green03">#41B979</color>
 </resources>
