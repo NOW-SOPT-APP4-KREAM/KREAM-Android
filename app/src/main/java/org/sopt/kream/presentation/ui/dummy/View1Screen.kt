@@ -140,6 +140,13 @@ fun CustomTabPager(
             contentColor = Black02,
             edgePadding = 0.dp,
             modifier = Modifier.padding(0.dp),
+            divider = {HorizontalDivider(
+                modifier =
+                Modifier
+                    .fillMaxWidth(),
+                color = Color.LightGray,
+                thickness = 1.dp,
+            )}
         ) {
 //            Text(text = "서재패Md", style = body3SemiBold, color = PinkColor)
             tabs.forEachIndexed { index, title ->
@@ -155,13 +162,7 @@ fun CustomTabPager(
                 )
             }
         }
-        HorizontalDivider(
-            modifier =
-                Modifier
-                    .fillMaxWidth(),
-            color = Color.LightGray,
-            thickness = 1.dp,
-        )
+
 
         HorizontalPager(
             state = pagerState,
