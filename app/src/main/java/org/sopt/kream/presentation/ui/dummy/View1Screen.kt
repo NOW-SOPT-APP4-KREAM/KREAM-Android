@@ -12,12 +12,15 @@ import org.sopt.kream.theme.head1Bold
 
 @Composable
 fun View1Screen(dummyViewModel: DummyViewModel) {
-    Column (modifier = Modifier.fillMaxSize(),
+    Column(
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-        ){
-        Text(text = "View1 Screen",
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            text = "View1 Screen",
             style = head1Bold,
-            color = Gray06)
+            color = Gray06,
+        )
     }
 }

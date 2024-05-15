@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
-
 val properties =
     Properties().apply {
         load(project.rootProject.file("local.properties").inputStream())
@@ -84,10 +83,8 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
 
-    implementation ("androidx.compose.ui:ui:1.6.7")
-    implementation ("androidx.compose.material:material:1.6.7")
-    implementation ("androidx.compose.ui:ui-tooling-preview:1.6.7")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.6.7")
+    implementation("androidx.compose.ui:ui:1.6.7")
+    implementation("androidx.compose.material:material:1.6.7")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.6.7")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.6.7")
 }
-
-
