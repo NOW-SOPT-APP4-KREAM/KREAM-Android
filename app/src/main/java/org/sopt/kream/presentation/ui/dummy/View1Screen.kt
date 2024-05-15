@@ -78,10 +78,10 @@ fun View1Screen() {
                         onValueChange = { editText = it },
                         singleLine = true,
                         modifier =
-                        Modifier
-                            .weight(1f)
-                            .size(width = 293.dp, height = 33.dp)
-                            .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
+                            Modifier
+                                .weight(1f)
+                                .size(width = 293.dp, height = 33.dp)
+                                .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.CenterStart,
@@ -129,26 +129,25 @@ fun CustomTabPager(
                 TabRowDefaults.PrimaryIndicator(
                     modifier =
                         Modifier
-                            .tabIndicatorOffset(tabPositions[pagerState.currentPage])
-                            ,
+                            .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
                     color = Black02,
-                    width = pages[pagerState.currentPage].length * 12.dp
-
+                    width = pages[pagerState.currentPage].length * 12.dp,
                 )
             },
             containerColor = Color.White,
             contentColor = Black02,
             edgePadding = 0.dp,
             modifier = Modifier.padding(0.dp),
-            divider = {HorizontalDivider(
-                modifier =
-                Modifier
-                    .fillMaxWidth(),
-                color = Color.LightGray,
-                thickness = 1.dp,
-            )}
+            divider = {
+                HorizontalDivider(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth(),
+                    color = Color.LightGray,
+                    thickness = 1.dp,
+                )
+            },
         ) {
-//            Text(text = "서재패Md", style = body3SemiBold, color = PinkColor)
             tabs.forEachIndexed { index, title ->
                 Tab(
                     text = { Text(title, style = body3SemiBold) },
@@ -162,7 +161,6 @@ fun CustomTabPager(
                 )
             }
         }
-
 
         HorizontalPager(
             state = pagerState,
@@ -183,8 +181,6 @@ fun CustomTabPager(
         }
     }
 }
-
-
 
 @Composable
 fun View1Content(modifier: Modifier) {
