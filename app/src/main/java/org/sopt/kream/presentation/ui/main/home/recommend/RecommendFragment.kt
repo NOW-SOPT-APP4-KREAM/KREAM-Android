@@ -1,15 +1,17 @@
-package org.sopt.kream.presentation.ui.productDetail
+package org.sopt.kream.presentation.ui.main.home.recommend
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.sopt.kream.databinding.FragmentProductDetailBinding
+import androidx.navigation.fragment.findNavController
+import org.sopt.kream.R
+import org.sopt.kream.databinding.FragmentRecommendBinding
 
-class ProductDetailFragment : Fragment() {
-    private var _binding: FragmentProductDetailBinding? = null
-    private val binding: FragmentProductDetailBinding
+class RecommendFragment : Fragment() {
+    private var _binding: FragmentRecommendBinding? = null
+    private val binding: FragmentRecommendBinding
         get() = requireNotNull(_binding) { }
 
     override fun onCreateView(
@@ -17,7 +19,7 @@ class ProductDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentProductDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentRecommendBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -26,6 +28,10 @@ class ProductDetailFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnToProductDetail.setOnClickListener {
+            findNavController().navigate(R.id.releaseFragment)
+        }
     }
 
     override fun onDestroy() {

@@ -1,4 +1,4 @@
-package org.sopt.kream.presentation.ui.main.release
+package org.sopt.kream.presentation.ui.main.home.release
 
 import android.os.Bundle
 import android.view.LayoutInflater

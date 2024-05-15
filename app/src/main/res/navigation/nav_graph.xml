@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/recommendFragment"
-        android:name="org.sopt.kream.presentation.ui.main.recommend.RecommendFragment"
+        android:name="org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment"
         android:label="fragment_recommend"
         tools:layout="@layout/fragment_recommend">
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/releaseFragment"
-        android:name="org.sopt.kream.presentation.ui.main.release.ReleaseFragment"
+        android:name="org.sopt.kream.presentation.ui.main.home.release.ReleaseFragment"
         android:label="fragment_release"
         tools:layout="@layout/fragment_release">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="org.sopt.kream.presentation.ui.productDetail.ProductDetailFragment"
+        android:name="org.sopt.kream.presentation.ui.productdetail.ProductDetailFragment"
         android:label="fragment_product_detail"
         tools:layout="@layout/fragment_product_detail" />
 </navigation>
