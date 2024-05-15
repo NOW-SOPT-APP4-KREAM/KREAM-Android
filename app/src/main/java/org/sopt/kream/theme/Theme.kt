@@ -20,7 +20,7 @@ private val DarkColorScheme =
         primary = White,
         secondary = White,
         tertiary = White,
-        background = White
+        background = White,
     )
 
 private val LightColorScheme =
@@ -28,7 +28,7 @@ private val LightColorScheme =
         primary = White,
         secondary = White,
         tertiary = White,
-        background = White
+        background = White,
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
