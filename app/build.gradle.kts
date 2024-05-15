@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.ktlint)
 }
 
+
 val properties =
     Properties().apply {
         load(project.rootProject.file("local.properties").inputStream())
@@ -52,6 +53,7 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.13"
+        kotlinCompilerVersion = "1.6.10"
     }
 }
 
@@ -81,4 +83,11 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
+
+    implementation ("androidx.compose.ui:ui:1.6.7")
+    implementation ("androidx.compose.material:material:1.6.7")
+    implementation ("androidx.compose.ui:ui-tooling-preview:1.6.7")
+    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.6.7")
 }
+
+
