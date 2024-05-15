@@ -17,16 +17,19 @@ class ReleaseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentReleaseBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         binding.cvRelease.setContent {
-            ReleaseScreen()
+            releaseScreen()
         }
     }
 
@@ -36,8 +39,7 @@ class ReleaseFragment : Fragment() {
     }
 
     @Composable
-    fun ReleaseScreen() {
+    fun releaseScreen() {
         Text(text = "Release")
     }
-
 }
