@@ -10,11 +10,11 @@ plugins {
 }
 
 buildscript{
-    ext {
-        compose_version = "1.1.1"
-    }
-    repositories{
-        google()
-        mavenCentral()
-    }
+//    ext {
+//        compose_version = "1.1.1"
+//    }
+//    repositories{
+//        google()
+//        mavenCentral()
+//    }
 }
