@@ -8,13 +8,3 @@ plugins {
     alias(libs.plugins.kotlinParcelize) apply false
     alias(libs.plugins.ktlint) apply false
 }
-
-buildscript{
-//    ext {
-//        compose_version = "1.1.1"
-//    }
-//    repositories{
-//        google()
-//        mavenCentral()
-//    }
-}

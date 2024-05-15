@@ -25,108 +25,90 @@ val Typography =
 // Head
 val head1Bold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_bold)),
-    fontWeight = FontWeight.Bold,
     fontSize = 18.sp
 )
 val head2Bold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_bold)),
-    fontWeight = FontWeight.Bold,
     fontSize = 15.sp
 )
 
 // Body1
-val body1 = TextStyle(
+val body1Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 17.sp
 )
 
 // Body2
-val body2 = TextStyle(
+val body2Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 14.sp
 )
 val body2SemiBold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_semibold)),
-    fontWeight = FontWeight.SemiBold,
     fontSize = 14.sp
 )
 
 // Body3
-val body3 = TextStyle(
+val body3Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 13.sp
 )
 val body3SemiBold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_semibold)),
-    fontWeight = FontWeight.SemiBold,
     fontSize = 13.sp
 )
 
 // Body4
-val body4 = TextStyle(
+val body4Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 12.sp
 )
 val body4SemiBold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_semibold)),
-    fontWeight = FontWeight.SemiBold,
     fontSize = 12.sp
 )
 val body4Bold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_bold)),
-    fontWeight = FontWeight.Bold,
     fontSize = 12.sp
 )
 
 // Body5
-val body5 = TextStyle(
+val body5Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 11.sp
 )
 val body5SemiBold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_semibold)),
-    fontWeight = FontWeight.SemiBold,
     fontSize = 11.sp
 )
 
 // Body6
-val body6 = TextStyle(
+val body6Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 10.sp
 )
 val body6SemiBold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_semibold)),
-    fontWeight = FontWeight.SemiBold,
     fontSize = 10.sp
 )
 
 // Body7
-val body7 = TextStyle(
+val body7Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 9.sp
 )
 val body7Bold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_bold)),
-    fontWeight = FontWeight.Bold,
     fontSize = 9.sp
 )
 
 // Body8
-val body8 = TextStyle(
+val body8Regular = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_regular)),
-    fontWeight = FontWeight.Normal,
     fontSize = 8.sp
 )
 val body8SemiBold = TextStyle(
     fontFamily = FontFamily(Font(R.font.notosanskr_semibold)),
-    fontWeight = FontWeight.SemiBold,
     fontSize = 8.sp
 )
 

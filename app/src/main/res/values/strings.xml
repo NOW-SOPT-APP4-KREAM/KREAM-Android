@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KREAM-Android</string>
+    <string name="bar_search_label">"브랜드, 상품, 프로필, 태그 등"</string>
 </resources>
