@@ -10,10 +10,28 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bnv_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_main"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@drawable/shape_gray06_border_1"
+        app:itemActiveIndicatorStyle="@android:color/transparent"
+        app:itemIconSize="28dp"
+        app:itemPaddingBottom="9dp"
+        app:itemPaddingTop="9dp"
+        app:itemTextAppearanceActive="@style/TextAppearance.Kream.Body8.SemiBold"
+        app:itemTextAppearanceInactive="@style/TextAppearance.Kream.Body8.SemiBold"
+        app:itemTextColor="@drawable/selector_bnv_label"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bnv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
