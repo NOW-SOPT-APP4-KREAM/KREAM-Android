@@ -39,6 +39,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.times
 import kotlinx.coroutines.launch
 import org.sopt.kream.R
 import org.sopt.kream.theme.Black01
@@ -77,10 +78,10 @@ fun View1Screen() {
                         onValueChange = { editText = it },
                         singleLine = true,
                         modifier =
-                            Modifier
-                                .weight(1f)
-                                .size(width = 293.dp, height = 33.dp)
-                                .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
+                        Modifier
+                            .weight(1f)
+                            .size(width = 293.dp, height = 33.dp)
+                            .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.CenterStart,
@@ -125,12 +126,14 @@ fun CustomTabPager(
         ScrollableTabRow(
             selectedTabIndex = pagerState.currentPage,
             indicator = { tabPositions ->
-                TabRowDefaults.SecondaryIndicator(
+                TabRowDefaults.PrimaryIndicator(
                     modifier =
                         Modifier
                             .tabIndicatorOffset(tabPositions[pagerState.currentPage])
-                            .width(10.dp),
+                            ,
                     color = Black02,
+                    width = pages[pagerState.currentPage].length * 12.dp
+
                 )
             },
             containerColor = Color.White,
@@ -179,6 +182,8 @@ fun CustomTabPager(
         }
     }
 }
+
+
 
 @Composable
 fun View1Content(modifier: Modifier) {
