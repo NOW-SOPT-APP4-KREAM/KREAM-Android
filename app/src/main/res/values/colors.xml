@@ -9,13 +9,17 @@
     <color name="green06">#3CAA6F</color>
 
     <color name="yellow01">#F1F1EA</color>
+
     <color name="red01">#F6EEED</color>
     <color name="red03">#88423A</color>
     <color name="red04">#DC5A4C</color>
 
     <color name="orange">#E76D55</color>
+
     <color name="blue03">#EBF0F5</color>
+
     <color name="purple">#7C72EE</color>
+
     <color name="pink">#E36686</color>
 
     <!-- Font Black -->
@@ -40,8 +44,11 @@
     <!-- Font Other -->
     <color name="blue01">#297DCB</color>
     <color name="blue02">#2588E4</color>
+
     <color name="brown">#CC6E00</color>
+
     <color name="red02">#EF6253</color>
+
     <color name="green02">#00B856</color>
     <color name="green03">#41B979</color>
 </resources>

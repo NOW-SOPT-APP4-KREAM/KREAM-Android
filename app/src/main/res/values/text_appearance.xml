@@ -5,7 +5,7 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <!-- HEAD -->
+    <!-- Head -->
     <style name="TextAppearance.Kream.Head1.Bold" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_bold</item>
         <item name="android:textSize">18sp</item>
@@ -16,13 +16,13 @@
         <item name="android:textSize">15sp</item>
     </style>
 
-    <!-- BODY1 -->
+    <!-- Body1 -->
     <style name="TextAppearance.Kream.Body1.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">17sp</item>
     </style>
 
-    <!-- BODY2 -->
+    <!-- Body2 -->
     <style name="TextAppearance.Kream.Body2.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">14sp</item>
@@ -33,7 +33,7 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <!-- BODY3 -->
+    <!-- Body3 -->
     <style name="TextAppearance.Kream.Body3.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">13sp</item>
@@ -44,7 +44,7 @@
         <item name="android:textSize">13sp</item>
     </style>
 
-    <!-- BODY4 -->
+    <!-- Body4 -->
     <style name="TextAppearance.Kream.Body4.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">12sp</item>
@@ -60,7 +60,7 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <!-- BODY5 -->
+    <!-- Body5 -->
     <style name="TextAppearance.Kream.Body5.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">11sp</item>
@@ -71,7 +71,7 @@
         <item name="android:textSize">11sp</item>
     </style>
 
-    <!-- BODY6 -->
+    <!-- Body6 -->
     <style name="TextAppearance.Kream.Body6.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">10sp</item>
@@ -82,7 +82,7 @@
         <item name="android:textSize">10sp</item>
     </style>
 
-    <!-- BODY7 -->
+    <!-- Body7 -->
     <style name="TextAppearance.Kream.Body7.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">9sp</item>
@@ -93,7 +93,7 @@
         <item name="android:textSize">9sp</item>
     </style>
 
-    <!-- BODY8 -->
+    <!-- Body8 -->
     <style name="TextAppearance.Kream.Body8.Regular" parent="TextAppearance.Kream">
         <item name="fontFamily">@font/notosans_regular</item>
         <item name="android:textSize">8sp</item>
