@@ -50,12 +50,21 @@ import org.sopt.kream.theme.body3SemiBold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.head1Bold
 
-val pages = listOf("추천", "랭킹", "발매정보", "럭셔리", "남성", "여성", "발견")
-
 @OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun View1Screen() {
+    val pages =
+        listOf(
+            stringResource(R.string.topBar_pageList_recommend),
+            stringResource(R.string.topBar_pageList_ranking),
+            stringResource(R.string.topBar_pageList_information),
+            stringResource(R.string.topBar_pageList_luxury),
+            stringResource(R.string.topBar_pageList_male),
+            stringResource(R.string.topBar_pageList_female),
+            stringResource(R.string.topBar_pageList_found),
+        )
+
     var editText by remember {
         mutableStateOf("")
     }
@@ -92,7 +101,7 @@ fun View1Screen() {
                                     Text(
                                         style = body5Regular,
                                         color = Black09,
-                                        text = stringResource(id = R.string.bar_search_label),
+                                        text = stringResource(id = R.string.search_bar_label),
                                     )
                                 }
                             }
@@ -107,7 +116,7 @@ fun View1Screen() {
                     )
                     Spacer(modifier = Modifier.width(11.dp))
                 }
-                CustomTabPager(pagerState, pages)
+                CustomTabPager(pages, pagerState, pages)
             }
         },
     ) { innerPadding ->
@@ -118,6 +127,7 @@ fun View1Screen() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CustomTabPager(
+    pages: List<String>,
     pagerState: PagerState,
     tabs: List<String>,
 ) {
