@@ -84,6 +84,4 @@ dependencies {
     implementation(libs.kotlin.serialization.json)
 }
 
-ktlint {
-    disabledRules = listOf("standard:function-naming")
-}
+
