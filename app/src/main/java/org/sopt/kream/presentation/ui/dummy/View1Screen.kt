@@ -3,7 +3,6 @@ package org.sopt.kream.presentation.ui.dummy
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -93,10 +92,10 @@ fun View1Screen() {
                         onValueChange = { editText = it },
                         singleLine = true,
                         modifier =
-                        Modifier
-                            .weight(1f)
-                            .size(width = 293.dp, height = 33.dp)
-                            .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
+                            Modifier
+                                .weight(1f)
+                                .size(width = 293.dp, height = 33.dp)
+                                .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.CenterStart,
@@ -144,8 +143,8 @@ fun CustomTopTabPager(
             indicator = { tabPositions ->
                 TabRowDefaults.PrimaryIndicator(
                     modifier =
-                    Modifier
-                        .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
+                        Modifier
+                            .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
                     color = Black02,
                     width = pages[pagerState.currentPage].length * 12.dp,
                 )
@@ -157,8 +156,8 @@ fun CustomTopTabPager(
             divider = {
                 HorizontalDivider(
                     modifier =
-                    Modifier
-                        .fillMaxWidth(),
+                        Modifier
+                            .fillMaxWidth(),
                     color = Color.LightGray,
                     thickness = 1.dp,
                 )
@@ -183,9 +182,9 @@ fun CustomTopTabPager(
         ) { page ->
             Column(
                 modifier =
-                Modifier
-                    .fillMaxSize()
-                    .background(Color.White),
+                    Modifier
+                        .fillMaxSize()
+                        .background(Color.White),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
@@ -218,58 +217,63 @@ fun View1Content(modifier: Modifier) {
 fun View2Content() {
     val advertisements by remember { RecyclerViewViewModel().advertisements }
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier =
+                Modifier
+                    .fillMaxWidth(),
         ) {
             CustomRecyclerView(
-                advertisements = advertisements
+                advertisements = advertisements,
             )
-
         }
     }
 }
 
-
 @Composable
 fun CustomRecyclerView(advertisements: List<Advertisement>) {
-    LazyRow(modifier = Modifier.height(327.dp),
+    LazyRow(
+        modifier = Modifier.height(327.dp),
         content = {
             itemsIndexed(advertisements) { index, advertisement ->
                 CustomAdvertisement(
-                    imgResource = advertisement.imgResource
+                    imgResource = advertisement.imgResource,
                 )
             }
-        })
+        },
+    )
 }
 
 data class Advertisement(
     val id: Int,
-    val imgResource: Int
+    val imgResource: Int,
 )
-
 
 @Composable
 fun CustomAdvertisement(imgResource: Int) {
-    Column (modifier = Modifier.size(width = 360.dp, height = 327.dp)){
+    Column(modifier = Modifier.size(width = 360.dp, height = 327.dp)) {
         Image(
             painter = painterResource(id = imgResource),
             modifier = Modifier.fillMaxSize().weight(1f),
-            contentDescription = "")
+            contentDescription = "",
+        )
     }
 }
 
-
 class RecyclerViewViewModel : ViewModel() {
     val advertisements = mutableStateOf(generateDummyAdvertisement())
+
     private fun generateDummyAdvertisement(): List<Advertisement> {
-        val adLists = listOf(
-            R.drawable.img_view1_ad_01, R.drawable.img_view1_ad_01, R.drawable.img_view1_ad_01
-        )
+        val adLists =
+            listOf(
+                R.drawable.img_view1_ad_01,
+                R.drawable.img_view1_ad_01,
+                R.drawable.img_view1_ad_01,
+            )
 
         return List(3) { index ->
             Advertisement(
