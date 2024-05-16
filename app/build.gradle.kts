@@ -52,7 +52,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.13"
-        kotlinCompilerVersion = "1.6.10"
     }
 }
 
@@ -61,6 +60,7 @@ dependencies {
     implementation(libs.bundles.androidx)
 
     implementation(libs.bundles.compose)
+    implementation(libs.androidx.foundation.android)
 
     // Compose
     debugImplementation(libs.compose.ui.tooling)

@@ -14,7 +14,7 @@ class DummyActivity : BindingActivity<ActivityDummyBinding>({ ActivityDummyBindi
         super.onCreate(savedInstanceState)
 
         setContent {
-            View1Screen(dummyViewModel)
+            View1Screen()
         }
     }
 }
