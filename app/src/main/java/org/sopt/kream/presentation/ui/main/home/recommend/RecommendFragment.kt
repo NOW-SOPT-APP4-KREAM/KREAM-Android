@@ -14,8 +14,12 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     ) {
         super.onViewCreated(view, savedInstanceState)
 
+        initBtnProductDetail()
+    }
+
+    private fun initBtnProductDetail() {
         binding.btnToProductDetail.setOnClickListener {
-            findNavController().navigate(R.id.release_fragment)
+            findNavController().navigate(R.id.product_detail_fragment)
         }
     }
 }
