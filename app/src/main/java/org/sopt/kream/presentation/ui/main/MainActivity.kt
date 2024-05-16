@@ -25,17 +25,20 @@ class MainActivity : BindingActivity<ActivityMainBinding>({ ActivityMainBinding.
 
     private fun setBottomNavigationVisibility(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bnvMain.visibility =
+            binding.apply {
                 if (destination.id in
                     listOf(
                         R.id.recommend_fragment,
                         R.id.release_fragment,
                     )
                 ) {
-                    View.VISIBLE
+                    bnvMain.visibility = View.VISIBLE
+                    viewMain.visibility = View.VISIBLE
                 } else {
-                    View.GONE
+                    bnvMain.visibility = View.GONE
+                    viewMain.visibility = View.GONE
                 }
+            }
         }
     }
 }
