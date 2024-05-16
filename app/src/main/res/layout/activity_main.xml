@@ -36,7 +36,7 @@
         app:itemPaddingTop="9dp"
         app:itemTextAppearanceActive="@style/TextAppearance.Kream.Body8.SemiBold"
         app:itemTextAppearanceInactive="@style/TextAppearance.Kream.Body8.SemiBold"
-        app:itemTextColor="@drawable/selector_bnv_label"
+        app:itemTextColor="@color/selector_main_bnv_item_text_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
