@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -23,6 +25,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -92,10 +95,10 @@ fun View1Screen() {
                         onValueChange = { editText = it },
                         singleLine = true,
                         modifier =
-                            Modifier
-                                .weight(1f)
-                                .size(width = 293.dp, height = 33.dp)
-                                .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
+                        Modifier
+                            .weight(1f)
+                            .size(width = 293.dp, height = 33.dp)
+                            .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.CenterStart,
@@ -182,9 +185,9 @@ fun CustomTopTabPager(
         ) { page ->
             Column(
                 modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .background(Color.White),
+                Modifier
+                    .fillMaxSize()
+                    .background(Color.White),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
@@ -218,9 +221,9 @@ fun View2Content() {
     val advertisements by remember { RecyclerViewViewModel().advertisements }
     Box(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
@@ -230,6 +233,8 @@ fun View2Content() {
             CustomRecyclerView(
                 advertisements = advertisements,
             )
+            CustomMidNaviBar()
+//            ShoesCardList()
         }
     }
 }
@@ -258,7 +263,10 @@ fun CustomAdvertisement(imgResource: Int) {
     Column(modifier = Modifier.size(width = 360.dp, height = 327.dp)) {
         Image(
             painter = painterResource(id = imgResource),
-            modifier = Modifier.fillMaxSize().weight(1f),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .weight(1f),
             contentDescription = "",
         )
     }
@@ -280,6 +288,74 @@ class RecyclerViewViewModel : ViewModel() {
                 id = index,
                 imgResource = adLists[index],
             )
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun CustomMidNaviBar() {
+    val shoes =
+        listOf(
+            stringResource(R.string.mid_navi_bar_today),
+            stringResource(R.string.mid_navi_bar_Nike),
+            stringResource(R.string.mid_navi_bar_Adidas),
+            stringResource(R.string.mid_navi_bar_Asics),
+            stringResource(R.string.mid_navi_bar_NewBalance),
+            stringResource(R.string.mid_navi_bar_Jordan),
+            stringResource(R.string.mid_navi_bar_converse),
+        )
+    val pagerState =
+        rememberPagerState {
+            shoes.size
+        }
+    Column {
+        ScrollableTabRow(
+            selectedTabIndex = pagerState.currentPage,
+            containerColor = Color.White,
+            contentColor = Black02,
+            edgePadding = 0.dp,
+            modifier = Modifier.padding(0.dp),
+            indicator = { tabPositions -> },
+        ) {
+            shoes.forEachIndexed { index, title ->
+                Column(modifier = Modifier.padding(10.dp)) {
+                    Text(title, style = body5Regular)
+                }
+            }
+        }
+    }
+}
+
+
+@Composable
+fun ShoesCardItem(index: Int) {
+    Card(
+        modifier =
+            Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+        ) {
+            Text(text = "Card Title $index", modifier = Modifier.padding(bottom = 8.dp))
+            Text(text = "This is a sample card view.")
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ShoesCardList() {
+    Box (modifier = Modifier.fillMaxWidth()){
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            items(30) { index ->
+                ShoesCardItem(index)
+            }
         }
     }
 }
