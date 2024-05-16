@@ -83,5 +83,3 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
 }
-
-
