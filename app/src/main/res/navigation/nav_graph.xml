@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/recommend_fragment">
+
+    <fragment
+        android:id="@+id/recommend_fragment"
+        android:name="org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment"
+        android:label="fragment_recommend"
+        tools:layout="@layout/fragment_recommend">
+        <action
+            android:id="@+id/action_recommend_fragment_to_product_detail_fragment"
+            app:destination="@id/product_detail_fragment" />
+        <action
+            android:id="@+id/action_recommend_fragment_to_search_fragment"
+            app:destination="@id/search_fragment" />
+        <action
+            android:id="@+id/action_recommend_fragment_to_release_fragment"
+            app:destination="@id/release_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/release_fragment"
+        android:name="org.sopt.kream.presentation.ui.main.home.release.ReleaseFragment"
+        android:label="fragment_release"
+        tools:layout="@layout/fragment_release">
+        <action
+            android:id="@+id/action_release_fragment_to_product_detail_fragment"
+            app:destination="@id/product_detail_fragment" />
+        <action
+            android:id="@+id/action_release_fragment_to_search_fragment"
+            app:destination="@id/search_fragment" />
+        <action
+            android:id="@+id/action_release_fragment_to_recommend_fragment"
+            app:destination="@id/recommend_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="org.sopt.kream.presentation.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_search_fragment_to_product_detail_fragment"
+            app:destination="@id/product_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/product_detail_fragment"
+        android:name="org.sopt.kream.presentation.ui.productdetail.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" />
+</navigation>
