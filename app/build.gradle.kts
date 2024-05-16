@@ -82,8 +82,6 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
-
-//    implementation(libs.androidx.foundation)
 }
 
 ktlint {
