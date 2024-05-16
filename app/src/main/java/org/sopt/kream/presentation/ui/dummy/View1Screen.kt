@@ -1,7 +1,9 @@
 package org.sopt.kream.presentation.ui.dummy
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,11 +15,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -40,6 +46,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.launch
 import org.sopt.kream.R
 import org.sopt.kream.theme.Black01
@@ -51,7 +58,6 @@ import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.head1Bold
 
 @OptIn(ExperimentalFoundationApi::class)
-@Preview
 @Composable
 fun View1Screen() {
     val pages =
@@ -87,10 +93,10 @@ fun View1Screen() {
                         onValueChange = { editText = it },
                         singleLine = true,
                         modifier =
-                            Modifier
-                                .weight(1f)
-                                .size(width = 293.dp, height = 33.dp)
-                                .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
+                        Modifier
+                            .weight(1f)
+                            .size(width = 293.dp, height = 33.dp)
+                            .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.CenterStart,
@@ -116,7 +122,7 @@ fun View1Screen() {
                     )
                     Spacer(modifier = Modifier.width(11.dp))
                 }
-                CustomTabPager(pages, pagerState, pages)
+                CustomTopTabPager(pages, pagerState, pages)
             }
         },
     ) { innerPadding ->
@@ -126,7 +132,7 @@ fun View1Screen() {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CustomTabPager(
+fun CustomTopTabPager(
     pages: List<String>,
     pagerState: PagerState,
     tabs: List<String>,
@@ -138,8 +144,8 @@ fun CustomTabPager(
             indicator = { tabPositions ->
                 TabRowDefaults.PrimaryIndicator(
                     modifier =
-                        Modifier
-                            .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
+                    Modifier
+                        .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
                     color = Black02,
                     width = pages[pagerState.currentPage].length * 12.dp,
                 )
@@ -151,8 +157,8 @@ fun CustomTabPager(
             divider = {
                 HorizontalDivider(
                     modifier =
-                        Modifier
-                            .fillMaxWidth(),
+                    Modifier
+                        .fillMaxWidth(),
                     color = Color.LightGray,
                     thickness = 1.dp,
                 )
@@ -177,15 +183,15 @@ fun CustomTabPager(
         ) { page ->
             Column(
                 modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .background(Color.White),
+                Modifier
+                    .fillMaxSize()
+                    .background(Color.White),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 when (page) {
                     0 -> View1Content(modifier = Modifier)
-                    2 -> View2Content(modifier = Modifier)
+                    2 -> View2Content()
                 }
             }
         }
@@ -207,17 +213,69 @@ fun View1Content(modifier: Modifier) {
     }
 }
 
+@Preview
 @Composable
-fun View2Content(modifier: Modifier) {
-    Column(
-        modifier = modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+fun View2Content() {
+    val advertisements by remember { RecyclerViewViewModel().advertisements }
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
-        Text(
-            text = "발매정보",
-            style = head1Bold,
-            color = Black01,
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            CustomRecyclerView(
+                advertisements = advertisements
+            )
+
+        }
+    }
+}
+
+
+@Composable
+fun CustomRecyclerView(advertisements: List<Advertisement>) {
+    LazyRow(modifier = Modifier.height(327.dp),
+        content = {
+            itemsIndexed(advertisements) { index, advertisement ->
+                CustomAdvertisement(
+                    imgResource = advertisement.imgResource
+                )
+            }
+        })
+}
+
+data class Advertisement(
+    val id: Int,
+    val imgResource: Int
+)
+
+
+@Composable
+fun CustomAdvertisement(imgResource: Int) {
+    Column (modifier = Modifier.size(width = 360.dp, height = 327.dp)){
+        Image(
+            painter = painterResource(id = imgResource),
+            modifier = Modifier.fillMaxSize().weight(1f),
+            contentDescription = "")
+    }
+}
+
+
+class RecyclerViewViewModel : ViewModel() {
+    val advertisements = mutableStateOf(generateDummyAdvertisement())
+    private fun generateDummyAdvertisement(): List<Advertisement> {
+        val adLists = listOf(
+            R.drawable.img_view1_ad_01, R.drawable.img_view1_ad_01, R.drawable.img_view1_ad_01
         )
+
+        return List(3) { index ->
+            Advertisement(
+                id = index,
+                imgResource = adLists[index],
+            )
+        }
     }
 }
