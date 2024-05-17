@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/cv_main_tab_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/fcv_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcv_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -13,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@id/view_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_main_tab_bar"
         app:navGraph="@navigation/nav_graph" />
 
     <View
