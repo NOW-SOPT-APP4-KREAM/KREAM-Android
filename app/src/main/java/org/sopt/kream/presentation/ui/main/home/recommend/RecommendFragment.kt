@@ -19,7 +19,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
     private fun initBtnProductDetail() {
         binding.btnToProductDetail.setOnClickListener {
-            findNavController().navigate(R.id.product_detail_fragment)
+            findNavController().navigate(R.id.action_recommend_to_product_detail)
         }
     }
 }
