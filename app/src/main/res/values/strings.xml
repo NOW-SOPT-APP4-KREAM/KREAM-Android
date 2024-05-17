@@ -1,22 +1,24 @@
 <resources>
     <string name="app_name">KREAM-Android</string>
 
-    <!-- bottom_navigation_label -->
+    <!-- bottom navigation -->
     <string name="bnv_home">HOME</string>
     <string name="bnv_style">STYLE</string>
     <string name="bnv_shop">SHOP</string>
     <string name="bnv_saved">SAVED</string>
     <string name="bnv_my">MY</string>
 
-    <!-- search_bar_hint -->
+    <!-- searchbar -->
     <string name="search_bar_label">"브랜드, 상품, 프로필, 태그 등"</string>
 
-    <!-- topBar_pagesList_name -->
-    <string name="topBar_pageList_recommend">"추천"</string>
-    <string name="topBar_pageList_ranking">"랭킹"</string>
-    <string name="topBar_pageList_information">"발매정보"</string>
-    <string name="topBar_pageList_luxury">"럭셔리"</string>
-    <string name="topBar_pageList_male">"남성"</string>
-    <string name="topBar_pageList_female">"여성"</string>
-    <string name="topBar_pageList_found">"발견"</string>
+    <!-- top bar main -->
+    <string name="top_bar_main_md">"서재페MD"</string>
+    <string name="top_bar_main_recommend">추천</string>
+    <string name="top_bar_main_ranking">랭킹</string>
+    <string name="top_bar_main_information">발매정보</string>
+    <string name="top_bar_main_luxury">럭셔리</string>
+    <string name="top_bar_main_male">남성</string>
+    <string name="top_bar_main_female">여성</string>
+    <string name="top_bar_main_found">발견</string>
+    <string name="top_bar_main_event">이벤트</string>
 </resources>
