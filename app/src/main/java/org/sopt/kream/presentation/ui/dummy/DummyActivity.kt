@@ -12,9 +12,5 @@ class DummyActivity : BindingActivity<ActivityDummyBinding>({ ActivityDummyBindi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContent {
-            View1Screen()
-        }
     }
 }
