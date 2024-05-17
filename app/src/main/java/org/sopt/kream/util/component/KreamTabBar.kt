@@ -8,7 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -36,7 +35,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.sopt.kream.R
 import org.sopt.kream.theme.Black02
-import org.sopt.kream.theme.PinkColor
+import org.sopt.kream.theme.Gray05
 import org.sopt.kream.theme.White
 import org.sopt.kream.theme.body3Regular
 import org.sopt.kream.theme.body3SemiBold
@@ -45,7 +44,7 @@ import org.sopt.kream.util.modifier.noRippleClickable
 enum class SubComposeID {
     INIT,
     TAB,
-    INDICATOR,
+    INDICATOR
 }
 
 data class TabPosition(
@@ -67,7 +66,6 @@ fun KreamTabBar(
             .background(color = White)
             .horizontalScroll(state = rememberScrollState()),
     ) {
-
         Surface(
             modifier = Modifier
                 .wrapContentWidth(Alignment.CenterHorizontally),
@@ -111,6 +109,12 @@ fun KreamTabBar(
             }
         }
     }
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Gray05)
+            .height(1.dp)
+    )
 }
 
 @Composable
@@ -151,7 +155,7 @@ fun KreamTab(
         style = if (selected) body3SemiBold else body3Regular,
         color = textColor,
         modifier = Modifier
-            .padding(bottom = 4.dp, top = 8.dp, start = 12.dp, end = 12.dp)
+            .padding(bottom = 4.dp, top = 24.dp, start = 12.dp, end = 12.dp)
             .wrapContentWidth(Alignment.CenterHorizontally)
             .noRippleClickable(
                 onClick = { onClick(position) }
