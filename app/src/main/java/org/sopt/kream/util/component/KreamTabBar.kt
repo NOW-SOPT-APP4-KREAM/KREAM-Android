@@ -7,6 +7,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -26,7 +28,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,7 +36,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.sopt.kream.R
 import org.sopt.kream.theme.Black02
-import org.sopt.kream.theme.KreamAndroidTheme
+import org.sopt.kream.theme.PinkColor
 import org.sopt.kream.theme.White
 import org.sopt.kream.theme.body3Regular
 import org.sopt.kream.theme.body3SemiBold
@@ -59,45 +60,53 @@ fun KreamTabBar(
     selectedTabPosition: Int = 0,
     tabItem: @Composable () -> Unit,
 ) {
-    Surface(
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
+            .fillMaxWidth()
+            .background(color = White)
             .horizontalScroll(state = rememberScrollState()),
-        color = White,
     ) {
-        SubcomposeLayout(
-            Modifier
-                .fillMaxWidth()
-                .selectableGroup(),
-        ) { constraints ->
-            val maxItemHeight = subcompose(SubComposeID.INIT, tabItem)
-                .map { it.measure(constraints) }.maxOf { it.height }
 
-            val tabs = subcompose(SubComposeID.TAB, tabItem).map {
-                it.measure(constraints)
-            }
+        Surface(
+            modifier = Modifier
+                .wrapContentWidth(Alignment.CenterHorizontally),
+            color = White,
+        ) {
+            SubcomposeLayout(
+                modifier = Modifier
+                    .selectableGroup(),
+            ) { constraints ->
+                val maxItemHeight = subcompose(SubComposeID.INIT, tabItem)
+                    .map { it.measure(constraints) }.maxOf { it.height }
 
-            val tabPositions = tabs.mapIndexed { index, placeable ->
-                val x = tabs.take(index).sumOf { it.width }
-                val width = placeable.width
-                TabPosition(x = x.toDp(), width = width.toDp())
-            }
-
-            val tabRowWidth = tabs.sumOf { it.width }
-
-            layout(tabRowWidth, maxItemHeight) {
-                subcompose(SubComposeID.INDICATOR) {
-                    Box(
-                        Modifier
-                            .tabIndicator(tabPositions[selectedTabPosition], animationSpec)
-                            .background(color = indicatorColor),
-                    )
-                }.forEach {
-                    it.measure(Constraints.fixed(tabRowWidth, maxItemHeight)).placeRelative(0, 0)
+                val tabs = subcompose(SubComposeID.TAB, tabItem).map {
+                    it.measure(constraints)
                 }
 
-                tabs.forEachIndexed { index, placeable ->
+                val tabPositions = tabs.mapIndexed { index, placeable ->
                     val x = tabs.take(index).sumOf { it.width }
-                    placeable.placeRelative(x, 0)
+                    val width = placeable.width
+                    TabPosition(x = x.toDp(), width = width.toDp())
+                }
+
+                val tabRowWidth = tabs.sumOf { it.width }
+
+                layout(tabRowWidth, maxItemHeight) {
+                    subcompose(SubComposeID.INDICATOR) {
+                        Box(
+                            Modifier
+                                .tabIndicator(tabPositions[selectedTabPosition], animationSpec)
+                                .background(color = indicatorColor),
+                        )
+                    }.forEach {
+                        it.measure(Constraints.fixed(tabRowWidth, maxItemHeight)).placeRelative(0, 0)
+                    }
+
+                    tabs.forEachIndexed { index, placeable ->
+                        val x = tabs.take(index).sumOf { it.width }
+                        placeable.placeRelative(x, 0)
+                    }
                 }
             }
         }
@@ -132,6 +141,7 @@ private fun Modifier.tabIndicator(
 @Composable
 fun KreamTab(
     text: String,
+    textColor: Color = Black02,
     position: Int,
     selected: Boolean,
     onClick: (Int) -> Unit = {}
@@ -139,7 +149,7 @@ fun KreamTab(
     Text(
         text = text,
         style = if (selected) body3SemiBold else body3Regular,
-        color = Black02,
+        color = textColor,
         modifier = Modifier
             .padding(bottom = 4.dp, top = 8.dp, start = 12.dp, end = 12.dp)
             .wrapContentWidth(Alignment.CenterHorizontally)
@@ -155,21 +165,15 @@ fun KreamTabBarPreview() {
     var selectedTabPosition by remember { mutableIntStateOf(0) }
 
     val items = listOf(
-        stringResource(R.string.topBar_pageList_recommend),
-        stringResource(R.string.topBar_pageList_ranking),
-        stringResource(R.string.topBar_pageList_information),
-        stringResource(R.string.topBar_pageList_luxury),
-        stringResource(R.string.topBar_pageList_male),
-        stringResource(R.string.topBar_pageList_female),
-        stringResource(R.string.topBar_pageList_found),
+        stringResource(R.string.top_bar_main_recommend),
+        stringResource(R.string.top_bar_main_ranking),
+        stringResource(R.string.top_bar_main_information)
     )
 
-    KreamAndroidTheme {
-        KreamTabBar(selectedTabPosition = selectedTabPosition) {
-            items.forEachIndexed { index, title ->
-                KreamTab(text = title, position = index, selected = index == selectedTabPosition) {
-                    selectedTabPosition = index
-                }
+    KreamTabBar(selectedTabPosition = selectedTabPosition) {
+        items.forEachIndexed { index, text ->
+            KreamTab(text = text, position = index, selected = index == selectedTabPosition) {
+                selectedTabPosition = index
             }
         }
     }
