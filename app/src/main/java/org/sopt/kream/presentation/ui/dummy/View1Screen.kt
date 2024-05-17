@@ -215,29 +215,7 @@ fun View1Content(modifier: Modifier) {
     }
 }
 
-@Preview
-@Composable
-fun View2Content() {
-    val advertisements by remember { RecyclerViewViewModel().advertisements }
-    Box(
-        modifier =
-        Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
-    ) {
-        Column(
-            modifier =
-                Modifier
-                    .fillMaxWidth(),
-        ) {
-            CustomRecyclerView(
-                advertisements = advertisements,
-            )
-            CustomMidNaviBar()
-//            ShoesCardList()
-        }
-    }
-}
+
 
 @Composable
 fun CustomRecyclerView(advertisements: List<Advertisement>) {
@@ -264,9 +242,9 @@ fun CustomAdvertisement(imgResource: Int) {
         Image(
             painter = painterResource(id = imgResource),
             modifier =
-                Modifier
-                    .fillMaxSize()
-                    .weight(1f),
+            Modifier
+                .fillMaxSize()
+                .weight(1f),
             contentDescription = "",
         )
     }
@@ -327,20 +305,43 @@ fun CustomMidNaviBar() {
     }
 }
 
+@Preview
+@Composable
+fun View2Content() {
+    val advertisements by remember { RecyclerViewViewModel().advertisements }
+    Box(
+        modifier =
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+    ) {
+        Column(
+            modifier =
+            Modifier
+                .fillMaxWidth(),
+        ) {
+            CustomRecyclerView(
+                advertisements = advertisements,
+            )
+            CustomMidNaviBar()
+            ShoesCardList()
+        }
+    }
+
+}
+
 
 @Composable
 fun ShoesCardItem(index: Int) {
     Card(
         modifier =
-            Modifier
-                .padding(8.dp)
-                .fillMaxWidth(),
+        Modifier.size(width = 161.dp, height = 177.dp),
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(10.dp)
         ) {
-            Text(text = "Card Title $index", modifier = Modifier.padding(bottom = 8.dp))
-            Text(text = "This is a sample card view.")
+            Text(text = "Card Title ${index+1}", modifier = Modifier.padding(bottom = 8.dp), style = head1Bold)
+            Text(text = "해냈어 조장!!", style = body5Regular)
         }
     }
 }
@@ -348,14 +349,20 @@ fun ShoesCardItem(index: Int) {
 @Preview
 @Composable
 fun ShoesCardList() {
-    Box (modifier = Modifier.fillMaxWidth()){
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            items(30) { index ->
-                ShoesCardItem(index)
+    Column {
+        val items = List(12) { it }
+        Spacer(modifier = Modifier.height(6.dp))
+        for (i in items.indices step 2) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                ShoesCardItem(index = i)
+                if (i + 1 < items.size) {
+                    ShoesCardItem(index = i + 1)
+                }
             }
+            Spacer(modifier = Modifier.height(14.dp))
         }
     }
 }
