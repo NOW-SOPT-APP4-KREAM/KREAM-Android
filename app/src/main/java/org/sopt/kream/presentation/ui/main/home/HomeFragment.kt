@@ -18,13 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentHomeBinding
-import org.sopt.kream.presentation.ui.type.HomeTabBarType
 import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment
 import org.sopt.kream.presentation.ui.main.home.release.ReleaseFragment
+import org.sopt.kream.presentation.ui.type.HomeTabBarType
 import org.sopt.kream.theme.PinkColor
 import org.sopt.kream.util.base.BindingFragment
 import org.sopt.kream.util.component.KreamTab
@@ -49,7 +50,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
 
     private fun initTop() {
         binding.cvHomeTop.setContent {
-            SetTopLayout()
+            TopLayout()
         }
     }
 
@@ -70,7 +71,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
     }
 
     @Composable
-    private fun SetTopLayout() {
+    private fun TopLayout() {
         var selectedTabPosition by remember { mutableIntStateOf(RECOMMEND_INDEX) }
         var searchText by remember {
             mutableStateOf("")
@@ -89,19 +90,19 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
         ) {
             Row(
                 modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(start = 14.dp, end = 11.dp),
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 14.dp, end = 11.dp),
             ) {
                 KreamTextField(
                     modifier =
-                        Modifier
-                            .weight(1f)
-                            .padding(end = 14.dp),
+                    Modifier
+                        .weight(1f)
+                        .padding(end = 14.dp),
                     placeholder = stringResource(id = R.string.search_bar_label),
                     value = searchText,
                     onValueChange = { searchText = it },
-                    onDone = { navigateToSearch() },
+                    onDone = { navigateToSearch(searchText) },
                 )
                 Image(
                     painter = painterResource(R.drawable.ic_topappbar_bell_28),
@@ -128,12 +129,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
         }
     }
 
-    private fun navigateToSearch() {
-        findNavController().navigate(R.id.action_home_to_search)
+    private fun navigateToSearch(searchWord: String) {
+        findNavController().navigate(R.id.action_home_to_search, bundleOf(SEARCH_WORD to searchWord))
     }
 
     companion object {
         const val FIRST_INDEX = 0
         const val RECOMMEND_INDEX = 1
+        const val SEARCH_WORD = "searchWord"
     }
 }

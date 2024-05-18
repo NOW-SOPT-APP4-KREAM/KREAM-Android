@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -154,6 +155,9 @@ fun KreamTab(
     textColor: Color = Black02,
     position: Int,
     selected: Boolean,
+    paddingTop: Int = 24,
+    paddingBottom: Int = 4,
+    paddingHorizontal: Int = 12,
     onClick: (Int) -> Unit = {},
 ) {
     Text(
@@ -162,7 +166,7 @@ fun KreamTab(
         color = textColor,
         modifier =
             Modifier
-                .padding(bottom = 4.dp, top = 24.dp, start = 12.dp, end = 12.dp)
+                .padding(bottom = paddingBottom.dp, top = paddingTop.dp, start = paddingHorizontal.dp, end = paddingHorizontal.dp)
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .noRippleClickable(
                     onClick = { onClick(position) },
