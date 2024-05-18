@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentHomeBinding
-import org.sopt.kream.presentation.HomeTabBarType
+import org.sopt.kream.presentation.ui.type.HomeTabBarType
 import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment
 import org.sopt.kream.presentation.ui.main.home.release.ReleaseFragment
 import org.sopt.kream.theme.PinkColor
