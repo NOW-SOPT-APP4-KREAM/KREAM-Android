@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentHomeBinding
 import org.sopt.kream.presentation.HomeTabBarType
@@ -94,7 +95,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
                         .padding(end = 14.dp),
                     placeholder = stringResource(id = R.string.search_bar_label),
                     value = searchText,
-                    onValueChange = { searchText = it }
+                    onValueChange = { searchText = it },
+                    onDone = { navigateToSearch() }
                 )
                 Image(
                     painter = painterResource(R.drawable.ic_topappbar_bell_28),
@@ -119,6 +121,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
                 }
             }
         }
+    }
+
+    private fun navigateToSearch() {
+        findNavController().navigate(R.id.action_home_to_search)
     }
 
     companion object {

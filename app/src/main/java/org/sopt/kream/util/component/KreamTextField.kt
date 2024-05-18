@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,7 +31,8 @@ fun KreamTextField(
     modifier: Modifier = Modifier,
     placeholder: String = "",
     value: String = "",
-    onValueChange: (String) -> Unit = { _ -> }
+    onValueChange: (String) -> Unit = { _ -> },
+    onDone: () -> Unit = {}
 ) {
     Row(
         modifier = modifier
@@ -56,7 +58,10 @@ fun KreamTextField(
                         text = placeholder
                     )
                 }
-            }
+            },
+            keyboardActions = KeyboardActions(onDone = {
+                onDone()
+            })
         )
         if (value.isNotEmpty()) {
             Image(
