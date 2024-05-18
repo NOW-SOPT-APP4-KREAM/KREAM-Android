@@ -44,7 +44,7 @@ import org.sopt.kream.util.modifier.noRippleClickable
 enum class SubComposeID {
     INIT,
     TAB,
-    INDICATOR
+    INDICATOR,
 }
 
 data class TabPosition(
@@ -61,32 +61,38 @@ fun KreamTabBar(
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(color = White)
-            .horizontalScroll(state = rememberScrollState()),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(color = White)
+                .horizontalScroll(state = rememberScrollState()),
     ) {
         Surface(
-            modifier = Modifier
-                .wrapContentWidth(Alignment.CenterHorizontally),
+            modifier =
+                Modifier
+                    .wrapContentWidth(Alignment.CenterHorizontally),
             color = White,
         ) {
             SubcomposeLayout(
-                modifier = Modifier
-                    .selectableGroup(),
+                modifier =
+                    Modifier
+                        .selectableGroup(),
             ) { constraints ->
-                val maxItemHeight = subcompose(SubComposeID.INIT, tabItem)
-                    .map { it.measure(constraints) }.maxOf { it.height }
+                val maxItemHeight =
+                    subcompose(SubComposeID.INIT, tabItem)
+                        .map { it.measure(constraints) }.maxOf { it.height }
 
-                val tabs = subcompose(SubComposeID.TAB, tabItem).map {
-                    it.measure(constraints)
-                }
+                val tabs =
+                    subcompose(SubComposeID.TAB, tabItem).map {
+                        it.measure(constraints)
+                    }
 
-                val tabPositions = tabs.mapIndexed { index, placeable ->
-                    val x = tabs.take(index).sumOf { it.width }
-                    val width = placeable.width
-                    TabPosition(x = x.toDp(), width = width.toDp())
-                }
+                val tabPositions =
+                    tabs.mapIndexed { index, placeable ->
+                        val x = tabs.take(index).sumOf { it.width }
+                        val width = placeable.width
+                        TabPosition(x = x.toDp(), width = width.toDp())
+                    }
 
                 val tabRowWidth = tabs.sumOf { it.width }
 
@@ -110,10 +116,11 @@ fun KreamTabBar(
         }
     }
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Gray05)
-            .height(1.dp)
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(Gray05)
+                .height(1.dp),
     )
 }
 
@@ -141,25 +148,25 @@ private fun Modifier.tabIndicator(
         .height(2.dp)
 }
 
-
 @Composable
 fun KreamTab(
     text: String,
     textColor: Color = Black02,
     position: Int,
     selected: Boolean,
-    onClick: (Int) -> Unit = {}
+    onClick: (Int) -> Unit = {},
 ) {
     Text(
         text = text,
         style = if (selected) body3SemiBold else body3Regular,
         color = textColor,
-        modifier = Modifier
-            .padding(bottom = 4.dp, top = 24.dp, start = 12.dp, end = 12.dp)
-            .wrapContentWidth(Alignment.CenterHorizontally)
-            .noRippleClickable(
-                onClick = { onClick(position) }
-            ),
+        modifier =
+            Modifier
+                .padding(bottom = 4.dp, top = 24.dp, start = 12.dp, end = 12.dp)
+                .wrapContentWidth(Alignment.CenterHorizontally)
+                .noRippleClickable(
+                    onClick = { onClick(position) },
+                ),
     )
 }
 
@@ -168,11 +175,12 @@ fun KreamTab(
 fun KreamTabBarPreview() {
     var selectedTabPosition by remember { mutableIntStateOf(0) }
 
-    val items = listOf(
-        stringResource(R.string.top_bar_main_recommend),
-        stringResource(R.string.top_bar_main_ranking),
-        stringResource(R.string.top_bar_main_information)
-    )
+    val items =
+        listOf(
+            stringResource(R.string.top_bar_main_recommend),
+            stringResource(R.string.top_bar_main_ranking),
+            stringResource(R.string.top_bar_main_information),
+        )
 
     KreamTabBar(selectedTabPosition = selectedTabPosition) {
         items.forEachIndexed { index, text ->

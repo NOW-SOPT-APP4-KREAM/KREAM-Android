@@ -37,7 +37,10 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
     private lateinit var fragmentList: ArrayList<Fragment>
     private lateinit var fragmentStateAdapter: KreamFragmentStateAdapter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         initTop()
@@ -82,25 +85,27 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
         }
 
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 14.dp, end = 11.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 14.dp, end = 11.dp),
             ) {
                 KreamTextField(
-                    modifier = Modifier
-                        .weight(1f)
-                        .padding(end = 14.dp),
+                    modifier =
+                        Modifier
+                            .weight(1f)
+                            .padding(end = 14.dp),
                     placeholder = stringResource(id = R.string.search_bar_label),
                     value = searchText,
                     onValueChange = { searchText = it },
-                    onDone = { navigateToSearch() }
+                    onDone = { navigateToSearch() },
                 )
                 Image(
                     painter = painterResource(R.drawable.ic_topappbar_bell_28),
-                    contentDescription = null
+                    contentDescription = null,
                 )
             }
 

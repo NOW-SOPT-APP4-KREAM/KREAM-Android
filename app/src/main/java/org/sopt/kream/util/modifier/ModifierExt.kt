@@ -8,9 +8,12 @@ import androidx.compose.ui.composed
 
 inline fun Modifier.noRippleClickable(
     crossinline onClick: () -> Unit = {},
-): Modifier = composed {
-    this.clickable(indication = null,
-        interactionSource = remember { MutableInteractionSource() }) {
-        onClick()
+): Modifier =
+    composed {
+        this.clickable(
+            indication = null,
+            interactionSource = remember { MutableInteractionSource() },
+        ) {
+            onClick()
+        }
     }
-}

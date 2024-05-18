@@ -32,18 +32,20 @@ fun KreamTextField(
     placeholder: String = "",
     value: String = "",
     onValueChange: (String) -> Unit = { _ -> },
-    onDone: () -> Unit = {}
+    onDone: () -> Unit = {},
 ) {
     Row(
-        modifier = modifier
-            .background(color = Gray06, shape = RoundedCornerShape(9.dp))
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        modifier =
+            modifier
+                .background(color = Gray06, shape = RoundedCornerShape(9.dp))
+                .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         BasicTextField(
-            modifier = Modifier
-                .weight(1f)
-                .padding(horizontal = 9.dp, vertical = 7.dp),
+            modifier =
+                Modifier
+                    .weight(1f)
+                    .padding(horizontal = 9.dp, vertical = 7.dp),
             value = value,
             onValueChange = onValueChange,
             cursorBrush = SolidColor(Color.Black),
@@ -55,24 +57,26 @@ fun KreamTextField(
                     Text(
                         color = Black09,
                         style = body5Regular,
-                        text = placeholder
+                        text = placeholder,
                     )
                 }
             },
-            keyboardActions = KeyboardActions(onDone = {
-                onDone()
-            })
+            keyboardActions =
+                KeyboardActions(onDone = {
+                    onDone()
+                }),
         )
         if (value.isNotEmpty()) {
             Image(
-                modifier = Modifier.noRippleClickable {
-                    onValueChange("")
-                },
+                modifier =
+                    Modifier.noRippleClickable {
+                        onValueChange("")
+                    },
                 painter = painterResource(R.drawable.ic_delete_24),
                 contentDescription = null,
             )
             Spacer(
-                Modifier.width(4.dp)
+                Modifier.width(4.dp),
             )
         }
     }
@@ -83,7 +87,7 @@ fun KreamTextField(
 fun KreamTextFieldPreview() {
     KreamAndroidTheme {
         KreamTextField(
-            placeholder = "브랜드, 상품, 프로필, 태그 등"
+            placeholder = "브랜드, 상품, 프로필, 태그 등",
         )
     }
 }
