@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentHomeBinding
-import org.sopt.kream.presentation.ui.main.MainActivity
+import org.sopt.kream.presentation.HomeTabBarType
 import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment
 import org.sopt.kream.presentation.ui.main.home.release.ReleaseFragment
 import org.sopt.kream.theme.PinkColor
@@ -29,6 +29,7 @@ import org.sopt.kream.util.base.BindingFragment
 import org.sopt.kream.util.component.KreamTab
 import org.sopt.kream.util.component.KreamTabBar
 import org.sopt.kream.util.component.KreamTextField
+import org.sopt.kream.util.fragment.stringOf
 import org.sopt.kream.util.view.KreamFragmentStateAdapter
 
 class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.inflate(it) }) {
@@ -66,33 +67,18 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
 
     @Composable
     private fun SetTopLayout() {
-        var selectedTabPosition by remember { mutableIntStateOf(MainActivity.DEFAULT_INDEX) }
+        var selectedTabPosition by remember { mutableIntStateOf(RECOMMEND_INDEX) }
         var searchText by remember {
             mutableStateOf("")
         }
 
+        val clickableTabs = HomeTabBarType.entries.filter { it.isClickable }
+
         LaunchedEffect(selectedTabPosition) {
-            when(selectedTabPosition) {
-                1 -> binding.vpHome.setCurrentItem(0)
-                3 -> binding.vpHome.setCurrentItem(1)
+            clickableTabs.indexOf(HomeTabBarType.entries[selectedTabPosition]).let { tabPosition ->
+                if (tabPosition != -1) binding.vpHome.currentItem = tabPosition
             }
         }
-
-        val items = listOf(
-            stringResource(R.string.top_bar_main_recommend),
-            stringResource(R.string.top_bar_main_ranking),
-            stringResource(R.string.top_bar_main_information),
-            stringResource(R.string.top_bar_main_luxury),
-            stringResource(R.string.top_bar_main_male),
-            stringResource(R.string.top_bar_main_female),
-            stringResource(R.string.top_bar_main_found),
-            stringResource(R.string.top_bar_main_event)
-        )
-
-        val selectableItems = listOf(
-            Pair(stringResource(R.string.top_bar_main_recommend), RECOMMEND_INDEX),
-            Pair(stringResource(R.string.top_bar_main_information), INFORMATION_INDEX)
-        )
 
         Column(
             modifier = Modifier.fillMaxWidth()
@@ -103,7 +89,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
                     .padding(start = 14.dp, end = 11.dp)
             ) {
                 KreamTextField(
-                    modifier = Modifier.weight(1f).padding(end = 14.dp),
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 14.dp),
                     placeholder = stringResource(id = R.string.search_bar_label),
                     value = searchText,
                     onValueChange = { searchText = it }
@@ -115,14 +103,17 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
             }
 
             KreamTabBar(selectedTabPosition = selectedTabPosition) {
-                KreamTab(text = stringResource(R.string.top_bar_main_md), textColor = PinkColor, position = MainActivity.FIRST_INDEX, selected = MainActivity.FIRST_INDEX == selectedTabPosition)
-
-                items.forEachIndexed { index, text ->
-                    (index + 1).let { tabIndex ->
-                        KreamTab(text = text, position = tabIndex, selected = tabIndex == selectedTabPosition) {
-                            if (text in selectableItems.map { selectableItems ->
-                                selectableItems.first
-                                }) selectedTabPosition = tabIndex
+                HomeTabBarType.entries.forEachIndexed { index, homeTabBarType ->
+                    when (index) {
+                        FIRST_INDEX -> KreamTab(text = stringOf(homeTabBarType.tabBarTextRes), textColor = PinkColor, position = index, selected = index == selectedTabPosition)
+                        else -> {
+                            if (homeTabBarType.isClickable) {
+                                KreamTab(text = stringOf(homeTabBarType.tabBarTextRes), position = index, selected = index == selectedTabPosition) {
+                                    selectedTabPosition = index
+                                }
+                            } else {
+                                KreamTab(text = stringOf(homeTabBarType.tabBarTextRes), position = index, selected = index == selectedTabPosition)
+                            }
                         }
                     }
                 }
@@ -131,7 +122,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
     }
 
     companion object {
-        const val RECOMMEND_INDEX = 0
-        const val INFORMATION_INDEX = 1
+        const val FIRST_INDEX = 0
+        const val RECOMMEND_INDEX = 1
     }
 }

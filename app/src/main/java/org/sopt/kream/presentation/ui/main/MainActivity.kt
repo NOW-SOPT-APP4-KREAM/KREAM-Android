@@ -38,9 +38,4 @@ class MainActivity : BindingActivity<ActivityMainBinding>({ ActivityMainBinding.
             }
         }
     }
-
-    companion object {
-        const val DEFAULT_INDEX = 1
-        const val FIRST_INDEX = 0
-    }
 }
