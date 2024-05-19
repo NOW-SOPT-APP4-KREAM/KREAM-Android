@@ -20,17 +20,14 @@ class MainActivity : BindingActivity<ActivityMainBinding>({ ActivityMainBinding.
         val navController = (supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment).navController
         binding.bnvMain.setupWithNavController(navController)
 
-        setBottomNavigationVisibility(navController)
+        setComponentVisibility(navController)
     }
 
-    private fun setBottomNavigationVisibility(navController: NavController) {
+    private fun setComponentVisibility(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.apply {
                 if (destination.id in
-                    listOf(
-                        R.id.recommend_fragment,
-                        R.id.release_fragment,
-                    )
+                    listOf(R.id.menu_home)
                 ) {
                     bnvMain.visibility = View.VISIBLE
                     viewMain.visibility = View.VISIBLE
