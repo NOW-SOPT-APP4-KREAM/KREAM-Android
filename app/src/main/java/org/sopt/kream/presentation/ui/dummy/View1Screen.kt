@@ -3,6 +3,7 @@ package org.sopt.kream.presentation.ui.dummy
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,8 +16,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
@@ -42,7 +41,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -215,8 +218,6 @@ fun View1Content(modifier: Modifier) {
     }
 }
 
-
-
 @Composable
 fun CustomRecyclerView(advertisements: List<Advertisement>) {
     LazyRow(
@@ -288,17 +289,57 @@ fun CustomMidNaviBar() {
             shoes.size
         }
     Column {
-        ScrollableTabRow(
-            selectedTabIndex = pagerState.currentPage,
-            containerColor = Color.White,
-            contentColor = Black02,
-            edgePadding = 0.dp,
-            modifier = Modifier.padding(0.dp),
-            indicator = { tabPositions -> },
+        LazyRow(
+            modifier = Modifier
+                .padding(0.dp)
+                .fillMaxWidth()
+                .background(Color.White),
         ) {
-            shoes.forEachIndexed { index, title ->
-                Column(modifier = Modifier.padding(10.dp)) {
-                    Text(title, style = body5Regular)
+            item{
+                shoes.forEachIndexed { index, title ->
+                    if (index==0){
+                        Row(modifier = Modifier
+                            .padding(10.dp)
+                            .clickable {
+
+                            }) {
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = title,
+                                style = body5Regular,
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(
+                                        color = colorResource(id = R.color.gray05)
+                                    )
+                                    .padding(10.dp)
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .align(Alignment.CenterVertically)
+                                    .padding(start = 18.dp)
+                                    .width(1.dp)
+                                    .height(23.dp)
+                                    .background(colorResource(id = R.color.gray04)) // 선의 색상
+                            )
+
+                        }
+                    }
+                    else{
+                        Column(modifier = Modifier.padding(10.dp)
+                            ) {
+                            Text(
+                                text = title,
+                                style = body5Regular,
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(10.dp)) // 둥근 모서리를 적용
+                                    .background(
+                                        color = colorResource(id = R.color.gray05)
+                                    )
+                                    .padding(10.dp)
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -317,8 +358,8 @@ fun View2Content() {
     ) {
         Column(
             modifier =
-            Modifier
-                .fillMaxWidth(),
+                Modifier
+                    .fillMaxWidth(),
         ) {
             CustomRecyclerView(
                 advertisements = advertisements,
@@ -327,20 +368,18 @@ fun View2Content() {
             ShoesCardList()
         }
     }
-
 }
-
 
 @Composable
 fun ShoesCardItem(index: Int) {
     Card(
         modifier =
-        Modifier.size(width = 161.dp, height = 177.dp),
+            Modifier.size(width = 161.dp, height = 177.dp),
     ) {
         Column(
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp),
         ) {
-            Text(text = "Card Title ${index+1}", modifier = Modifier.padding(bottom = 8.dp), style = head1Bold)
+            Text(text = "Card Title ${index + 1}", modifier = Modifier.padding(bottom = 8.dp), style = head1Bold)
             Text(text = "해냈어 조장!!", style = body5Regular)
         }
     }
@@ -355,7 +394,7 @@ fun ShoesCardList() {
         for (i in items.indices step 2) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
                 ShoesCardItem(index = i)
                 if (i + 1 < items.size) {
