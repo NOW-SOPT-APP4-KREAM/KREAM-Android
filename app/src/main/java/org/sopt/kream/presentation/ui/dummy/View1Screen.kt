@@ -3,6 +3,7 @@ package org.sopt.kream.presentation.ui.dummy
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,7 +25,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
+
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -43,8 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Outline
-import androidx.compose.ui.graphics.RectangleShape
+
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -59,7 +59,9 @@ import org.sopt.kream.theme.Black02
 import org.sopt.kream.theme.Black09
 import org.sopt.kream.theme.Gray06
 import org.sopt.kream.theme.body3SemiBold
+import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
+import org.sopt.kream.theme.body6Regular
 import org.sopt.kream.theme.head1Bold
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -149,8 +151,8 @@ fun CustomTopTabPager(
             indicator = { tabPositions ->
                 TabRowDefaults.PrimaryIndicator(
                     modifier =
-                        Modifier
-                            .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
+                    Modifier
+                        .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
                     color = Black02,
                     width = pages[pagerState.currentPage].length * 12.dp,
                 )
@@ -162,8 +164,8 @@ fun CustomTopTabPager(
             divider = {
                 HorizontalDivider(
                     modifier =
-                        Modifier
-                            .fillMaxWidth(),
+                    Modifier
+                        .fillMaxWidth(),
                     color = Color.LightGray,
                     thickness = 1.dp,
                 )
@@ -258,11 +260,12 @@ class RecyclerViewViewModel : ViewModel() {
         val adLists =
             listOf(
                 R.drawable.img_view1_ad_01,
-                R.drawable.img_view1_ad_01,
-                R.drawable.img_view1_ad_01,
+                R.drawable.img_view1_ad_02,
+                R.drawable.img_view1_ad_03,
+                R.drawable.img_view1_ad_04,
             )
 
-        return List(3) { index ->
+        return List(4) { index ->
             Advertisement(
                 id = index,
                 imgResource = adLists[index],
@@ -354,36 +357,94 @@ fun View2Content() {
     ) {
         Column(
             modifier =
-                Modifier
-                    .fillMaxWidth(),
+            Modifier
+                .fillMaxWidth(),
         ) {
             CustomRecyclerView(
                 advertisements = advertisements,
             )
             CustomMidNaviBar()
-            ShoesCardList()
+            ShoesList()
         }
     }
 }
 
 @Composable
-fun ShoesCardItem(index: Int) {
-    Card(
-        modifier =
-            Modifier.size(width = 161.dp, height = 177.dp),
-    ) {
-        Column(
-            modifier = Modifier.padding(10.dp),
+fun ShoesItem(index: Int) {
+    var isIconChanged by remember { mutableStateOf(false) }
+
+    val iconResource = if (isIconChanged) {
+        R.drawable.ic_saved_1_on_24
+    } else {
+        R.drawable.ic_saved_1_off_24
+    }
+
+    Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
+        Box(
+            modifier = Modifier
+                .size(width = 161.dp, height = 108.dp)
+                .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp))
         ) {
-            Text(text = "Card Title ${index + 1}", modifier = Modifier.padding(bottom = 8.dp), style = head1Bold)
-            Text(text = "해냈어 조장!!", style = body5Regular)
+            Row(
+                modifier = Modifier.padding(8.dp)
+            ) {
+                Column(modifier = Modifier.padding(3.dp)) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color.White)
+                            .size(width = 50.dp, height = 15.dp)
+                            .border(
+                                width = 1.dp,
+                                color = colorResource(id = R.color.gray03),
+                                shape = RoundedCornerShape(10.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(9.dp))
+                                .background(Color.White)
+                                .fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = "UPDATE",
+                                style = body6Regular,
+                                color = colorResource(id = R.color.black06)
+                            )
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.width(69.dp))
+                Icon(
+                    painter = painterResource(id = iconResource),
+                    contentDescription = null,
+                    modifier = Modifier.clickable {
+                        isIconChanged = !isIconChanged
+                    }
+                )
+
+            }
+            Image(painter = painterResource(id = R.drawable.img_view1_swipe_dummy),
+                contentDescription = null,
+                modifier = Modifier.size(width = 108.dp, height = 108.dp).align(Alignment.Center))
+
+
+        }
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Spacer(modifier = Modifier.height(15.dp))
+            Text(text = "NIKE", style = body4Bold, color = colorResource(id = R.color.black02))
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(text = "Nike Dunk Low SP Venner", style = body5Regular, color = colorResource(id = R.color.black02))
         }
     }
 }
+
 
 @Preview
 @Composable
-fun ShoesCardList() {
+fun ShoesList() {
     Column {
         val items = List(12) { it }
         Spacer(modifier = Modifier.height(6.dp))
@@ -392,9 +453,9 @@ fun ShoesCardList() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesCardItem(index = i)
+                ShoesItem(index = i)
                 if (i + 1 < items.size) {
-                    ShoesCardItem(index = i + 1)
+                    ShoesItem(index = i + 1)
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))
