@@ -26,4 +26,11 @@
     <string name="search_tap_bar_product">상품</string>
     <string name="search_tap_bar_style">스타일</string>
     <string name="search_tap_bar_profile">프로필</string>
+
+    <!-- search chip -->
+    <string name="search_chip_fast_delivery">빠른배송</string>
+    <string name="search_chip_category">카테고리</string>
+    <string name="search_chip_gender">성별</string>
+    <string name="search_chip_color">색상</string>
+    <string name="search_chip_brand">브랜드</string>
 </resources>
