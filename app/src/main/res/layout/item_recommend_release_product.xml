@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="137dp"
+    android:layout_height="240dp"
+    android:paddingEnd="9dp">
+
+    <ImageView
+        android:id="@+id/iv_release_product"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_border_radius_8"
+        android:backgroundTint="@color/black06"
+        android:clipToOutline="true"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_release_product_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="22"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black04"
+        app:layout_constraintEnd_toEndOf="@id/iv_release_product"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="거래"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black04"
+        app:layout_constraintEnd_toStartOf="@id/tv_release_product_transaction"
+        app:layout_constraintTop_toTopOf="@id/tv_release_product_transaction" />
+
+    <ImageView
+        android:id="@+id/iv_release_product_saved"
+        android:layout_width="24dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_saved_2_off_24"
+        app:layout_constraintBottom_toBottomOf="@id/iv_release_product"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="@id/iv_release_product" />
+
+    <TextView
+        android:id="@+id/tv_release_product_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="NIKE"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_release_product" />
+
+    <ImageView
+        android:layout_width="12dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_check_12"
+        app:layout_constraintBottom_toBottomOf="@id/tv_release_product_brand"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintStart_toEndOf="@id/tv_release_product_brand"
+        app:layout_constraintTop_toTopOf="@id/tv_release_product_brand" />
+
+    <TextView
+        android:id="@+id/tv_release_product_name"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:lines="2"
+        android:text="가나다라마바사아자차카타파하가나다라마바사..."
+        android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_release_product_brand" />
+
+    <TextView
+        android:id="@+id/tv_release_product_save"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/shape_rect_gray05_radius_2"
+        android:paddingHorizontal="3dp"
+        android:paddingVertical="2dp"
+        android:text="적립"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_release_product_name" />
+
+    <TextView
+        android:id="@+id/tv_release_product_free_deliver"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/shape_rect_gray05_radius_2"
+        android:paddingHorizontal="3dp"
+        android:paddingVertical="2dp"
+        android:text="무료배송"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black05"
+        app:layout_constraintBottom_toBottomOf="@id/tv_release_product_save"
+        app:layout_constraintStart_toEndOf="@id/tv_release_product_save"
+        app:layout_constraintTop_toTopOf="@id/tv_release_product_save" />
+
+    <TextView
+        android:id="@+id/tv_release_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="13,000원"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.Bold"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_release_product_save" />
+
+    <TextView
+        android:id="@+id/tv_release_product_instant_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="즉시 구매가"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_release_product_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
