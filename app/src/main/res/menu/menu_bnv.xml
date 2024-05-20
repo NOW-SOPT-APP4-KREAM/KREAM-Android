@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_bnv_home"
-        android:icon="@drawable/ic_bnv_home"
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_bottom_navi_home_28"
         android:title="@string/bnv_home" />
     <item
-        android:id="@+id/item_bnv_style"
-        android:icon="@drawable/ic_bnv_style"
+        android:id="@+id/menu_style"
+        android:icon="@drawable/ic_bottom_navi_style_28"
         android:enabled="false"
         android:title="@string/bnv_style"/>
     <item
-        android:id="@+id/item_bnv_shop"
-        android:icon="@drawable/ic_bnv_shop"
+        android:id="@+id/menu_shop"
+        android:icon="@drawable/ic_bottom_navi_shop_28"
         android:enabled="false"
         android:title="@string/bnv_shop"/>
     <item
-        android:id="@+id/item_bnv_saved"
-        android:icon="@drawable/ic_bnv_saved"
+        android:id="@+id/menu_saved"
+        android:icon="@drawable/ic_bottom_navi_saved_28"
         android:enabled="false"
         android:title="@string/bnv_saved"/>
     <item
-        android:id="@+id/item_bnv_my"
-        android:icon="@drawable/ic_bnv_my"
+        android:id="@+id/menu_my"
+        android:icon="@drawable/ic_bottom_navi_my_28"
         android:enabled="false"
         android:title="@string/bnv_my"/>
 </menu>
