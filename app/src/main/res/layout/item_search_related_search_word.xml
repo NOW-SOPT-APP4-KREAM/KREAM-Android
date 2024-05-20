@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/shape_line_gray06_radius_20"
+    android:foregroundTint="@color/gray07">
+
+    <ImageView
+        android:id="@+id/iv_search_related_search_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="7dp"
+        android:layout_marginStart="6dp"
+        android:src="@drawable/ic_search_light_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_search_related_search_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+        android:textColor="@color/black05"
+        app:layout_constraintBottom_toBottomOf="@id/iv_search_related_search_word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_search_related_search_word"
+        app:layout_constraintTop_toTopOf="@id/iv_search_related_search_word"
+        tools:text="아디다스 클라우드" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
