@@ -220,6 +220,37 @@
             app:layout_constraintTop_toBottomOf="@id/tv_recommend_release_content"
             tools:listitem="@layout/item_recommend_release_product" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_release_content" />
+
+        <TextView
+            android:id="@+id/tv_recommend_instagram_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="22dp"
+            android:text="애매한 날씨에도 폭룡적인 코디센스"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.SemiBold"
+            android:textColor="@color/black02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_release_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recommend_instagram"
+            android:layout_width="0dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="11dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_instagram_title"
+            tools:listitem="@layout/item_recommend_instagram" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
