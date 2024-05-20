@@ -5,18 +5,18 @@ import org.sopt.kream.R
 
 enum class SearchTabBarType(
     @StringRes val searchBarTextRes: Int,
-    val isClickable: Boolean
+    val isClickable: Boolean,
 ) {
     PRODUCT(
         searchBarTextRes = R.string.search_tap_bar_product,
-        isClickable = true
+        isClickable = true,
     ),
     STYLE(
         searchBarTextRes = R.string.search_tap_bar_style,
-        isClickable = false
+        isClickable = false,
     ),
     PROFILE(
         searchBarTextRes = R.string.search_tap_bar_profile,
-        isClickable = false
-    )
+        isClickable = false,
+    ),
 }

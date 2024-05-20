@@ -29,7 +29,10 @@ import org.sopt.kream.util.fragment.stringOf
 import org.sopt.kream.util.modifier.noRippleClickable
 
 class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBinding.inflate(it) }) {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         initTop()
     }
@@ -45,28 +48,30 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         var selectedTabPosition by remember { mutableIntStateOf(DEFAULT_SELECTED_TAB_POSITION) }
 
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 2.dp, end = 14.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 2.dp, end = 14.dp),
             ) {
                 Image(
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .noRippleClickable(),
+                    modifier =
+                        Modifier
+                            .padding(4.dp)
+                            .noRippleClickable(),
                     painter = painterResource(id = R.drawable.ic_bar_back_24),
                     contentDescription = null,
                 )
                 Spacer(
-                    modifier = Modifier.width(19.dp)
+                    modifier = Modifier.width(19.dp),
                 )
                 KreamTextField(
                     modifier =
-                    Modifier
-                        .weight(1f),
-                    value = getSearchWord()
+                        Modifier
+                            .weight(1f),
+                    value = getSearchWord(),
                 )
             }
 

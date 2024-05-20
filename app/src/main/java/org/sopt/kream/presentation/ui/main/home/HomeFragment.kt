@@ -90,15 +90,15 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>({ FragmentHomeBinding.
         ) {
             Row(
                 modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 14.dp, end = 11.dp),
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 14.dp, end = 11.dp),
             ) {
                 KreamTextField(
                     modifier =
-                    Modifier
-                        .weight(1f)
-                        .padding(end = 14.dp),
+                        Modifier
+                            .weight(1f)
+                            .padding(end = 14.dp),
                     placeholder = stringResource(id = R.string.search_bar_label),
                     value = searchText,
                     onValueChange = { searchText = it },

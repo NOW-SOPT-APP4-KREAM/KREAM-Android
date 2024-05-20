@@ -9,5 +9,5 @@ data class SearchFindProductModel(
     val transactionCount: String,
     val scrapCount: String,
     val styleCount: String,
-    val isFast: Boolean
+    val isFast: Boolean,
 )
