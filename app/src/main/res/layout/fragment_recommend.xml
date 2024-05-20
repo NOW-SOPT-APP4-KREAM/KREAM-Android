@@ -51,14 +51,118 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rv_recommend_circle_menu" />
 
-        <Button
-            android:id="@+id/btn_to_product_detail"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:text="Product Detail"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/tv_recommend_for_you_title"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="20dp"
+            android:text="For You"
+            android:textAppearance="@style/TextAppearance.Kream.Head2.Bold"
+            android:textColor="@color/black02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_circle_menu" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_content"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:text="크리미님을 위해 준비해 봤어요."
+            android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintStart_toStartOf="@id/tv_recommend_for_you_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_for_you_title" />
+
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_etc"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_etc_q_16"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
+            app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_content"
+            app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_content" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_detail_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_title" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_recommend_for_you_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_for_you_content" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vp_recommend_for_you_content">
+
+            <ImageView
+                android:id="@+id/iv_recommend_for_you_back"
+                android:layout_width="72dp"
+                android:layout_height="35dp"
+                android:background="@drawable/shape_line_gray04_radius_5"
+                android:src="@drawable/ic_etc_back_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_recommend_for_you_current_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="29dp"
+                android:text="1"
+                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
+                android:textColor="@color/black02"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_recommend_for_you_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_recommend_for_you_slash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="@string/recommend_for_you_slash"
+                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_current_page"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_recommend_for_you_total_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="3"
+                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_slash"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_recommend_for_you_next"
+                android:layout_width="72dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="29dp"
+                android:background="@drawable/shape_line_gray04_radius_5"
+                android:src="@drawable/ic_etc_next_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_total_page"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
