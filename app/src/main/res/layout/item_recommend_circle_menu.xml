@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="67dp"
-    android:layout_height="93dp"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:paddingEnd="3dp">
 
@@ -19,9 +19,10 @@
 
     <TextView
         android:id="@+id/tv_circle_menu_title"
-        android:layout_width="40dp"
-        android:layout_height="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:lines="2"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
         android:textColor="@color/black02"
