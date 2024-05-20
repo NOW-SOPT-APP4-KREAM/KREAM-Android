@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.ItemRecommendAdBinding
 
-class RecommendViewPagerAdapter(val data: List<Int>) : RecyclerView.Adapter<RecommendViewPagerAdapter.ViewHolder>() {
+class RecommendAdViewPagerAdapter(val data: List<Int>) : RecyclerView.Adapter<RecommendAdViewPagerAdapter.ViewHolder>() {
     val item = data
 
     inner class ViewHolder(private val binding: ItemRecommendAdBinding) : RecyclerView.ViewHolder(binding.root) {

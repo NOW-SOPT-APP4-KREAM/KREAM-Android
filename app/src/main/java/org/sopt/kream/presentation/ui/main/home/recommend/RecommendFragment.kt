@@ -20,7 +20,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun initRecommendAds() {
-        binding.vpRecommendAd.adapter = RecommendViewPagerAdapter(recommendViewModel.getAdImage())
+        binding.vpRecommendAd.adapter = RecommendAdViewPagerAdapter(recommendViewModel.getAdImage())
         TabLayoutMediator(binding.tabKreamIndicator.tabKreamIndicator, binding.vpRecommendAd) { tab, position ->
         }.attach()
     }
