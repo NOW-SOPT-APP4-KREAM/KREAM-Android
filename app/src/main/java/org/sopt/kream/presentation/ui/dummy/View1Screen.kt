@@ -271,23 +271,20 @@ class RecyclerViewViewModel : ViewModel() {
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CustomMidNaviBar() {
-    val shoes =
-        listOf(
-            stringResource(R.string.mid_navi_bar_today),
-            stringResource(R.string.mid_navi_bar_Nike),
-            stringResource(R.string.mid_navi_bar_Adidas),
-            stringResource(R.string.mid_navi_bar_Asics),
-            stringResource(R.string.mid_navi_bar_NewBalance),
-            stringResource(R.string.mid_navi_bar_Jordan),
-            stringResource(R.string.mid_navi_bar_converse),
-        )
-    val pagerState =
-        rememberPagerState {
-            shoes.size
-        }
+    val shoes = listOf(
+        stringResource(R.string.mid_navi_bar_today),
+        stringResource(R.string.mid_navi_bar_Nike),
+        stringResource(R.string.mid_navi_bar_Adidas),
+        stringResource(R.string.mid_navi_bar_Asics),
+        stringResource(R.string.mid_navi_bar_NewBalance),
+        stringResource(R.string.mid_navi_bar_Jordan),
+        stringResource(R.string.mid_navi_bar_converse),
+    )
+
+    var selectedIndex by remember { mutableStateOf(0) } // Track selected index
+
     Column {
         LazyRow(
             modifier = Modifier
@@ -295,50 +292,49 @@ fun CustomMidNaviBar() {
                 .fillMaxWidth()
                 .background(Color.White),
         ) {
-            item{
-                shoes.forEachIndexed { index, title ->
-                    if (index==0){
-                        Row(modifier = Modifier
+            items(shoes.size) { index ->
+                val isSelected = index == selectedIndex
+                val backgroundColor = if (isSelected) colorResource(id = R.color.red01) else colorResource(id = R.color.gray05)
+                val textColor = if (isSelected) colorResource(id = R.color.red02) else Color.Black // Update to your selected and default text color
+
+                if (index == 0) {
+                    Row(
+                        modifier = Modifier
                             .padding(10.dp)
-                            .clickable {
-
-                            }) {
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text(
-                                text = title,
-                                style = body5Regular,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(
-                                        color = colorResource(id = R.color.gray05)
-                                    )
-                                    .padding(10.dp)
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .align(Alignment.CenterVertically)
-                                    .padding(start = 18.dp)
-                                    .width(1.dp)
-                                    .height(23.dp)
-                                    .background(colorResource(id = R.color.gray04)) // 선의 색상
-                            )
-
-                        }
+                            .clickable { selectedIndex = index }
+                    ) {
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = shoes[index],
+                            style = body5Regular.copy(color = textColor), // Apply text color
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(backgroundColor)
+                                .padding(10.dp)
+                        )
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.CenterVertically)
+                                .padding(start = 18.dp)
+                                .width(1.dp)
+                                .height(23.dp)
+                                .background(colorResource(id = R.color.gray04)) // Divider color
+                        )
                     }
-                    else{
-                        Column(modifier = Modifier.padding(10.dp)
-                            ) {
-                            Text(
-                                text = title,
-                                style = body5Regular,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(10.dp)) // 둥근 모서리를 적용
-                                    .background(
-                                        color = colorResource(id = R.color.gray05)
-                                    )
-                                    .padding(10.dp)
-                            )
-                        }
+                } else {
+                    Column(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .clickable { selectedIndex = index }
+                    ) {
+                        Text(
+                            text = shoes[index],
+                            style = body5Regular.copy(color = textColor), // Apply text color
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(10.dp)) // Apply rounded corners
+                                .background(backgroundColor)
+                                .padding(10.dp)
+                        )
                     }
                 }
             }
