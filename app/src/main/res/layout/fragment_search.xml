@@ -94,6 +94,20 @@
                     android:text="@string/search_chip_brand"
                     app:closeIcon="@drawable/ic_etc_toggle_16" />
 
+                <com.google.android.material.chip.Chip
+                    style="@style/Theme.KREAMAndroid.Chip.Search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_chip_size"
+                    app:closeIcon="@drawable/ic_etc_toggle_16" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Theme.KREAMAndroid.Chip.Search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_chip_benefit_price"
+                    app:closeIcon="@drawable/ic_etc_toggle_16" />
+
             </com.google.android.material.chip.ChipGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

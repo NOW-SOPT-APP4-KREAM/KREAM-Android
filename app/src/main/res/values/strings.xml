@@ -40,6 +40,8 @@
     <string name="search_chip_gender">성별</string>
     <string name="search_chip_color">색상</string>
     <string name="search_chip_brand">브랜드</string>
+    <string name="search_chip_size">사이즈</string>
+    <string name="search_chip_benefit_price">혜택/가격</string>
 
     <!-- item search find product -->
     <string name="item_search_find_product_instant_purchase_price">즉시구매가</string>
