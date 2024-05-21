@@ -25,6 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -43,12 +44,15 @@ import androidx.lifecycle.ViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import kotlinx.coroutines.delay
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentReleaseBinding
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
 import org.sopt.kream.util.base.BindingFragment
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
 
 class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleaseBinding.inflate(it) }) {
     override fun onViewCreated(
@@ -68,17 +72,23 @@ fun ReleaseScreen() {
     val advertisements by remember { mutableStateOf(RecyclerViewViewModel().advertisements) }
     Box(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
                 Modifier
                     .fillMaxWidth(),
         ) {
+            val targetDate = Calendar.getInstance().apply {
+                set(2024, Calendar.MAY, 25, 12, 0, 0)
+            }
+            val targetTimeInMillis = targetDate.timeInMillis
+
             CustomViewPager(
                 advertisements = advertisements,
+                targetTimeInMillis = targetTimeInMillis
             )
             CustomMidNaviBar()
             ShoesList()
@@ -98,10 +108,9 @@ class RecyclerViewViewModel : ViewModel() {
         }
     }
 }
-
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun CustomViewPager(advertisements: List<Advertisement>) {
+fun CustomViewPager(advertisements: List<Advertisement>, targetTimeInMillis: Long) {
     val pagerState = rememberPagerState()
 
     HorizontalPager(
@@ -110,14 +119,56 @@ fun CustomViewPager(advertisements: List<Advertisement>) {
         modifier = Modifier.height(327.dp),
     ) { page ->
         val advertisement = advertisements[page]
-        CustomAdvertisement(
-            imgResource = advertisement.imgResource,
-            modifier =
-                Modifier
+
+        Box {
+            CustomAdvertisement(
+                imgResource = advertisement.imgResource,
+                modifier = Modifier
                     .fillMaxSize()
                     .aspectRatio(1f),
-        )
+            )
+            if (page == 0) {
+                CountdownTimer(targetTimeInMillis)
+            }
+        }
     }
+}
+
+@Composable
+fun CountdownTimer(targetTimeInMillis: Long) {
+    var remainingTime by remember { mutableStateOf(calculateRemainingTime(targetTimeInMillis)) }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(1000L)
+            remainingTime = calculateRemainingTime(targetTimeInMillis)
+        }
+    }
+
+    val days = TimeUnit.MILLISECONDS.toDays(remainingTime)
+    val hours = TimeUnit.MILLISECONDS.toHours(remainingTime) % 24
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60
+    val seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 56.dp),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Text(text = "$days")
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = "$hours")
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = "$minutes")
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = "$seconds")
+    }
+}
+
+fun calculateRemainingTime(targetTimeInMillis: Long): Long {
+    val currentTimeInMillis = System.currentTimeMillis()
+    return targetTimeInMillis - currentTimeInMillis
 }
 
 @Composable
@@ -154,10 +205,10 @@ fun CustomMidNaviBar() {
     Column {
         LazyRow(
             modifier =
-                Modifier
-                    .padding(0.dp)
-                    .fillMaxWidth()
-                    .background(Color.White),
+            Modifier
+                .padding(0.dp)
+                .fillMaxWidth()
+                .background(Color.White),
         ) {
             items(shoes.size) { index ->
                 val isSelected = index == selectedIndex
@@ -167,11 +218,11 @@ fun CustomMidNaviBar() {
                 if (index == 0) {
                     Row(
                         modifier =
-                            Modifier
-                                .padding(top = 10.dp)
-                                .padding(start = 14.dp)
-                                .padding(end = 6.dp)
-                                .clickable { selectedIndex = 0 },
+                        Modifier
+                            .padding(top = 10.dp)
+                            .padding(start = 14.dp)
+                            .padding(end = 6.dp)
+                            .clickable { selectedIndex = 0 },
                     ) {
                         Spacer(modifier = Modifier.width(4.dp))
 
@@ -183,31 +234,31 @@ fun CustomMidNaviBar() {
 
                         Box(
                             modifier =
-                                Modifier
-                                    .align(Alignment.CenterVertically)
-                                    .padding(start = 9.dp)
-                                    .width(1.dp)
-                                    .height(23.dp)
-                                    .background(colorResource(id = R.color.gray04)),
+                            Modifier
+                                .align(Alignment.CenterVertically)
+                                .padding(start = 9.dp)
+                                .width(1.dp)
+                                .height(23.dp)
+                                .background(colorResource(id = R.color.gray04)),
                         )
                     }
                 } else {
                     Column(
                         modifier =
-                            Modifier
-                                .padding(top = 10.dp)
-                                .padding(bottom = 10.dp)
-                                .padding(end = 6.dp)
-                                .clickable { selectedIndex = index },
+                        Modifier
+                            .padding(top = 10.dp)
+                            .padding(bottom = 10.dp)
+                            .padding(end = 6.dp)
+                            .clickable { selectedIndex = index },
                     ) {
                         Text(
                             text = shoes[index],
                             style = body5Regular.copy(color = textColor),
                             modifier =
-                                Modifier
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(backgroundColor)
-                                    .padding(10.dp),
+                            Modifier
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(backgroundColor)
+                                .padding(10.dp),
                         )
                     }
                 }
@@ -230,9 +281,9 @@ fun ShoesItem() {
     Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
         Box(
             modifier =
-                Modifier
-                    .size(width = 161.dp, height = 108.dp)
-                    .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp)),
+            Modifier
+                .size(width = 161.dp, height = 108.dp)
+                .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp)),
         ) {
             Row(
                 modifier = Modifier.padding(8.dp),
@@ -240,15 +291,15 @@ fun ShoesItem() {
                 Column(modifier = Modifier.padding(3.dp)) {
                     Box(
                         modifier =
-                            Modifier
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(Color.White)
-                                .size(width = 50.dp, height = 15.dp)
-                                .border(
-                                    width = 1.dp,
-                                    color = colorResource(id = R.color.gray03),
-                                    shape = RoundedCornerShape(10.dp),
-                                ),
+                        Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color.White)
+                            .size(width = 50.dp, height = 15.dp)
+                            .border(
+                                width = 1.dp,
+                                color = colorResource(id = R.color.gray03),
+                                shape = RoundedCornerShape(10.dp),
+                            ),
                         contentAlignment = Alignment.Center,
                     ) {
                         Box(
