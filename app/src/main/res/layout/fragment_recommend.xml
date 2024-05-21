@@ -13,36 +13,36 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_recommend_ad"
             android:layout_width="0dp"
-            android:layout_height="327dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <include
+            android:id="@+id/tab_kream_indicator"
+            layout="@layout/indicator_tab_kream"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
             android:layout_marginBottom="17dp"
             app:layout_constraintBottom_toBottomOf="@id/vp_recommend_ad"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <include
-                android:id="@+id/tab_kream_indicator"
-                layout="@layout/indicator_tab_kream" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recommend_circle_menu"
             android:layout_width="0dp"
-            android:layout_height="230dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:paddingTop="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="11dp"
+            android:paddingBottom="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vp_recommend_ad"
+            app:spanCount="5"
             tools:listitem="@layout/item_recommend_circle_menu" />
 
         <View
@@ -77,95 +77,94 @@
 
         <ImageView
             android:id="@+id/iv_recommend_for_you_etc"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
             android:src="@drawable/ic_etc_q_16"
             app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
             app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_content"
             app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_content" />
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
             android:layout_marginEnd="6dp"
+            android:scaleType="center"
             android:src="@drawable/ic_detail_24"
             app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
+            app:layout_constraintDimensionRatio="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_title" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_recommend_for_you_content"
             android:layout_width="0dp"
-            android:layout_height="413dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_recommend_for_you_content" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_recommend_for_you_pager"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_back"
+            android:layout_width="73dp"
             android:layout_height="35dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="29dp"
+            android:background="@drawable/shape_line_gray04_radius_5"
+            android:scaleType="center"
+            android:src="@drawable/ic_etc_back_17"
+            app:layout_constraintEnd_toStartOf="@id/tv_recommend_for_you_current_page"
+            app:layout_constraintTop_toBottomOf="@+id/vp_recommend_for_you_content" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_current_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
+            android:textColor="@color/black02"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintEnd_toStartOf="@id/tv_recommend_for_you_slash"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_slash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@string/recommend_for_you_slash"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vp_recommend_for_you_content">
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back" />
 
-            <ImageView
-                android:id="@+id/iv_recommend_for_you_back"
-                android:layout_width="72dp"
-                android:layout_height="35dp"
-                android:background="@drawable/shape_line_gray04_radius_5"
-                android:src="@drawable/ic_etc_back_16"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_recommend_for_you_total_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_slash"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back"
+            tools:text="2" />
 
-            <TextView
-                android:id="@+id/tv_recommend_for_you_current_page"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="29dp"
-                android:text="1"
-                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
-                android:textColor="@color/black02"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_recommend_for_you_back"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_recommend_for_you_slash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text="@string/recommend_for_you_slash"
-                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
-                android:textColor="@color/black06"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_current_page"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_recommend_for_you_total_page"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text="3"
-                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
-                android:textColor="@color/black06"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_slash"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_recommend_for_you_next"
-                android:layout_width="72dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="29dp"
-                android:background="@drawable/shape_line_gray04_radius_5"
-                android:src="@drawable/ic_etc_next_16"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_total_page"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_next"
+            android:layout_width="72dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="29dp"
+            android:background="@drawable/shape_line_gray04_radius_5"
+            android:scaleType="center"
+            android:src="@drawable/ic_etc_next_17"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_total_page"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back" />
 
         <View
             android:id="@+id/view_recommend_divider"
@@ -175,7 +174,7 @@
             android:background="@color/gray06"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_recommend_for_you_pager" />
+            app:layout_constraintTop_toBottomOf="@id/iv_recommend_for_you_back" />
 
         <TextView
             android:id="@+id/tv_recommend_just_dropped_title"
@@ -193,6 +192,7 @@
             android:id="@+id/tv_recommend_just_dropped_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:text="발매 상품"
             android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
             android:textColor="@color/black06"
@@ -203,25 +203,25 @@
             android:id="@+id/tv_recommend_just_dropped_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
+            android:layout_marginTop="29dp"
+            android:padding="14dp"
             android:text="더보기"
             android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
             android:textColor="@color/black06"
-            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_just_dropped_content"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_recommend_divider" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recommend_just_dropped_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:layout_marginTop="12dp"
-            android:paddingBottom="24dp"
             android:orientation="horizontal"
+            android:paddingBottom="24dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_recommend_just_dropped_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_just_dropped_more"
             tools:listitem="@layout/item_recommend_just_dropped_product" />
 
         <View
@@ -233,7 +233,7 @@
             app:layout_constraintTop_toBottomOf="@id/rv_recommend_just_dropped_content" />
 
         <TextView
-            android:id="@+id/tv_recommend_instagram_title"
+            android:id="@+id/tv_recommend_style_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -245,17 +245,18 @@
             app:layout_constraintTop_toBottomOf="@id/rv_recommend_just_dropped_content" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_recommend_instagram"
+            android:id="@+id/rv_recommend_style"
             android:layout_width="0dp"
-            android:layout_height="178dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="11dp"
+            android:paddingBottom="24dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_recommend_instagram_title"
-            tools:listitem="@layout/item_recommend_instagram" />
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_style_title"
+            tools:listitem="@layout/item_recommend_style" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

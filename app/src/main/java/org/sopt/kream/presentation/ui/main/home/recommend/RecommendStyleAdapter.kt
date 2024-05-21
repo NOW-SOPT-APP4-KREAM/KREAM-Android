@@ -3,7 +3,7 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import org.sopt.kream.databinding.ItemRecommendInstagramBinding
+import org.sopt.kream.databinding.ItemRecommendStyleBinding
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendStyleAdapter() : ListAdapter<
@@ -20,7 +20,7 @@ class RecommendStyleAdapter() : ListAdapter<
         viewType: Int,
     ): RecommendStyleViewHolder =
         RecommendStyleViewHolder(
-            ItemRecommendInstagramBinding.inflate(
+            ItemRecommendStyleBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false,

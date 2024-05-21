@@ -52,7 +52,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
     private fun initStyle() {
         val recommendStyleAdapter = RecommendStyleAdapter()
-        binding.rvRecommendInstagram.adapter = recommendStyleAdapter
+        binding.rvRecommendStyle.adapter = recommendStyleAdapter
         recommendStyleAdapter.submitList(recommendViewModel.getInstagram())
     }
 
