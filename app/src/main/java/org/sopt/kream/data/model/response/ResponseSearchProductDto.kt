@@ -45,6 +45,12 @@ data class ResponseSearchProductDto(
         @SerialName("scrapCount")
         val scrapCount: String,
         @SerialName("styleCount")
-        val styleCount: String
+        val styleCount: String,
+        @SerialName("isFreeDevliver")
+        val isFreeDeliver: Boolean,
+        @SerialName("isSave")
+        val isSave: Boolean,
+        @SerialName("isCoupon")
+        val isCoupon: Boolean,
     )
 }
