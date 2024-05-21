@@ -6,13 +6,133 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.productdetail.ProductDetailFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_product_detail_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Product Detail"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_bar_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_product_detail_alarm_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_alarm_plus_24"
+        app:layout_constraintEnd_toStartOf="@+id/iv_product_detail_share"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_detail_share" />
+
+    <ImageView
+        android:id="@+id/iv_product_detail_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_bar_share_24"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_product_detail_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_detail_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_product_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_product_detail_back">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_product_detail_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:background="@color/yellow01"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_product_detail_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_product_detail_bottom_scrap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_product_detail_bottom_scrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_saved_1_on_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_bottom_scrap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
+                android:textColor="@color/black01"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_bottom_scrap"
+                tools:text="11.4만" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <org.sopt.kream.util.component.KreamProductDetailButton
+            android:id="@+id/btn_product_detail_bottom_purchase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout_product_detail_bottom_scrap"
+            app:layout_constraintEnd_toStartOf="@id/btn_product_detail_bottom_sale"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@id/layout_product_detail_bottom_scrap"
+            app:layout_constraintTop_toTopOf="@id/layout_product_detail_bottom_scrap" />
+
+        <org.sopt.kream.util.component.KreamProductDetailButton
+            android:id="@+id/btn_product_detail_bottom_sale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_product_detail_bottom_purchase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_product_detail_bottom_purchase"
+            app:layout_constraintTop_toTopOf="@id/btn_product_detail_bottom_purchase" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
