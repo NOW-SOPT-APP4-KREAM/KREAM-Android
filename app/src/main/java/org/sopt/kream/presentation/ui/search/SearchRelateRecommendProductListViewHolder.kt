@@ -6,7 +6,7 @@ import org.sopt.kream.domain.model.RelateRecommendProductModel
 
 class SearchRelateRecommendProductListViewHolder(
     private val binding: ItemSearchRelateRecommendProductListBinding,
-    private val navigateToProductDetail: (Int) -> Unit
+    private val navigateToProductDetail: (Int) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
     private var searchRelateRecommendProductAdapter: SearchRelateRecommendProductAdapter = SearchRelateRecommendProductAdapter(navigateToProductDetail)
 

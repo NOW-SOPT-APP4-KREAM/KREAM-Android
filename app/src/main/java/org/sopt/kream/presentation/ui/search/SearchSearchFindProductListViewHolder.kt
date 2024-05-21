@@ -6,7 +6,7 @@ import org.sopt.kream.domain.model.SearchFindProductModel
 
 class SearchSearchFindProductListViewHolder(
     private val binding: ItemSearchSearchFindProductListBinding,
-    private val navigateToProductDetail: (Int) -> Unit
+    private val navigateToProductDetail: (Int) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
     private val searchSearchFindProductAdapter: SearchSearchFindProductAdapter = SearchSearchFindProductAdapter(navigateToProductDetail)
 

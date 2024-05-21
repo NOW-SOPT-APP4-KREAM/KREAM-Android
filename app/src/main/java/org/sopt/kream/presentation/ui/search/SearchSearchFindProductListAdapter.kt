@@ -8,13 +8,13 @@ import org.sopt.kream.domain.model.SearchFindProductModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class SearchSearchFindProductListAdapter(
-    private val navigateToProductDetail: (Int) -> Unit
+    private val navigateToProductDetail: (Int) -> Unit,
 ) : ListAdapter<List<SearchFindProductModel>, SearchSearchFindProductListViewHolder>(
-    ItemDiffCallback<List<SearchFindProductModel>>(
-        onContentsTheSame = { old, new -> old == new },
-        onItemsTheSame = { old, new -> old.size == new.size },
-    ),
-) {
+        ItemDiffCallback<List<SearchFindProductModel>>(
+            onContentsTheSame = { old, new -> old == new },
+            onItemsTheSame = { old, new -> old.size == new.size },
+        ),
+    ) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -25,7 +25,7 @@ class SearchSearchFindProductListAdapter(
                 parent,
                 false,
             ),
-            navigateToProductDetail
+            navigateToProductDetail,
         )
 
     override fun onBindViewHolder(

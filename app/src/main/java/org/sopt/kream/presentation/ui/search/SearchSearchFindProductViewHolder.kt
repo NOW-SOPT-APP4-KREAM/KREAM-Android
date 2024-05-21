@@ -8,9 +8,12 @@ import org.sopt.kream.domain.model.SearchFindProductModel
 
 class SearchSearchFindProductViewHolder(
     private val binding: ItemSearchSearchFindProductBinding,
-    private val navigateToProductDetail: (Int) -> Unit
+    private val navigateToProductDetail: (Int) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(searchFindProductModel: SearchFindProductModel, position: Int) {
+    fun onBind(
+        searchFindProductModel: SearchFindProductModel,
+        position: Int,
+    ) {
         with(binding) {
             ivSearchSearchFindProductThumbnail.load(searchFindProductModel.thumbnailUrl)
             tvSearchSearchFindProductTransactionCount.text = searchFindProductModel.transactionCount

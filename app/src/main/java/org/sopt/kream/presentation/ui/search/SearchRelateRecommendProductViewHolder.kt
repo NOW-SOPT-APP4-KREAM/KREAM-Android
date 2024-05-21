@@ -7,9 +7,12 @@ import org.sopt.kream.domain.model.RelateRecommendProductModel
 
 class SearchRelateRecommendProductViewHolder(
     private val binding: ItemSearchRelateRecommendProductBinding,
-    private val navigateToProductDetail: (Int) -> Unit
+    private val navigateToProductDetail: (Int) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(relateRecommendProductModel: RelateRecommendProductModel, position: Int) {
+    fun onBind(
+        relateRecommendProductModel: RelateRecommendProductModel,
+        position: Int,
+    ) {
         with(binding) {
             ivSearchRelateRecommendProductThumbnail.load(relateRecommendProductModel.thumbnailUrl)
             tvSearchRelatedSearchWordTitle.text = relateRecommendProductModel.engTitle

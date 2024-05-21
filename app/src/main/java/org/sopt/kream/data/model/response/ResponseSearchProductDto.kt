@@ -8,7 +8,7 @@ data class ResponseSearchProductDto(
     @SerialName("searchFindProductResponses")
     val searchFindProductResponses: List<SearchFindProductResponseDto>,
     @SerialName("relateRecommendProductResponses")
-    val relateRecommendProductResponses: List<RelateRecommendProductResponseDto>
+    val relateRecommendProductResponses: List<RelateRecommendProductResponseDto>,
 ) {
     @Serializable
     data class SearchFindProductResponseDto(
@@ -29,7 +29,7 @@ data class ResponseSearchProductDto(
         @SerialName("styleCount")
         val styleCount: String,
         @SerialName("isFast")
-        val isFast: Boolean
+        val isFast: Boolean,
     )
 
     @Serializable

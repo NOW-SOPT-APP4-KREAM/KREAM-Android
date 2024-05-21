@@ -73,13 +73,14 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         firstSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter(::navigateToProductDetail)
         secondSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter(::navigateToProductDetail)
 
-        binding.rvSearch.adapter = ConcatAdapter(
-            searchTopBarAdapter,
-            firstSearchSearchFindProductListAdapter,
-            searchRelatedSearchWordListAdapter,
-            secondSearchSearchFindProductListAdapter,
-            searchRelateRecommendProductListAdapter
-        )
+        binding.rvSearch.adapter =
+            ConcatAdapter(
+                searchTopBarAdapter,
+                firstSearchSearchFindProductListAdapter,
+                searchRelatedSearchWordListAdapter,
+                secondSearchSearchFindProductListAdapter,
+                searchRelateRecommendProductListAdapter,
+            )
     }
 
     private fun collectSearchProductState() {
@@ -110,15 +111,15 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         ) {
             Row(
                 modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .padding(start = 2.dp, end = 14.dp),
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(start = 2.dp, end = 14.dp),
             ) {
                 Image(
                     modifier =
-                    Modifier
-                        .padding(4.dp)
-                        .noRippleClickable(),
+                        Modifier
+                            .padding(4.dp)
+                            .noRippleClickable(),
                     painter = painterResource(id = R.drawable.ic_bar_back_24),
                     contentDescription = null,
                 )
@@ -127,8 +128,8 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
                 )
                 KreamTextField(
                     modifier =
-                    Modifier
-                        .weight(1f),
+                        Modifier
+                            .weight(1f),
                     value = findName,
                 )
             }

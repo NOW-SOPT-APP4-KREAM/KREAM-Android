@@ -6,9 +6,10 @@ import org.sopt.kream.domain.model.SearchProductModel
 import org.sopt.kream.domain.repository.ProductRepository
 
 class ProductRepositoryImpl(
-    private val productRemoteDataSource: ProductRemoteDataSource
+    private val productRemoteDataSource: ProductRemoteDataSource,
 ) : ProductRepository {
-    override suspend fun getSearchProduct(findName: String): Result<SearchProductModel> = runCatching {
-        productRemoteDataSource.getSearchProduct(findName = findName).data.toSearchProductModel()
-    }
+    override suspend fun getSearchProduct(findName: String): Result<SearchProductModel> =
+        runCatching {
+            productRemoteDataSource.getSearchProduct(findName = findName).data.toSearchProductModel()
+        }
 }

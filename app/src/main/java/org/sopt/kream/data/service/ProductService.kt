@@ -8,6 +8,6 @@ import retrofit2.http.Query
 interface ProductService {
     @GET("product")
     suspend fun getSearchProduct(
-        @Query("findName") findName: String
+        @Query("findName") findName: String,
     ): BaseResponse<ResponseSearchProductDto>
 }

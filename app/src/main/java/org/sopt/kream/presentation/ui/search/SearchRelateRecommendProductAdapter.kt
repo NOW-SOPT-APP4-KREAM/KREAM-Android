@@ -8,13 +8,13 @@ import org.sopt.kream.domain.model.RelateRecommendProductModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class SearchRelateRecommendProductAdapter(
-    private val navigateToProductDetail: (Int) -> Unit
+    private val navigateToProductDetail: (Int) -> Unit,
 ) : ListAdapter<RelateRecommendProductModel, SearchRelateRecommendProductViewHolder>(
-    ItemDiffCallback<RelateRecommendProductModel>(
-        onContentsTheSame = { old, new -> old == new },
-        onItemsTheSame = { old, new -> old.engTitle == new.engTitle },
-    ),
-) {
+        ItemDiffCallback<RelateRecommendProductModel>(
+            onContentsTheSame = { old, new -> old == new },
+            onItemsTheSame = { old, new -> old.engTitle == new.engTitle },
+        ),
+    ) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -25,7 +25,7 @@ class SearchRelateRecommendProductAdapter(
                 parent,
                 false,
             ),
-            navigateToProductDetail
+            navigateToProductDetail,
         )
 
     override fun onBindViewHolder(

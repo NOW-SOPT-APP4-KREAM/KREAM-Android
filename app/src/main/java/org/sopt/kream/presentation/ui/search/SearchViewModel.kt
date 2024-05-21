@@ -11,23 +11,24 @@ import org.sopt.kream.domain.repository.ProductRepository
 import org.sopt.kream.util.view.UiState
 
 class SearchViewModel(
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
 ) : ViewModel() {
     private val _searchProductState = MutableStateFlow<UiState<SearchProductModel>>(UiState.Empty)
     val searchProductState get() = _searchProductState.asStateFlow()
 
-    private val _relatedSearchWordList = listOf(
-        RelatedSearchWordModel("아디다스 클라우드"),
-        RelatedSearchWordModel("아디다스 화이트"),
-        RelatedSearchWordModel("아디다스 자메이카"),
-        RelatedSearchWordModel("아디다스 박스"),
-        RelatedSearchWordModel("아디다스 00s"),
-        RelatedSearchWordModel("아디다스 코어"),
-        RelatedSearchWordModel("아디다스 네이버"),
-        RelatedSearchWordModel("아디다스 에어포스"),
-        RelatedSearchWordModel("아디다스 클래식"),
-        RelatedSearchWordModel("아디다스 인디고")
-    )
+    private val _relatedSearchWordList =
+        listOf(
+            RelatedSearchWordModel("아디다스 클라우드"),
+            RelatedSearchWordModel("아디다스 화이트"),
+            RelatedSearchWordModel("아디다스 자메이카"),
+            RelatedSearchWordModel("아디다스 박스"),
+            RelatedSearchWordModel("아디다스 00s"),
+            RelatedSearchWordModel("아디다스 코어"),
+            RelatedSearchWordModel("아디다스 네이버"),
+            RelatedSearchWordModel("아디다스 에어포스"),
+            RelatedSearchWordModel("아디다스 클래식"),
+            RelatedSearchWordModel("아디다스 인디고"),
+        )
 
     val relatedSearchWordList get() = _relatedSearchWordList
 
