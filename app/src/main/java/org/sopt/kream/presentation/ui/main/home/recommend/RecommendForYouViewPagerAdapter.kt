@@ -8,6 +8,7 @@ import org.sopt.kream.domain.model.RecommendForYouProductModel
 
 class RecommendForYouViewPagerAdapter(
     private val navigateToProductDetail: (Int) -> Unit,
+    private val navigateToSearch: (String) -> Unit,
     private val data: List<RecommendForYouProductModel>,
 ) : RecyclerView.Adapter<RecommendForYouViewPagerViewHolder>() {
     override fun getItemCount(): Int = data.size / 6
@@ -24,6 +25,6 @@ class RecommendForYouViewPagerAdapter(
         viewType: Int,
     ): RecommendForYouViewPagerViewHolder {
         val binding = FragmentRecommendForYouBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecommendForYouViewPagerViewHolder(binding, navigateToProductDetail)
+        return RecommendForYouViewPagerViewHolder(binding, navigateToProductDetail, navigateToSearch)
     }
 }

@@ -41,7 +41,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun initForYouProduct() {
-        binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, recommendViewModel.getForYouList())
+        binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, ::navigateToSearch, recommendViewModel.getForYouList())
     }
 
     private fun initJustDropped() {
@@ -60,7 +60,12 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         findNavController().navigate(R.id.action_recommend_to_product_detail, bundleOf(PRODUCT_ID to productId))
     }
 
+    private fun navigateToSearch(searchKeyword: String) {
+        findNavController().navigate(R.id.action_home_to_search, bundleOf(SEARCH_WORD to searchKeyword))
+    }
+
     companion object {
         const val PRODUCT_ID = "productId"
+        const val SEARCH_WORD = "searchWord"
     }
 }
