@@ -25,7 +25,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
-
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -36,6 +35,7 @@ import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -44,7 +44,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -59,7 +58,6 @@ import org.sopt.kream.theme.Black02
 import org.sopt.kream.theme.Black09
 import org.sopt.kream.theme.Gray06
 import org.sopt.kream.theme.body3SemiBold
-import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
 import org.sopt.kream.theme.head1Bold
@@ -100,10 +98,10 @@ fun View1Screen() {
                         onValueChange = { editText = it },
                         singleLine = true,
                         modifier =
-                        Modifier
-                            .weight(1f)
-                            .size(width = 293.dp, height = 33.dp)
-                            .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
+                            Modifier
+                                .weight(1f)
+                                .size(width = 293.dp, height = 33.dp)
+                                .background(color = Gray06, shape = RoundedCornerShape(9.dp)),
                         decorationBox = { innerTextField ->
                             Box(
                                 contentAlignment = Alignment.CenterStart,
@@ -151,8 +149,8 @@ fun CustomTopTabPager(
             indicator = { tabPositions ->
                 TabRowDefaults.PrimaryIndicator(
                     modifier =
-                    Modifier
-                        .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
+                        Modifier
+                            .tabIndicatorOffset(tabPositions[pagerState.currentPage]),
                     color = Black02,
                     width = pages[pagerState.currentPage].length * 12.dp,
                 )
@@ -164,8 +162,8 @@ fun CustomTopTabPager(
             divider = {
                 HorizontalDivider(
                     modifier =
-                    Modifier
-                        .fillMaxWidth(),
+                        Modifier
+                            .fillMaxWidth(),
                     color = Color.LightGray,
                     thickness = 1.dp,
                 )
@@ -190,9 +188,9 @@ fun CustomTopTabPager(
         ) { page ->
             Column(
                 modifier =
-                Modifier
-                    .fillMaxSize()
-                    .background(Color.White),
+                    Modifier
+                        .fillMaxSize()
+                        .background(Color.White),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
@@ -225,7 +223,7 @@ fun CustomRecyclerView(advertisements: List<Advertisement>) {
     LazyRow(
         modifier = Modifier.height(327.dp),
         content = {
-            itemsIndexed(advertisements) { index, advertisement ->
+            itemsIndexed(advertisements) { _, advertisement ->
                 CustomAdvertisement(
                     imgResource = advertisement.imgResource,
                 )
@@ -245,9 +243,9 @@ fun CustomAdvertisement(imgResource: Int) {
         Image(
             painter = painterResource(id = imgResource),
             modifier =
-            Modifier
-                .fillMaxSize()
-                .weight(1f),
+                Modifier
+                    .fillMaxSize()
+                    .weight(1f),
             contentDescription = "",
         )
     }
@@ -276,24 +274,26 @@ class RecyclerViewViewModel : ViewModel() {
 
 @Composable
 fun CustomMidNaviBar() {
-    val shoes = listOf(
-        stringResource(R.string.mid_navi_bar_today),
-        stringResource(R.string.mid_navi_bar_Nike),
-        stringResource(R.string.mid_navi_bar_Adidas),
-        stringResource(R.string.mid_navi_bar_Asics),
-        stringResource(R.string.mid_navi_bar_NewBalance),
-        stringResource(R.string.mid_navi_bar_Jordan),
-        stringResource(R.string.mid_navi_bar_converse),
-    )
+    val shoes =
+        listOf(
+            stringResource(R.string.mid_navi_bar_today),
+            stringResource(R.string.mid_navi_bar_Nike),
+            stringResource(R.string.mid_navi_bar_Adidas),
+            stringResource(R.string.mid_navi_bar_Asics),
+            stringResource(R.string.mid_navi_bar_NewBalance),
+            stringResource(R.string.mid_navi_bar_Jordan),
+            stringResource(R.string.mid_navi_bar_converse),
+        )
 
-    var selectedIndex by remember { mutableStateOf(0) } // Track selected index
+    var selectedIndex by remember { mutableIntStateOf(0) } // Track selected index
 
     Column {
         LazyRow(
-            modifier = Modifier
-                .padding(0.dp)
-                .fillMaxWidth()
-                .background(Color.White),
+            modifier =
+                Modifier
+                    .padding(0.dp)
+                    .fillMaxWidth()
+                    .background(Color.White),
         ) {
             items(shoes.size) { index ->
                 val isSelected = index == selectedIndex
@@ -302,41 +302,46 @@ fun CustomMidNaviBar() {
 
                 if (index == 0) {
                     Row(
-                        modifier = Modifier
-                            .padding(10.dp)
-                            .clickable { selectedIndex = index }
+                        modifier =
+                            Modifier
+                                .padding(10.dp)
+                                .clickable { selectedIndex = 0 },
                     ) {
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
                             text = shoes[index],
                             style = body5Regular.copy(color = textColor), // Apply text color
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(backgroundColor)
-                                .padding(10.dp)
+                            modifier =
+                                Modifier
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(backgroundColor)
+                                    .padding(10.dp),
                         )
                         Box(
-                            modifier = Modifier
-                                .align(Alignment.CenterVertically)
-                                .padding(start = 18.dp)
-                                .width(1.dp)
-                                .height(23.dp)
-                                .background(colorResource(id = R.color.gray04)) // Divider color
+                            modifier =
+                                Modifier
+                                    .align(Alignment.CenterVertically)
+                                    .padding(start = 18.dp)
+                                    .width(1.dp)
+                                    .height(23.dp)
+                                    .background(colorResource(id = R.color.gray04)), // Divider color
                         )
                     }
                 } else {
                     Column(
-                        modifier = Modifier
-                            .padding(10.dp)
-                            .clickable { selectedIndex = index }
+                        modifier =
+                            Modifier
+                                .padding(10.dp)
+                                .clickable { selectedIndex = index },
                     ) {
                         Text(
                             text = shoes[index],
                             style = body5Regular.copy(color = textColor), // Apply text color
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(10.dp)) // Apply rounded corners
-                                .background(backgroundColor)
-                                .padding(10.dp)
+                            modifier =
+                                Modifier
+                                    .clip(RoundedCornerShape(10.dp)) // Apply rounded corners
+                                    .background(backgroundColor)
+                                    .padding(10.dp),
                         )
                     }
                 }
@@ -351,14 +356,14 @@ fun View2Content() {
     val advertisements by remember { RecyclerViewViewModel().advertisements }
     Box(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
-            Modifier
-                .fillMaxWidth(),
+                Modifier
+                    .fillMaxWidth(),
         ) {
             CustomRecyclerView(
                 advertisements = advertisements,
@@ -370,48 +375,52 @@ fun View2Content() {
 }
 
 @Composable
-fun ShoesItem(index: Int) {
+fun ShoesItem() {
     var isIconChanged by remember { mutableStateOf(false) }
 
-    val iconResource = if (isIconChanged) {
-        R.drawable.ic_saved_1_on_24
-    } else {
-        R.drawable.ic_saved_1_off_24
-    }
+    val iconResource =
+        if (isIconChanged) {
+            R.drawable.ic_saved_1_on_24
+        } else {
+            R.drawable.ic_saved_1_off_24
+        }
 
     Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
         Box(
-            modifier = Modifier
-                .size(width = 161.dp, height = 108.dp)
-                .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp))
+            modifier =
+                Modifier
+                    .size(width = 161.dp, height = 108.dp)
+                    .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp)),
         ) {
             Row(
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(8.dp),
             ) {
                 Column(modifier = Modifier.padding(3.dp)) {
                     Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(10.dp))
-                            .background(Color.White)
-                            .size(width = 50.dp, height = 15.dp)
-                            .border(
-                                width = 1.dp,
-                                color = colorResource(id = R.color.gray03),
-                                shape = RoundedCornerShape(10.dp)
-                            ),
-                        contentAlignment = Alignment.Center
+                        modifier =
+                            Modifier
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(Color.White)
+                                .size(width = 50.dp, height = 15.dp)
+                                .border(
+                                    width = 1.dp,
+                                    color = colorResource(id = R.color.gray03),
+                                    shape = RoundedCornerShape(10.dp),
+                                ),
+                        contentAlignment = Alignment.Center,
                     ) {
                         Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(9.dp))
-                                .background(Color.White)
-                                .fillMaxSize(),
-                            contentAlignment = Alignment.Center
+                            modifier =
+                                Modifier
+                                    .clip(RoundedCornerShape(9.dp))
+                                    .background(Color.White)
+                                    .fillMaxSize(),
+                            contentAlignment = Alignment.Center,
                         ) {
                             Text(
                                 text = "UPDATE",
                                 style = body6Regular,
-                                color = colorResource(id = R.color.black06)
+                                color = colorResource(id = R.color.black06),
                             )
                         }
                     }
@@ -420,27 +429,20 @@ fun ShoesItem(index: Int) {
                 Icon(
                     painter = painterResource(id = iconResource),
                     contentDescription = null,
-                    modifier = Modifier.clickable {
-                        isIconChanged = !isIconChanged
-                    }
+                    modifier =
+                        Modifier.clickable {
+                            isIconChanged = !isIconChanged
+                        },
                 )
-
             }
-            Image(painter = painterResource(id = R.drawable.img_view1_swipe_dummy),
+            Image(
+                painter = painterResource(id = R.drawable.img_view1_swipe_dummy),
                 contentDescription = null,
-                modifier = Modifier.size(width = 108.dp, height = 108.dp).align(Alignment.Center))
-
-
-        }
-        Column(modifier = Modifier.fillMaxWidth()) {
-            Spacer(modifier = Modifier.height(15.dp))
-            Text(text = "NIKE", style = body4Bold, color = colorResource(id = R.color.black02))
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(text = "Nike Dunk Low SP Venner", style = body5Regular, color = colorResource(id = R.color.black02))
+                modifier = Modifier.size(width = 108.dp, height = 108.dp).align(Alignment.Center),
+            )
         }
     }
 }
-
 
 @Preview
 @Composable
@@ -453,9 +455,9 @@ fun ShoesList() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesItem(index = i)
+                ShoesItem()
                 if (i + 1 < items.size) {
-                    ShoesItem(index = i + 1)
+                    ShoesItem()
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))
