@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="최근 본"
+                android:text="@string/item_recommend_for_you_recent"
                 android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
                 android:textColor="@color/black01" />
 
@@ -50,14 +50,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="아디다스 스니커즈"
+                android:text="@string/item_recommend_for_you_more_content"
                 android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
                 android:textColor="@color/blue02" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="의"
+                android:text="@string/item_recommend_for_you_text"
                 android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
                 android:textColor="@color/black01" />
 
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="추천 상품"
+                android:text="@string/item_recommend_for_you_more_recommend"
                 android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
                 android:textColor="@color/black01" />
         </LinearLayout>
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
-            android:text="더보기"
+            android:text="@string/recommend_more"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
             android:textColor="@color/gray02"
