@@ -1,7 +1,6 @@
 package org.sopt.kream.presentation.ui.dummy
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import org.sopt.kream.databinding.ActivityDummyBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
@@ -12,9 +11,5 @@ class DummyActivity : BindingActivity<ActivityDummyBinding>({ ActivityDummyBindi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContent {
-            View1Screen()
-        }
     }
 }
