@@ -2,6 +2,7 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import androidx.lifecycle.ViewModel
 import org.sopt.kream.R
+import org.sopt.kream.domain.model.RecommendJustDroppedProductModel
 
 class RecommendViewModel : ViewModel() {
     private val adImageList: List<Int> =
@@ -122,6 +123,99 @@ class RecommendViewModel : ViewModel() {
             ),
         )
 
+    private val justDroppedList: List<RecommendJustDroppedProductModel> =
+        listOf(
+            RecommendJustDroppedProductModel(
+                thumbnailUrl = "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
+                brandTitle = "Adidas",
+                engTitle = "(W) Adidas Spezial Handball Clear Pink",
+                price = "119,000원",
+                transactionCount = "거래 2.1만",
+                isScrap = false,
+                isFast = true,
+                isFreeDeliver = true,
+                isSave = true,
+                isCoupon = true,
+            ),
+            RecommendJustDroppedProductModel(
+                thumbnailUrl = "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
+                brandTitle = "Adidas",
+                engTitle = "(W) Adidas Spezial Handball Clear Pink",
+                price = "119,000원",
+                transactionCount = "거래 2.1만",
+                isScrap = false,
+                isFast = true,
+                isFreeDeliver = true,
+                isSave = true,
+                isCoupon = true,
+            ),
+            RecommendJustDroppedProductModel(
+                thumbnailUrl = "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
+                brandTitle = "Adidas",
+                engTitle = "(W) Adidas Spezial Handball Clear Pink",
+                price = "119,000원",
+                transactionCount = "거래 2.1만",
+                isScrap = false,
+                isFast = true,
+                isFreeDeliver = true,
+                isSave = true,
+                isCoupon = true,
+            ),
+            RecommendJustDroppedProductModel(
+                thumbnailUrl = "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
+                brandTitle = "Adidas",
+                engTitle = "(W) Adidas Spezial Handball Clear Pink",
+                price = "119,000원",
+                transactionCount = "거래 2.1만",
+                isScrap = false,
+                isFast = true,
+                isFreeDeliver = true,
+                isSave = true,
+                isCoupon = true,
+            ),
+            RecommendJustDroppedProductModel(
+                thumbnailUrl = "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
+                brandTitle = "Adidas",
+                engTitle = "(W) Adidas Spezial Handball Clear Pink",
+                price = "119,000원",
+                transactionCount = "거래 2.1만",
+                isScrap = false,
+                isFast = true,
+                isFreeDeliver = true,
+                isSave = true,
+                isCoupon = true,
+            ),
+        )
+
+    data class instagram(
+        val image: Int,
+        val id: String,
+    )
+
+    private val instagramList: List<instagram> =
+        listOf(
+            instagram(
+                image = R.drawable.view2_img_style_01,
+                id = "@zzz.myam",
+            ),
+            instagram(
+                image = R.drawable.view2_img_style_01,
+                id = "@zzz.myam",
+            ),
+            instagram(
+                image = R.drawable.view2_img_style_01,
+                id = "@zzz.myam",
+            ),
+            instagram(
+                image = R.drawable.view2_img_style_01,
+                id = "@zzz.myam",
+            ),
+            instagram(
+                image = R.drawable.view2_img_style_01,
+                id = "@zzz.myam",
+            ),
+        )
+
     fun getAdImage(): List<Int> {
         return adImageList
     }
@@ -132,5 +226,13 @@ class RecommendViewModel : ViewModel() {
 
     fun getForYouList(): List<ForYou> {
         return forYouList
+    }
+
+    fun getJustDropped(): List<RecommendJustDroppedProductModel> {
+        return justDroppedList
+    }
+
+    fun getInstagram(): List<instagram> {
+        return instagramList
     }
 }
