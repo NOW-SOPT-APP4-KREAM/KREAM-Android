@@ -27,4 +27,11 @@
 
     <!-- recommend for you item -->
     <string name="item_recommend_for_you_see">내가 본</string>
+
+    <!-- item recommend just dropped product -->
+    <string name="item_recommend_just_dropped_coupon">쿠폰</string>
+    <string name="item_recommend_just_dropped_save">적립</string>
+    <string name="item_recommend_just_dropped_free_deliver">무료배송</string>
+    <string name="item_recommend_instant_price">즉시 구매가</string>
+
 </resources>

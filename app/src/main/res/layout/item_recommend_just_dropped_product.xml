@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="128dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="9dp">
+
+    <ImageView
+        android:id="@+id/iv_just_dropped_product"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_border_radius_8"
+        android:backgroundTint="@color/gray06"
+        android:clipToOutline="true"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black04"
+        app:layout_constraintEnd_toEndOf="@id/iv_just_dropped_product"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="거래 24" />
+
+    <ImageView
+        android:id="@+id/iv_just_dropped_product_scrap"
+        android:layout_width="34dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_saved_2_off_24"
+        app:layout_constraintBottom_toBottomOf="@id/iv_just_dropped_product"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="@id/iv_just_dropped_product" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="7dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="@id/iv_just_dropped_product"
+        app:layout_constraintTop_toBottomOf="@id/iv_just_dropped_product"
+        tools:text="NIKE" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:src="@drawable/ic_check_12"
+        app:layout_constraintBottom_toBottomOf="@id/tv_just_dropped_product_brand"
+        app:layout_constraintStart_toEndOf="@id/tv_just_dropped_product_brand"
+        app:layout_constraintTop_toTopOf="@id/tv_just_dropped_product_brand" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:lines="2"
+        android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+        android:textColor="@color/black02"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_just_dropped_product_brand"
+        app:layout_constraintTop_toBottomOf="@id/tv_just_dropped_product_brand"
+        tools:text="Nike SB Dunk Low Pro Premium Toile" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_coupon"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/shape_rect_gray05_radius_2"
+        android:paddingHorizontal="3dp"
+        android:paddingVertical="2dp"
+        android:text="@string/item_recommend_just_dropped_coupon"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black05"
+        app:layout_constraintStart_toStartOf="@id/tv_just_dropped_product_brand"
+        app:layout_constraintTop_toBottomOf="@id/tv_just_dropped_product_name" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_save"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/shape_rect_gray05_radius_2"
+        android:paddingHorizontal="3dp"
+        android:paddingVertical="2dp"
+        android:text="@string/item_recommend_just_dropped_save"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black05"
+        app:layout_constraintBottom_toBottomOf="@id/tv_just_dropped_product_coupon"
+        app:layout_constraintStart_toEndOf="@id/tv_just_dropped_product_coupon"
+        app:layout_constraintTop_toTopOf="@id/tv_just_dropped_product_coupon" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_free_deliver"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/shape_rect_gray05_radius_2"
+        android:paddingHorizontal="3dp"
+        android:paddingVertical="2dp"
+        android:text="@string/item_recommend_just_dropped_free_deliver"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black05"
+        app:layout_constraintBottom_toBottomOf="@id/tv_just_dropped_product_coupon"
+        app:layout_constraintStart_toEndOf="@id/tv_just_dropped_product_save"
+        app:layout_constraintTop_toTopOf="@id/tv_just_dropped_product_coupon" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.Bold"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="@id/tv_just_dropped_product_brand"
+        app:layout_constraintTop_toBottomOf="@id/tv_just_dropped_product_save"
+        tools:text="13,000원" />
+
+    <TextView
+        android:id="@+id/tv_just_dropped_product_instant_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/item_recommend_instant_price"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black06"
+        app:layout_constraintStart_toStartOf="@id/tv_just_dropped_product_brand"
+        app:layout_constraintTop_toBottomOf="@id/tv_just_dropped_product_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

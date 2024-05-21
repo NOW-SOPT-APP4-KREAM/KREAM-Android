@@ -178,7 +178,7 @@
             app:layout_constraintTop_toBottomOf="@id/cl_recommend_for_you_pager" />
 
         <TextView
-            android:id="@+id/tv_recommend_release_title"
+            android:id="@+id/tv_recommend_just_dropped_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -190,38 +190,39 @@
             app:layout_constraintTop_toBottomOf="@id/view_recommend_divider" />
 
         <TextView
-            android:id="@+id/tv_recommend_release_content"
+            android:id="@+id/tv_recommend_just_dropped_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="발매 상품"
             android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
             android:textColor="@color/black06"
-            app:layout_constraintStart_toStartOf="@id/tv_recommend_release_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_recommend_release_title" />
+            app:layout_constraintStart_toStartOf="@id/tv_recommend_just_dropped_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_just_dropped_title" />
 
         <TextView
-            android:id="@+id/tv_recommend_release_more"
+            android:id="@+id/tv_recommend_just_dropped_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
             android:text="더보기"
             android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
             android:textColor="@color/black06"
-            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_release_content"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_just_dropped_content"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_recommend_release_content"
+            android:id="@+id/rv_recommend_just_dropped_content"
             android:layout_width="0dp"
-            android:layout_height="264dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="12dp"
+            android:paddingBottom="24dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_recommend_release_content"
-            tools:listitem="@layout/item_recommend_release_product" />
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_just_dropped_content"
+            tools:listitem="@layout/item_recommend_just_dropped_product" />
 
         <View
             android:layout_width="0dp"
@@ -229,7 +230,7 @@
             android:background="@color/gray06"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_recommend_release_content" />
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_just_dropped_content" />
 
         <TextView
             android:id="@+id/tv_recommend_instagram_title"
@@ -241,7 +242,7 @@
             android:textAppearance="@style/TextAppearance.Kream.Body2.SemiBold"
             android:textColor="@color/black02"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_recommend_release_content" />
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_just_dropped_content" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recommend_instagram"
