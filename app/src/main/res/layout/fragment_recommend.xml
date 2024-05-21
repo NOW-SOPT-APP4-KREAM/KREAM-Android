@@ -86,9 +86,9 @@
             app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_content" />
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
             android:scaleType="center"
             android:src="@drawable/ic_detail_24"
             app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
@@ -107,11 +107,13 @@
 
         <ImageView
             android:id="@+id/iv_recommend_for_you_back"
-            android:layout_width="73dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             android:layout_marginEnd="29dp"
             android:background="@drawable/shape_line_gray04_radius_5"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="9dp"
             android:scaleType="center"
             android:src="@drawable/ic_etc_back_17"
             app:layout_constraintEnd_toStartOf="@id/tv_recommend_for_you_current_page"
@@ -156,10 +158,12 @@
 
         <ImageView
             android:id="@+id/iv_recommend_for_you_next"
-            android:layout_width="72dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="29dp"
             android:background="@drawable/shape_line_gray04_radius_5"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="9dp"
             android:scaleType="center"
             android:src="@drawable/ic_etc_next_17"
             app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
@@ -250,8 +254,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginTop="11dp"
-            android:paddingBottom="24dp"
             android:orientation="horizontal"
+            android:paddingBottom="24dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
