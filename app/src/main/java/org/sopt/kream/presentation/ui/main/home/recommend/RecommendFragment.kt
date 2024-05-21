@@ -28,14 +28,14 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         }.attach()
     }
 
-    fun initCircleMenu() {
+    private fun initCircleMenu() {
         binding.rvRecommendCircleMenu.apply {
             layoutManager = GridLayoutManager(context, 5)
             adapter = RecommendCircleMenuAdapter(recommendViewModel.getCircleMenu())
         }
     }
 
-    fun initForYouProduct() {
+    private fun initForYouProduct() {
         binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(recommendViewModel.getForYouList())
     }
 }
