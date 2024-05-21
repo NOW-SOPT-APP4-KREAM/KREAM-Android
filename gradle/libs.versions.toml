@@ -18,6 +18,7 @@ constraintlayout = "2.1.4"
 fragment = "1.7.0"
 navigation = "2.7.7"
 material3Android = "1.2.1"
+recyclerview = "1.2.0"
 
 # Test
 junit = "4.13.2"
@@ -60,6 +61,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+androidx-recyclerview = {group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview"}
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
 
 # Test
@@ -95,7 +97,8 @@ androidx = [
     "androidx-activity",
     "androidx-fragment",
     "androidx-navigation-fragment",
-    "androidx-navigation-ui"
+    "androidx-navigation-ui",
+    "androidx-recyclerview"
 ]
 okhttp = ["okhttp", "okhttp-logging-interceptor"]
 retrofit = ["retrofit", "retrofit-kotlin-serialization-converter"]
