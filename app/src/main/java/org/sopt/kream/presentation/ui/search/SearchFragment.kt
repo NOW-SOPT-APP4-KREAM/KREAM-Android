@@ -42,7 +42,8 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
     private lateinit var searchTopBarAdapter: SearchTopBarAdapter
     private lateinit var searchRelatedSearchWordListAdapter: SearchRelatedSearchWordListAdapter
     private lateinit var searchRelateRecommendProductListAdapter: SearchRelateRecommendProductListAdapter
-    private lateinit var searchSearchFindProductListAdapter: SearchSearchFindProductListAdapter
+    private lateinit var firstSearchSearchFindProductListAdapter: SearchSearchFindProductListAdapter
+    private lateinit var secondSearchSearchFindProductListAdapter: SearchSearchFindProductListAdapter
 
     override fun onViewCreated(
         view: View,
@@ -67,8 +68,16 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         searchTopBarAdapter = SearchTopBarAdapter()
         searchRelatedSearchWordListAdapter = SearchRelatedSearchWordListAdapter()
         searchRelateRecommendProductListAdapter = SearchRelateRecommendProductListAdapter()
-        searchSearchFindProductListAdapter = SearchSearchFindProductListAdapter()
+        firstSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter()
+        secondSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter()
 
+        binding.rvSearch.adapter = ConcatAdapter(
+            searchTopBarAdapter,
+            firstSearchSearchFindProductListAdapter,
+            searchRelatedSearchWordListAdapter,
+            secondSearchSearchFindProductListAdapter,
+            searchRelateRecommendProductListAdapter
+        )
     }
 
     private fun collectSearchProductState() {
@@ -79,18 +88,10 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
                         with(searchProductState.data) {
                             searchTopBarAdapter.submitList(listOf(Unit))
                             searchRelatedSearchWordListAdapter.submitList(listOf(searchViewModel.relatedSearchWordList))
-                            searchSearchFindProductListAdapter.submitList(listOf(searchFindProducts))
+                            firstSearchSearchFindProductListAdapter.submitList(listOf(searchFindProducts))
+                            secondSearchSearchFindProductListAdapter.submitList(listOf(searchFindProducts))
                             searchRelateRecommendProductListAdapter.submitList(listOf(Pair(relateRecommendProducts, findName)))
                         }
-
-                        binding.rvSearch.adapter = ConcatAdapter(
-                            searchTopBarAdapter,
-                            searchSearchFindProductListAdapter,
-                            searchRelatedSearchWordListAdapter,
-                            searchSearchFindProductListAdapter,
-                            searchRelateRecommendProductListAdapter,
-                            searchTopBarAdapter,
-                        )
                     }
 
                     else -> Unit
