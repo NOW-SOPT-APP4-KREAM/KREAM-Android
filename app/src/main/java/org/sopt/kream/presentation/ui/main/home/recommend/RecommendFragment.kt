@@ -19,6 +19,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
         initRecommendAds()
         initCircleMenu()
+        initForYouProduct()
     }
 
     private fun initRecommendAds() {
@@ -32,5 +33,9 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
             layoutManager = GridLayoutManager(context, 5)
             adapter = RecommendCircleMenuAdapter(recommendViewModel.getCircleMenu())
         }
+    }
+
+    fun initForYouProduct() {
+        binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(recommendViewModel.getForYouList())
     }
 }
