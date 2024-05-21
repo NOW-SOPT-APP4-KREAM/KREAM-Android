@@ -82,4 +82,8 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
+
+    // Pager
+    implementation (libs.accompanist.pager.v02413rc)
+    implementation (libs.accompanist.pager.indicators.v02413rc)
 }
