@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="@string/item_search_find_product_instant_purchase_price"
+        android:text="@string/product_instant_purchase_price"
         android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
         android:textColor="@color/black06"
         app:layout_constraintStart_toStartOf="@id/gl_start"
