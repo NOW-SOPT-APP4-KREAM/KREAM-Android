@@ -7,7 +7,9 @@ import org.sopt.kream.databinding.ItemSearchSearchFindProductBinding
 import org.sopt.kream.domain.model.SearchFindProductModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
-class SearchSearchFindProductAdapter() : ListAdapter<SearchFindProductModel, SearchSearchFindProductViewHolder>(
+class SearchSearchFindProductAdapter(
+    private val navigateToProductDetail: (Int) -> Unit
+) : ListAdapter<SearchFindProductModel, SearchSearchFindProductViewHolder>(
     ItemDiffCallback<SearchFindProductModel>(
         onContentsTheSame = { old, new -> old == new },
         onItemsTheSame = { old, new -> old.engTitle == new.engTitle },
@@ -23,12 +25,13 @@ class SearchSearchFindProductAdapter() : ListAdapter<SearchFindProductModel, Sea
                 parent,
                 false,
             ),
+            navigateToProductDetail
         )
 
     override fun onBindViewHolder(
         holder: SearchSearchFindProductViewHolder,
         position: Int,
     ) {
-        holder.onBind(currentList[position])
+        holder.onBind(searchFindProductModel = currentList[position], position = position)
     }
 }

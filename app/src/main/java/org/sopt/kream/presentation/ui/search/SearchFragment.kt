@@ -17,9 +17,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -67,9 +69,9 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
     private fun initAdapter() {
         searchTopBarAdapter = SearchTopBarAdapter()
         searchRelatedSearchWordListAdapter = SearchRelatedSearchWordListAdapter()
-        searchRelateRecommendProductListAdapter = SearchRelateRecommendProductListAdapter()
-        firstSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter()
-        secondSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter()
+        searchRelateRecommendProductListAdapter = SearchRelateRecommendProductListAdapter(::navigateToProductDetail)
+        firstSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter(::navigateToProductDetail)
+        secondSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter(::navigateToProductDetail)
 
         binding.rvSearch.adapter = ConcatAdapter(
             searchTopBarAdapter,
@@ -141,7 +143,12 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
 
     private fun getSearchWord(): String = requireArguments().getString(SEARCH_WORD).orEmpty()
 
+    private fun navigateToProductDetail(productId: Int) {
+        findNavController().navigate(R.id.action_search_to_product_detail, bundleOf(PRODUCT_ID to productId))
+    }
+
     companion object {
         const val DEFAULT_SELECTED_TAB_POSITION = 0
+        const val PRODUCT_ID = "productId"
     }
 }
