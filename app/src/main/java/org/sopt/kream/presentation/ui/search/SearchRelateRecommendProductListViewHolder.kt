@@ -9,8 +9,9 @@ class SearchRelateRecommendProductListViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     private var searchRelateRecommendProductAdapter: SearchRelateRecommendProductAdapter = SearchRelateRecommendProductAdapter()
 
-    fun onBind(relateRecommendProductModelList: List<RelateRecommendProductModel>) {
+    fun onBind(relateRecommendProductModelListItemInfo: Pair<List<RelateRecommendProductModel>, String>) {
+        binding.tvSearchRelateRecommendProductListSearchWord.text = relateRecommendProductModelListItemInfo.second
         binding.rvSearchRelatedProductList.adapter = searchRelateRecommendProductAdapter
-        searchRelateRecommendProductAdapter.submitList(relateRecommendProductModelList)
+        searchRelateRecommendProductAdapter.submitList(relateRecommendProductModelListItemInfo.first)
     }
 }

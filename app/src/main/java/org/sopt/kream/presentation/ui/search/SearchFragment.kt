@@ -38,6 +38,7 @@ import org.sopt.kream.util.view.UiState
 
 class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBinding.inflate(it) }) {
     private val searchViewModel: SearchViewModel by viewModels { ViewModelFactory() }
+    private lateinit var findName: String
     private lateinit var searchTopBarAdapter: SearchTopBarAdapter
     private lateinit var searchRelatedSearchWordListAdapter: SearchRelatedSearchWordListAdapter
     private lateinit var searchRelateRecommendProductListAdapter: SearchRelateRecommendProductListAdapter
@@ -51,7 +52,8 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
 
         initTop()
         initAdapter()
-        searchViewModel.getSearchProduct(findName = getSearchWord())
+        findName = getSearchWord()
+        searchViewModel.getSearchProduct(findName = findName)
         collectSearchProductState()
     }
 
@@ -67,13 +69,6 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         searchRelateRecommendProductListAdapter = SearchRelateRecommendProductListAdapter()
         searchSearchFindProductListAdapter = SearchSearchFindProductListAdapter()
 
-        binding.rvSearch.adapter = ConcatAdapter(
-            searchTopBarAdapter,
-            searchSearchFindProductListAdapter,
-            searchRelatedSearchWordListAdapter,
-            searchSearchFindProductListAdapter,
-            searchRelateRecommendProductListAdapter
-        )
     }
 
     private fun collectSearchProductState() {
@@ -85,8 +80,17 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
                             searchTopBarAdapter.submitList(listOf(Unit))
                             searchRelatedSearchWordListAdapter.submitList(listOf(searchViewModel.relatedSearchWordList))
                             searchSearchFindProductListAdapter.submitList(listOf(searchFindProducts))
-                            searchRelateRecommendProductListAdapter.submitList(listOf(relateRecommendProducts))
+                            searchRelateRecommendProductListAdapter.submitList(listOf(Pair(relateRecommendProducts, findName)))
                         }
+
+                        binding.rvSearch.adapter = ConcatAdapter(
+                            searchTopBarAdapter,
+                            searchSearchFindProductListAdapter,
+                            searchRelatedSearchWordListAdapter,
+                            searchSearchFindProductListAdapter,
+                            searchRelateRecommendProductListAdapter,
+                            searchTopBarAdapter,
+                        )
                     }
 
                     else -> Unit
@@ -122,7 +126,7 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
                     modifier =
                     Modifier
                         .weight(1f),
-                    value = getSearchWord(),
+                    value = findName,
                 )
             }
 

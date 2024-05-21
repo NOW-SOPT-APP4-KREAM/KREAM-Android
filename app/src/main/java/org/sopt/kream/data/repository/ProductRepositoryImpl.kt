@@ -1,6 +1,5 @@
 package org.sopt.kream.data.repository
 
-import android.util.Log
 import org.sopt.kream.data.datasource.ProductRemoteDataSource
 import org.sopt.kream.data.mapper.toSearchProductModel
 import org.sopt.kream.domain.model.SearchProductModel

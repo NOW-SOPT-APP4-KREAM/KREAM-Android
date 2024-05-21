@@ -7,10 +7,10 @@ import org.sopt.kream.databinding.ItemSearchRelateRecommendProductListBinding
 import org.sopt.kream.domain.model.RelateRecommendProductModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
-class SearchRelateRecommendProductListAdapter() : ListAdapter<List<RelateRecommendProductModel>, SearchRelateRecommendProductListViewHolder>(
-    ItemDiffCallback<List<RelateRecommendProductModel>>(
+class SearchRelateRecommendProductListAdapter() : ListAdapter<Pair<List<RelateRecommendProductModel>, String>, SearchRelateRecommendProductListViewHolder>(
+    ItemDiffCallback<Pair<List<RelateRecommendProductModel>, String>>(
         onContentsTheSame = { old, new -> old == new },
-        onItemsTheSame = { old, new -> old.size == new.size },
+        onItemsTheSame = { old, new -> old.second == new.second },
     ),
 ) {
     override fun onCreateViewHolder(
