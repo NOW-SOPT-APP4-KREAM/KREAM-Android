@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentRecommendBinding
+import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
 import org.sopt.kream.util.base.BindingFragment
 
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
@@ -36,7 +37,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     private fun initCircleMenu() {
         binding.rvRecommendCircleMenu.apply {
             layoutManager = GridLayoutManager(context, 5)
-            adapter = RecommendCircleMenuAdapter(recommendViewModel.getCircleMenu())
+            adapter = RecommendCircleMenuAdapter(RecommendCircleMenuType.entries)
         }
     }
 

@@ -14,20 +14,6 @@ class RecommendViewModel : ViewModel() {
             R.drawable.img_recommend_ad_04,
         )
 
-    private val circleMenu: List<String> =
-        listOf(
-            "KREAM 카드",
-            "크림 드로우",
-            "남성 추천",
-            "여성 추천",
-            "색다른 추천",
-            "정가 아래",
-            "스프링 세일!",
-            "샤넬 최대 ~42%",
-            "4월 혜택",
-            "소니&슈프림 선물",
-        )
-
     private val forYouList: List<RecommendForYouProductModel> =
         listOf(
             RecommendForYouProductModel(
@@ -211,10 +197,6 @@ class RecommendViewModel : ViewModel() {
 
     fun getAdImage(): List<Int> {
         return adImageList
-    }
-
-    fun getCircleMenu(): List<String> {
-        return circleMenu
     }
 
     fun getForYouList(): List<RecommendForYouProductModel> {
