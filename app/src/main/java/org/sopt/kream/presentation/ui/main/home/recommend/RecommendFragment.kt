@@ -2,9 +2,12 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
+import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentRecommendBinding
 import org.sopt.kream.util.base.BindingFragment
 
@@ -20,6 +23,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         initRecommendAds()
         initCircleMenu()
         initForYouProduct()
+        initJustDropped()
     }
 
     private fun initRecommendAds() {
@@ -37,5 +41,20 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
     private fun initForYouProduct() {
         binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(recommendViewModel.getForYouList())
+    }
+
+    private fun initJustDropped() {
+        val recommendJustDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail)
+        binding.rvRecommendReleaseContent.adapter = recommendJustDroppedAdapter
+        recommendJustDroppedAdapter.submitList(recommendViewModel.getJustDropped())
+
+    }
+
+    private fun navigateToProductDetail(productId: Int) {
+        findNavController().navigate(R.id.action_search_to_product_detail, bundleOf(PRODUCT_ID to productId))
+    }
+
+    companion object {
+        const val PRODUCT_ID = "productId"
     }
 }
