@@ -21,22 +21,14 @@
     <string name="top_bar_main_female">여성</string>
     <string name="top_bar_main_found">발견</string>
     <string name="top_bar_main_event">이벤트</string>
-    <!-- topBar_pagesList_name -->
-    <string name="topBar_pageList_recommend">"추천"</string>
-    <string name="topBar_pageList_ranking">"랭킹"</string>
-    <string name="topBar_pageList_information">"발매정보"</string>
-    <string name="topBar_pageList_luxury">"럭셔리"</string>
-    <string name="topBar_pageList_male">"남성"</string>
-    <string name="topBar_pageList_female">"여성"</string>
-    <string name="topBar_pageList_found">"발견"</string>
 
-    <!-- mid_Navi_Bar_list_name -->
-    <string name="mid_navi_bar_today">"오늘 응모"</string>
-    <string name="mid_navi_bar_Nike">"Nike"</string>
-    <string name="mid_navi_bar_Adidas">"Adidas"</string>
-    <string name="mid_navi_bar_Asics">"Asics"</string>
-    <string name="mid_navi_bar_NewBalance">"New Balance"</string>
-    <string name="mid_navi_bar_Jordan">"Jordan"</string>
-    <string name="mid_navi_bar_converse">"Converse"</string>
+    <!-- release_chip_shoes_list_name -->
+    <string name="release_chip_shoes_list_today">"오늘 응모"</string>
+    <string name="release_chip_shoes_list_Nike">"Nike"</string>
+    <string name="release_chip_shoes_list_Adidas">"Adidas"</string>
+    <string name="release_chip_shoes_list_Asics">"Asics"</string>
+    <string name="release_chip_shoes_list_NewBalance">"New Balance"</string>
+    <string name="release_chip_shoes_list_Jordan">"Jordan"</string>
+    <string name="release_chip_shoes_list_converse">"Converse"</string>
 
 </resources>
