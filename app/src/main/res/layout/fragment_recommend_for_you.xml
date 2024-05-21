@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_recommend_for_you_more"
@@ -87,13 +87,9 @@
         android:id="@+id/rv_for_you_content"
         android:layout_width="0dp"
         android:layout_height="369dp"
-        android:layout_marginTop="324dp"
-        android:paddingStart="14dp"
-        android:paddingTop="14dp"
-        android:paddingEnd="18dp"
-        android:paddingBottom="22dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_recommend_for_you_more"
         tools:listitem="@layout/item_recommend_for_you_product" />
