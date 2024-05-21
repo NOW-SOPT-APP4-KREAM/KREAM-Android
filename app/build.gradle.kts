@@ -84,6 +84,6 @@ dependencies {
     implementation(libs.kotlin.serialization.json)
 
     // Pager
-    implementation (libs.accompanist.pager.v02413rc)
-    implementation (libs.accompanist.pager.indicators.v02413rc)
+    implementation(libs.accompanist.pager.v02413rc)
+    implementation(libs.accompanist.pager.indicators.v02413rc)
 }

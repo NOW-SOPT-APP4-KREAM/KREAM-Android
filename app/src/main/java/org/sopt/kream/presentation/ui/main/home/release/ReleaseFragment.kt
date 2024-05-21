@@ -86,7 +86,6 @@ fun ReleaseScreen() {
     }
 }
 
-
 class RecyclerViewViewModel : ViewModel() {
     val advertisements by mutableStateOf(generateDummyAdvertisement())
 
@@ -108,14 +107,15 @@ fun CustomViewPager(advertisements: List<Advertisement>) {
     HorizontalPager(
         count = advertisements.size,
         state = pagerState,
-        modifier = Modifier.height(327.dp)
+        modifier = Modifier.height(327.dp),
     ) { page ->
         val advertisement = advertisements[page]
         CustomAdvertisement(
             imgResource = advertisement.imgResource,
-            modifier = Modifier
-                .fillMaxSize()
-                .aspectRatio(1f)
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .aspectRatio(1f),
         )
     }
 }
