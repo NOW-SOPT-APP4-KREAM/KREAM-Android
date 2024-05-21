@@ -7,28 +7,22 @@ import org.sopt.kream.databinding.ItemRecommendCircleMenuBinding
 import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
 import kotlin.enums.EnumEntries
 
-class RecommendCircleMenuAdapter(val list: EnumEntries<RecommendCircleMenuType>) : RecyclerView.Adapter<RecommendCircleMenuAdapter.ViewHolder>() {
+class RecommendCircleMenuAdapter(private val list: EnumEntries<RecommendCircleMenuType>) : RecyclerView.Adapter<RecommendCircleMenuViewHolder>() {
     private val item = list
-
-    inner class ViewHolder(private val binding: ItemRecommendCircleMenuBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
-            binding.tvCircleMenuTitle.text = item
-        }
-    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ViewHolder {
+    ): RecommendCircleMenuViewHolder {
         val binding = ItemRecommendCircleMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return RecommendCircleMenuViewHolder(binding)
     }
 
     override fun onBindViewHolder(
-        holder: ViewHolder,
+        holder: RecommendCircleMenuViewHolder,
         position: Int,
     ) {
-        holder.bind(item.get(position).menu)
+        holder.onBind(item.get(position).menu)
     }
 
     override fun getItemCount(): Int = list.size
