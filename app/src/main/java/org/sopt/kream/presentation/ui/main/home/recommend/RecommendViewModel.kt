@@ -187,30 +187,30 @@ class RecommendViewModel : ViewModel() {
             ),
         )
 
-    data class instagram(
+    data class Instagram(
         val image: Int,
         val id: String,
     )
 
-    private val instagramList: List<instagram> =
+    private val instagramList: List<Instagram> =
         listOf(
-            instagram(
+            Instagram(
                 image = R.drawable.view2_img_style_01,
                 id = "@zzz.myam",
             ),
-            instagram(
+            Instagram(
                 image = R.drawable.view2_img_style_01,
                 id = "@zzz.myam",
             ),
-            instagram(
+            Instagram(
                 image = R.drawable.view2_img_style_01,
                 id = "@zzz.myam",
             ),
-            instagram(
+            Instagram(
                 image = R.drawable.view2_img_style_01,
                 id = "@zzz.myam",
             ),
-            instagram(
+            Instagram(
                 image = R.drawable.view2_img_style_01,
                 id = "@zzz.myam",
             ),
@@ -232,7 +232,7 @@ class RecommendViewModel : ViewModel() {
         return justDroppedList
     }
 
-    fun getInstagram(): List<instagram> {
+    fun getInstagram(): List<Instagram> {
         return instagramList
     }
 }

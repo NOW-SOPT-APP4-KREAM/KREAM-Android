@@ -24,6 +24,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         initCircleMenu()
         initForYouProduct()
         initJustDropped()
+        initStyle()
     }
 
     private fun initRecommendAds() {
@@ -47,7 +48,12 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         val recommendJustDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail)
         binding.rvRecommendReleaseContent.adapter = recommendJustDroppedAdapter
         recommendJustDroppedAdapter.submitList(recommendViewModel.getJustDropped())
+    }
 
+    private fun initStyle() {
+        val recommendStyleAdapter = RecommendStyleAdapter()
+        binding.rvRecommendInstagram.adapter = recommendStyleAdapter
+        recommendStyleAdapter.submitList(recommendViewModel.getInstagram())
     }
 
     private fun navigateToProductDetail(productId: Int) {
