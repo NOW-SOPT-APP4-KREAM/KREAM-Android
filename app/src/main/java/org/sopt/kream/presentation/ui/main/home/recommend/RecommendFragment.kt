@@ -41,12 +41,12 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun initForYouProduct() {
-        binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(recommendViewModel.getForYouList())
+        binding.vpRecommendForYouContent.adapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, recommendViewModel.getForYouList())
     }
 
     private fun initJustDropped() {
         val recommendJustDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail)
-        binding.rvRecommendReleaseContent.adapter = recommendJustDroppedAdapter
+        binding.rvRecommendJustDroppedContent.adapter = recommendJustDroppedAdapter
         recommendJustDroppedAdapter.submitList(recommendViewModel.getJustDropped())
     }
 
@@ -57,7 +57,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun navigateToProductDetail(productId: Int) {
-        findNavController().navigate(R.id.action_search_to_product_detail, bundleOf(PRODUCT_ID to productId))
+        findNavController().navigate(R.id.action_recommend_to_product_detail, bundleOf(PRODUCT_ID to productId))
     }
 
     companion object {

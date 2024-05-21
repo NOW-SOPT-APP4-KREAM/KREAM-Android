@@ -89,9 +89,11 @@
         android:layout_height="369dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="14dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_recommend_for_you_more"
+        app:spanCount="3"
         tools:listitem="@layout/item_recommend_for_you_product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

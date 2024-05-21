@@ -2,40 +2,28 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.FragmentRecommendForYouBinding
-import org.sopt.kream.presentation.ui.main.home.recommend.RecommendViewModel.ForYou
+import org.sopt.kream.domain.model.RecommendForYouProductModel
 
-class RecommendForYouViewPagerAdapter(val data: List<ForYou>) : RecyclerView.Adapter<RecommendForYouViewPagerAdapter.ViewHolder>() {
-    val item = data
-
-    inner class ViewHolder(private val binding: FragmentRecommendForYouBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(
-            item: List<ForYou>,
-            position: Int,
-        ) {
-            binding.rvForYouContent.apply {
-                layoutManager = GridLayoutManager(context, 3)
-                adapter = RecommendForYouRVAdapter(item, position)
-            }
-        }
-    }
-
-    override fun getItemCount(): Int = item.size / 6
+class RecommendForYouViewPagerAdapter(
+    private val navigateToProductDetail: (Int) -> Unit,
+    private val data: List<RecommendForYouProductModel>,
+) : RecyclerView.Adapter<RecommendForYouViewPagerViewHolder>() {
+    override fun getItemCount(): Int = data.size / 6
 
     override fun onBindViewHolder(
-        holder: ViewHolder,
+        holder: RecommendForYouViewPagerViewHolder,
         position: Int,
     ) {
-        holder.bind(data, position)
+        holder.onBind(data, position)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ViewHolder {
+    ): RecommendForYouViewPagerViewHolder {
         val binding = FragmentRecommendForYouBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return RecommendForYouViewPagerViewHolder(binding, navigateToProductDetail)
     }
 }

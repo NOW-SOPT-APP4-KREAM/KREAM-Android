@@ -2,6 +2,7 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import androidx.lifecycle.ViewModel
 import org.sopt.kream.R
+import org.sopt.kream.domain.model.RecommendForYouProductModel
 import org.sopt.kream.domain.model.RecommendJustDroppedProductModel
 
 class RecommendViewModel : ViewModel() {
@@ -27,95 +28,87 @@ class RecommendViewModel : ViewModel() {
             "소니&슈프림 선물",
         )
 
-    data class ForYou(
-        val thumbnailUrl: Int,
-        val brandTitle: String,
-        val engTitle: String,
-        val price: String,
-        val transactionCount: String,
-    )
-
-    private val forYouList: List<ForYou> =
+    private val forYouList: List<RecommendForYouProductModel> =
         listOf(
-            ForYou(
-                R.drawable.img_recommend_for_you_01,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
                 "Adidas",
                 "Adidas Samba OG Cloud White",
                 "132,000원",
                 "거래 9만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_02,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
                 "Adidas",
                 "Adidas Samba OG Black White Gum",
                 "114,000원",
                 "거래 7만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_03,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
                 "Adidas",
                 "Adidas German Adicolor Classic 3-Stripes T-Shirt Off White - KR Sizing",
                 "67,000원",
                 "거래 3,176",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_04,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
                 "Adidas",
                 "Adidas Adilette Clog Black White",
                 "40,000원",
                 "거래 1.9만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_05,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
                 "Adidas",
                 "(W) Adidas Spezial Handball Clear Pink",
                 "119,000원",
                 "거래 2.1만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_06,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMzA2MjZfMjky/MDAxNjg3NzUyNzQ0ODQ0.LaS-vFQFqLWC0G6jq7iVZWnGkJKL5lAodL5M6PHzoskg.x1nC_GqewiguCwURCowo9FNxE9iPef7wAiBdQX620OMg.PNG/a_a750d14185cb4f3ba4421a6ce4a86c19.png?type=l",
                 "Adidas",
                 "Adidas Superstar Core Black White",
                 "98,000원",
                 "거래 6.1만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_01,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMTAzMDVfMjQz/MDAxNjE0OTE0NzIzMTQ4.tsuFUJtHGm4g4KE5EDikVMScORptOQqIB7afi1Nz2Qwg.sftz3YQOuw48xpNSJa1tV4uEsz5iU4mjIvpllgHWEn8g.PNG/p_8f7b72adbc924b5bbf7c670d55865e6b.png?type=l",
                 "Adidas",
                 "Adidas Samba OG Cloud White",
                 "132,000원",
                 "거래 9만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_02,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMTAzMDVfMjQz/MDAxNjE0OTE0NzIzMTQ4.tsuFUJtHGm4g4KE5EDikVMScORptOQqIB7afi1Nz2Qwg.sftz3YQOuw48xpNSJa1tV4uEsz5iU4mjIvpllgHWEn8g.PNG/p_8f7b72adbc924b5bbf7c670d55865e6b.png?type=l",
                 "Adidas",
                 "Adidas Samba OG Black White Gum",
                 "114,000원",
                 "거래 7만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_03,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMTAzMDVfMjQz/MDAxNjE0OTE0NzIzMTQ4.tsuFUJtHGm4g4KE5EDikVMScORptOQqIB7afi1Nz2Qwg.sftz3YQOuw48xpNSJa1tV4uEsz5iU4mjIvpllgHWEn8g.PNG/p_8f7b72adbc924b5bbf7c670d55865e6b.png?type=l",
                 "Adidas",
                 "Adidas German Adicolor Classic 3-Stripes T-Shirt Off White - KR Sizing",
                 "67,000원",
                 "거래 3,176",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_04,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMTAzMDVfMjQz/MDAxNjE0OTE0NzIzMTQ4.tsuFUJtHGm4g4KE5EDikVMScORptOQqIB7afi1Nz2Qwg.sftz3YQOuw48xpNSJa1tV4uEsz5iU4mjIvpllgHWEn8g.PNG/p_8f7b72adbc924b5bbf7c670d55865e6b.png?type=l",
                 "Adidas",
                 "Adidas Adilette Clog Black White",
                 "40,000원",
                 "거래 1.9만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_05,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMTAzMDVfMjQz/MDAxNjE0OTE0NzIzMTQ4.tsuFUJtHGm4g4KE5EDikVMScORptOQqIB7afi1Nz2Qwg.sftz3YQOuw48xpNSJa1tV4uEsz5iU4mjIvpllgHWEn8g.PNG/p_8f7b72adbc924b5bbf7c670d55865e6b.png?type=l",
                 "Adidas",
                 "(W) Adidas Spezial Handball Clear Pink",
                 "119,000원",
                 "거래 2.1만",
             ),
-            ForYou(
-                R.drawable.img_recommend_for_you_06,
+            RecommendForYouProductModel(
+                "https://kream-phinf.pstatic.net/MjAyMTAzMDVfMjQz/MDAxNjE0OTE0NzIzMTQ4.tsuFUJtHGm4g4KE5EDikVMScORptOQqIB7afi1Nz2Qwg.sftz3YQOuw48xpNSJa1tV4uEsz5iU4mjIvpllgHWEn8g.PNG/p_8f7b72adbc924b5bbf7c670d55865e6b.png?type=l",
                 "Adidas",
                 "Adidas Superstar Core Black White",
                 "98,000원",
@@ -133,7 +126,7 @@ class RecommendViewModel : ViewModel() {
                 transactionCount = "거래 2.1만",
                 isScrap = false,
                 isFast = true,
-                isFreeDeliver = true,
+                isFreeDeliver = false,
                 isSave = true,
                 isCoupon = true,
             ),
@@ -224,7 +217,7 @@ class RecommendViewModel : ViewModel() {
         return circleMenu
     }
 
-    fun getForYouList(): List<ForYou> {
+    fun getForYouList(): List<RecommendForYouProductModel> {
         return forYouList
     }
 
