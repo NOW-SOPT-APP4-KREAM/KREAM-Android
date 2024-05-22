@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_search_relate_recommend_product_thumbnail"
+        android:layout_width="88dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="7dp"
+        android:background="@drawable/shape_border_radius_10"
+        android:backgroundTint="@color/gray06"
+        android:clipToOutline="true"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_search_related_search_word_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="3dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.Kream.Body5.SemiBold"
+        app:layout_constraintEnd_toEndOf="@id/iv_search_relate_recommend_product_thumbnail"
+        app:layout_constraintStart_toStartOf="@id/iv_search_relate_recommend_product_thumbnail"
+        app:layout_constraintTop_toBottomOf="@id/iv_search_relate_recommend_product_thumbnail"
+        tools:text="Adidas Samba OG Black White Gum" />
+
+    <TextView
+        android:id="@+id/tv_search_related_search_word_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.Bold"
+        android:textColor="@color/black02"
+        app:layout_constraintEnd_toEndOf="@id/tv_search_related_search_word_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_search_related_search_word_title"
+        tools:text="108,000원" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
