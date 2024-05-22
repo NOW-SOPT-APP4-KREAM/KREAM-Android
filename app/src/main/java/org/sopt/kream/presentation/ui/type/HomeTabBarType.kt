@@ -1,4 +1,4 @@
-package org.sopt.kream.presentation
+package org.sopt.kream.presentation.ui.type
 
 import androidx.annotation.StringRes
 import org.sopt.kream.R
@@ -8,39 +8,39 @@ enum class HomeTabBarType(
     val isClickable: Boolean,
 ) {
     MD(
-        tabBarTextRes = R.string.top_bar_main_md,
+        tabBarTextRes = R.string.home_tap_bar_md,
         isClickable = false,
     ),
     RECOMMEND(
-        tabBarTextRes = R.string.top_bar_main_recommend,
+        tabBarTextRes = R.string.home_tap_bar_recommend,
         isClickable = true,
     ),
     RANKING(
-        tabBarTextRes = R.string.top_bar_main_ranking,
+        tabBarTextRes = R.string.home_tap_bar_ranking,
         isClickable = false,
     ),
     INFORMATION(
-        tabBarTextRes = R.string.top_bar_main_information,
+        tabBarTextRes = R.string.home_tap_bar_information,
         isClickable = true,
     ),
     LUXURY(
-        tabBarTextRes = R.string.top_bar_main_luxury,
+        tabBarTextRes = R.string.home_tap_bar_luxury,
         isClickable = false,
     ),
     MALE(
-        tabBarTextRes = R.string.top_bar_main_male,
+        tabBarTextRes = R.string.home_tap_bar_male,
         isClickable = false,
     ),
     FEMALE(
-        tabBarTextRes = R.string.top_bar_main_female,
+        tabBarTextRes = R.string.home_tap_bar_female,
         isClickable = false,
     ),
     FOUND(
-        tabBarTextRes = R.string.top_bar_main_found,
+        tabBarTextRes = R.string.home_tap_bar_found,
         isClickable = false,
     ),
     EVENT(
-        tabBarTextRes = R.string.top_bar_main_event,
+        tabBarTextRes = R.string.home_tap_bar_event,
         isClickable = false,
     ),
 }

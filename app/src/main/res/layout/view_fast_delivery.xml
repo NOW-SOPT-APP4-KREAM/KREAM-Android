@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_border_radius_2"
+    android:backgroundTint="@color/green05">
+
+    <ImageView
+        android:id="@+id/iv_fast_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="2dp"
+        android:src="@drawable/ic_fd_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_fast_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:text="@string/search_chip_fast_delivery"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/green02"
+        app:layout_constraintBottom_toBottomOf="@id/iv_fast_delivery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_fast_delivery"
+        app:layout_constraintTop_toTopOf="@+id/iv_fast_delivery" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
