@@ -4,8 +4,11 @@ import androidx.lifecycle.ViewModel
 import org.sopt.kream.R
 import org.sopt.kream.domain.model.RecommendForYouProductModel
 import org.sopt.kream.domain.model.RecommendJustDroppedProductModel
+import org.sopt.kream.domain.repository.ProductRepository
 
-class RecommendViewModel : ViewModel() {
+class RecommendViewModel(
+    private val productRepository: ProductRepository,
+) : ViewModel() {
     private val forYouList: List<RecommendForYouProductModel> =
         listOf(
             RecommendForYouProductModel(
