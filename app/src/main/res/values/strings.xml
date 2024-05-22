@@ -79,4 +79,18 @@
     <string name="item_recommend_just_dropped_free_deliver">무료배송</string>
     <string name="item_recommend_instant_price">즉시 구매가</string>
 
+    <!-- for you bottom sheet -->
+    <string name="recommend_bottom_sheet_for_you_content">
+        개인별로 최근 본 상품의 데이터를 분석해 상품을 추천합니다.
+        \n&#8226; 추천 상품은 매시간마다 갱신됩니다.
+        \n&#8226; 상품 자체가 가지고 있는 다양한 특성을분석해 연관도 높은 상품을 추천합니다.
+    </string>
+    <string name="recommend_bottom_sheet_suggestion">Suggestion</string>
+    <string name="recommend_bottom_sheet_suggestion_content">
+        성별&#8226;연령대의 최근 데이터와 검색량을 수집하여 상품을 추천합니다.
+        \n&#8226; 추천 상품은 매시간마다 갱신됩니다.
+        \n&#8226; 인기 급상승은 성별•연령대별 조회, 관심, 거래량을 반영한 랭킹입니다.
+        \n&#8226; 키워드별 인기 상품은 특정 기간의 검색량을 반영한 랭킹입니다.
+    </string>
+
 </resources>

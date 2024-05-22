@@ -6,6 +6,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentRecommendBinding
@@ -27,6 +28,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         initForYouProduct()
         initJustDropped()
         initStyle()
+        setBottomSheet()
     }
 
     private fun initRecommendAds() {
@@ -64,6 +66,20 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
     private fun navigateToSearch(searchKeyword: String) {
         findNavController().navigate(R.id.action_home_to_search, bundleOf(SEARCH_WORD to searchKeyword))
+    }
+
+    private fun setBottomSheet() {
+        val forYouBottomSheet = BottomSheetDialog(requireContext())
+        forYouBottomSheet.setContentView(
+            layoutInflater.inflate(
+                R.layout.fragment_recommend_for_you_bottom_sheet,
+                null,
+            ),
+        )
+
+        binding.ivRecommendForYouEtc.setOnClickListener {
+            forYouBottomSheet.show()
+        }
     }
 
     companion object {
