@@ -7,6 +7,7 @@ import org.sopt.kream.data.datasourceimpl.ProductRemoteDataSourceImpl
 import org.sopt.kream.data.repository.DummyRepositoryImpl
 import org.sopt.kream.data.repository.ProductRepositoryImpl
 import org.sopt.kream.presentation.ui.dummy.DummyViewModel
+import org.sopt.kream.presentation.ui.productdetail.ProductDetailViewModel
 import org.sopt.kream.presentation.ui.search.SearchViewModel
 
 class ViewModelFactory : ViewModelProvider.Factory {
@@ -15,6 +16,8 @@ class ViewModelFactory : ViewModelProvider.Factory {
             return DummyViewModel(DummyRepositoryImpl(DummyRemoteDataSourceImpl())) as T
         } else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
             return SearchViewModel(ProductRepositoryImpl(ProductRemoteDataSourceImpl())) as T
+        } else if (modelClass.isAssignableFrom(ProductDetailViewModel::class.java)) {
+            return ProductDetailViewModel(ProductRepositoryImpl(ProductRemoteDataSourceImpl())) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }
