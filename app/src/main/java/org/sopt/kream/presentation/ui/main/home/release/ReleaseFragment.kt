@@ -28,6 +28,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -84,7 +85,7 @@ fun ReleaseScreen() {
         ) {
             val targetDate =
                 Calendar.getInstance().apply {
-                    set(2024, Calendar.MAY, 25, 12, 0, 0)
+                    set(2024, Calendar.JUNE, 30, 12, 0, 0)
                 }
             val targetTimeInMillis = targetDate.timeInMillis
 
@@ -146,7 +147,7 @@ fun CountdownTimer(
     targetTimeInMillis: Long,
     textStyle: androidx.compose.ui.text.TextStyle,
 ) {
-    var remainingTime by remember { mutableStateOf(calculateRemainingTime(targetTimeInMillis)) }
+    var remainingTime by remember { mutableLongStateOf(calculateRemainingTime(targetTimeInMillis)) }
 
     LaunchedEffect(Unit) {
         while (true) {
