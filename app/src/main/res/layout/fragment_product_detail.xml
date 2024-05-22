@@ -24,8 +24,8 @@
         android:layout_marginEnd="6dp"
         android:padding="8dp"
         android:src="@drawable/ic_alarm_plus_24"
-        app:layout_constraintEnd_toStartOf="@+id/iv_product_detail_share"
-        app:layout_constraintTop_toTopOf="@+id/iv_product_detail_share" />
+        app:layout_constraintEnd_toStartOf="@id/iv_product_detail_share"
+        app:layout_constraintTop_toTopOf="@id/iv_product_detail_share" />
 
     <ImageView
         android:id="@+id/iv_product_detail_share"
@@ -34,9 +34,9 @@
         android:layout_marginEnd="16dp"
         android:padding="8dp"
         android:src="@drawable/ic_bar_share_24"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_product_detail_back"
+        app:layout_constraintBottom_toBottomOf="@id/iv_product_detail_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_product_detail_back" />
+        app:layout_constraintTop_toTopOf="@id/iv_product_detail_back" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nsv_product_detail"
@@ -50,16 +50,423 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="14dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="14dp" />
+
             <ImageView
                 android:id="@+id/iv_product_detail_thumbnail"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
                 android:background="@color/yellow01"
-                app:layout_constraintDimensionRatio="1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_instant_purchase_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/product_instant_purchase_price"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+                android:textColor="@color/black02"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_thumbnail" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Kream.Head1.Bold"
+                android:textColor="@color/black02"
+                app:layout_constraintEnd_toStartOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_instant_purchase_price"
+                tools:text="131,000원" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_eng_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:textAppearance="@style/TextAppearance.Kream.Body2.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintEnd_toStartOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_price"
+                tools:text="Adidas Samba OG Cloud White" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/black06"
+                app:layout_constraintEnd_toStartOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_eng_title"
+                tools:text="아디다스 삼바" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_product_detail_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:background="@drawable/shape_line_gray04_radius_10"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_title">
+
+                <TextView
+                    android:id="@+id/tv_product_detail_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:text="@string/product_detail_all_size"
+                    android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                    android:textColor="@color/black02"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_product_detail_size_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="9dp"
+                    android:src="@drawable/ic_etc_toggle_circle_16"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_product_detail_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_product_detail_size" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view_product_detail_info"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray06"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/layout_product_detail_size" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_additional_benefits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_additional_benefits"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_product_detail_details"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/view_product_detail_info" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:padding="14dp"
+                android:text="@string/all_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_product_detail_info" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_point"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_details" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_point_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/product_detail_point_content"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black01"
+                app:layout_constraintBottom_toBottomOf="@id/tv_product_detail_point"
+                app:layout_constraintEnd_toStartOf="@id/gl_end"
+                app:layout_constraintStart_toEndOf="@id/tv_product_detail_point"
+                app:layout_constraintTop_toTopOf="@id/tv_product_detail_point" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_payment"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_point" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_payment_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_payment_content"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+                android:textColor="@color/black01"
+                app:layout_constraintStart_toStartOf="@id/tv_product_detail_point_content"
+                app:layout_constraintTop_toTopOf="@id/tv_product_detail_payment" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_payment_etc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_payment_etc"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintBottom_toBottomOf="@id/tv_product_detail_payment_content"
+                app:layout_constraintStart_toEndOf="@id/tv_product_detail_payment_content"
+                app:layout_constraintTop_toTopOf="@id/tv_product_detail_payment_content" />
+
+            <View
+                android:id="@+id/view_product_detail_additional_benefits"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray06"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_payment" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_delivery_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/product_detail_delivery_info"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/view_product_detail_additional_benefits" />
+
+            <ImageView
+                android:id="@+id/iv_product_detail_fast_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/img_deliver_01_38"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_delivery_info" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_fast_delivery_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/product_detail_fast_delivery_price"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintBottom_toTopOf="@id/tv_product_detail_fast_delivery_content_payment"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_fast_delivery"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_fast_delivery"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <ImageView
+                android:id="@+id/iv_product_detail_fast_delivery_price_q"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/ic_etc_q_16"
+                app:layout_constraintBottom_toBottomOf="@id/tv_product_detail_fast_delivery_price"
+                app:layout_constraintStart_toEndOf="@id/tv_product_detail_fast_delivery_price"
+                app:layout_constraintTop_toTopOf="@id/tv_product_detail_fast_delivery_price" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_fast_delivery_content_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/product_detail_fast_delivery_content_payment"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_product_detail_fast_delivery"
+                app:layout_constraintStart_toStartOf="@id/tv_product_detail_fast_delivery_price"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_fast_delivery_price" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_fast_delivery_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_fast_delivery_content"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.SemiBold"
+                android:textColor="@color/blue01"
+                app:layout_constraintBottom_toBottomOf="@id/tv_product_detail_fast_delivery_content_payment"
+                app:layout_constraintStart_toEndOf="@id/tv_product_detail_fast_delivery_content_payment"
+                app:layout_constraintTop_toTopOf="@id/tv_product_detail_fast_delivery_content_payment" />
+
+            <ImageView
+                android:id="@+id/iv_product_detail_general_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/img_deliver_02_38"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_fast_delivery" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_general_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_general_delivery"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintBottom_toTopOf="@id/tv_product_detail_general_delivery_content"
+                app:layout_constraintStart_toStartOf="@id/tv_product_detail_fast_delivery_content_payment"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_general_delivery"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_general_delivery_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/product_detail_general_delivery_content"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintBottom_toBottomOf="@id/iv_product_detail_general_delivery"
+                app:layout_constraintStart_toStartOf="@id/tv_product_detail_general_delivery"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_general_delivery" />
+
+            <ImageView
+                android:id="@+id/iv_product_detail_storage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/img_deliver_03_38"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_general_delivery" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_storage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_detail_storage"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintBottom_toTopOf="@id/tv_product_detail_storage_content"
+                app:layout_constraintStart_toStartOf="@id/tv_product_detail_general_delivery_content"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_storage"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_storage_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/product_detail_storage_content"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintBottom_toBottomOf="@id/iv_product_detail_storage"
+                app:layout_constraintStart_toStartOf="@id/tv_product_detail_storage"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_storage" />
+
+            <View
+                android:id="@+id/view_product_detail_delivery_info"
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/gray05"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_storage" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/product_style"
+                android:textAppearance="@style/TextAppearance.Kream.Body3.SemiBold"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/view_product_detail_delivery_info" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_product_detail_style_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_border_radius_8"
+                android:backgroundTint="@color/black01"
+                app:layout_constraintBottom_toBottomOf="@id/tv_product_detail_style"
+                app:layout_constraintEnd_toStartOf="@id/gl_end"
+                app:layout_constraintTop_toTopOf="@id/tv_product_detail_style">
+
+                <ImageView
+                    android:id="@+id/iv_product_detail_style_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="9dp"
+                    android:layout_marginStart="7dp"
+                    android:src="@drawable/ic_plus_8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_product_detail_style_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="7dp"
+                    android:text="@string/product_style_upload"
+                    android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_product_detail_style_upload"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_upload"
+                    app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_upload" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_product_detail_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_style"
+                app:spanCount="3" />
+
+            <TextView
+                android:id="@+id/tv_product_detail_style_more"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/shape_line_gray04_radius_10"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:text="@string/product_style_more"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.SemiBold"
+                android:textColor="@color/black04"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@id/rv_product_detail_style" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -99,15 +506,16 @@
                 android:id="@+id/tv_product_detail_bottom_scrap"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
                 android:textColor="@color/black01"
-                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_product_detail_bottom_scrap"
                 tools:text="11.4만" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <org.sopt.kream.util.component.KreamProductDetailButton
