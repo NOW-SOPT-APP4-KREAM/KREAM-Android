@@ -26,6 +26,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -36,52 +37,68 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
+import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.databinding.FragmentReleaseBinding
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
 import org.sopt.kream.theme.robotoBold
 import org.sopt.kream.util.base.BindingFragment
+import org.sopt.kream.util.view.UiState
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleaseBinding.inflate(it) }) {
+    private val viewModel = ReleaseProductViewModel()
+
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        binding.cvRelease.setContent {
-            ReleaseScreen()
-        }
+        viewModel.getReleaseProduct()
+        viewModel.getReleaseProductState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach { getReleaseProductState ->
+            when (getReleaseProductState) {
+                is UiState.Success -> {
+                    binding.cvRelease.setContent {
+                        UiStateISSuccess(getReleaseProductState.data, viewModel.advertisements)
+                    }
+                }
+
+                else -> Unit
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
     }
 }
 
-@Preview
 @Composable
-fun ReleaseScreen() {
-    val advertisements by remember { mutableStateOf(RecyclerViewViewModel().advertisements) }
+fun UiStateISSuccess(uiState: List<ResponseReleaseProductDto.ReleaseProductResponseDto>, advertisements: List<Advertisement>) {
+    val advertisement by remember { mutableStateOf(advertisements) }
     Box(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
-                Modifier
-                    .fillMaxWidth(),
+            Modifier
+                .fillMaxWidth(),
         ) {
             val targetDate =
                 Calendar.getInstance().apply {
@@ -90,24 +107,11 @@ fun ReleaseScreen() {
             val targetTimeInMillis = targetDate.timeInMillis
 
             CustomViewPager(
-                advertisements = advertisements,
+                advertisements = advertisement,
                 targetTimeInMillis = targetTimeInMillis,
             )
             CustomMidNaviBar()
-            ShoesList()
-        }
-    }
-}
-
-class RecyclerViewViewModel : ViewModel() {
-    val advertisements by mutableStateOf(generateDummyAdvertisement())
-
-    private fun generateDummyAdvertisement(): List<Advertisement> {
-        return AdvertisementType.entries.mapIndexed { index, adEnum ->
-            Advertisement(
-                id = index,
-                imgResource = adEnum.imgResource,
-            )
+            ShoesList(uiState)
         }
     }
 }
@@ -131,9 +135,9 @@ fun CustomViewPager(
             CustomAdvertisement(
                 imgResource = advertisement.imgResource,
                 modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .aspectRatio(1f),
+                Modifier
+                    .fillMaxSize()
+                    .aspectRatio(1f),
             )
             if (page == 0) {
                 CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
@@ -168,9 +172,9 @@ fun CountdownTimer(
 
     Row(
         modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(top = 42.dp),
+        Modifier
+            .fillMaxWidth()
+            .padding(top = 42.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
         Text(text = formattedDays, style = textStyle)
@@ -222,10 +226,10 @@ fun CustomMidNaviBar() {
     Column {
         LazyRow(
             modifier =
-                Modifier
-                    .padding(0.dp)
-                    .fillMaxWidth()
-                    .background(Color.White),
+            Modifier
+                .padding(0.dp)
+                .fillMaxWidth()
+                .background(Color.White),
         ) {
             items(shoes.size) { index ->
                 val isSelected = index == selectedIndex
@@ -235,11 +239,11 @@ fun CustomMidNaviBar() {
                 if (index == 0) {
                     Row(
                         modifier =
-                            Modifier
-                                .padding(top = 10.dp)
-                                .padding(start = 14.dp)
-                                .padding(end = 6.dp)
-                                .clickable { selectedIndex = 0 },
+                        Modifier
+                            .padding(top = 10.dp)
+                            .padding(start = 14.dp)
+                            .padding(end = 6.dp)
+                            .clickable { selectedIndex = 0 },
                     ) {
                         Spacer(modifier = Modifier.width(4.dp))
 
@@ -251,31 +255,31 @@ fun CustomMidNaviBar() {
 
                         Box(
                             modifier =
-                                Modifier
-                                    .align(Alignment.CenterVertically)
-                                    .padding(start = 9.dp)
-                                    .width(1.dp)
-                                    .height(23.dp)
-                                    .background(colorResource(id = R.color.gray04)),
+                            Modifier
+                                .align(Alignment.CenterVertically)
+                                .padding(start = 9.dp)
+                                .width(1.dp)
+                                .height(23.dp)
+                                .background(colorResource(id = R.color.gray04)),
                         )
                     }
                 } else {
                     Column(
                         modifier =
-                            Modifier
-                                .padding(top = 10.dp)
-                                .padding(bottom = 10.dp)
-                                .padding(end = 6.dp)
-                                .clickable { selectedIndex = index },
+                        Modifier
+                            .padding(top = 10.dp)
+                            .padding(bottom = 10.dp)
+                            .padding(end = 6.dp)
+                            .clickable { selectedIndex = index },
                     ) {
                         Text(
                             text = shoes[index],
                             style = body5Regular.copy(color = textColor),
                             modifier =
-                                Modifier
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(backgroundColor)
-                                    .padding(10.dp),
+                            Modifier
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(backgroundColor)
+                                .padding(10.dp),
                         )
                     }
                 }
@@ -284,8 +288,9 @@ fun CustomMidNaviBar() {
     }
 }
 
+
 @Composable
-fun ShoesItem() {
+fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto) {
     var isIconChanged by remember { mutableStateOf(false) }
 
     val iconResource =
@@ -298,9 +303,9 @@ fun ShoesItem() {
     Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
         Box(
             modifier =
-                Modifier
-                    .size(width = 161.dp, height = 108.dp)
-                    .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp)),
+            Modifier
+                .size(width = 161.dp, height = 108.dp)
+                .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp)),
         ) {
             Row(
                 modifier = Modifier.padding(8.dp),
@@ -308,23 +313,23 @@ fun ShoesItem() {
                 Column(modifier = Modifier.padding(3.dp)) {
                     Box(
                         modifier =
-                            Modifier
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(Color.White)
-                                .size(width = 50.dp, height = 15.dp)
-                                .border(
-                                    width = 1.dp,
-                                    color = colorResource(id = R.color.gray03),
-                                    shape = RoundedCornerShape(10.dp),
-                                ),
+                        Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color.White)
+                            .size(width = 50.dp, height = 15.dp)
+                            .border(
+                                width = 1.dp,
+                                color = colorResource(id = R.color.gray03),
+                                shape = RoundedCornerShape(10.dp),
+                            ),
                         contentAlignment = Alignment.Center,
                     ) {
                         Box(
                             modifier =
-                                Modifier
-                                    .clip(RoundedCornerShape(9.dp))
-                                    .background(Color.White)
-                                    .fillMaxSize(),
+                            Modifier
+                                .clip(RoundedCornerShape(9.dp))
+                                .background(Color.White)
+                                .fillMaxSize(),
                             contentAlignment = Alignment.Center,
                         ) {
                             Text(
@@ -340,32 +345,31 @@ fun ShoesItem() {
                     painter = painterResource(id = iconResource),
                     contentDescription = null,
                     modifier =
-                        Modifier.clickable {
-                            isIconChanged = !isIconChanged
-                        },
+                    Modifier.clickable {
+                        isIconChanged = !isIconChanged
+                    },
                 )
             }
             Image(
                 painter = painterResource(id = R.drawable.img_view1_swipe_dummy),
                 contentDescription = null,
                 modifier =
-                    Modifier
-                        .size(width = 108.dp, height = 108.dp)
-                        .align(Alignment.Center),
+                Modifier
+                    .size(width = 108.dp, height = 108.dp)
+                    .align(Alignment.Center),
             )
         }
         Column(modifier = Modifier.fillMaxWidth()) {
             Spacer(modifier = Modifier.height(15.dp))
-            Text(text = "NIKE", style = body4Bold, color = colorResource(id = R.color.black02))
+            Text(text = releaseProductResponseDto.brandTitle, style = body4Bold, color = colorResource(id = R.color.black02))
             Spacer(modifier = Modifier.height(6.dp))
-            Text(text = "Nike Dunk Low SP Venner", style = body5Regular, color = colorResource(id = R.color.black02))
+            Text(text = releaseProductResponseDto.title, style = body5Regular, color = colorResource(id = R.color.black02))
         }
     }
 }
 
-@Preview
 @Composable
-fun ShoesList() {
+fun ShoesList(shoesList: List<ResponseReleaseProductDto.ReleaseProductResponseDto>) {
     Column {
         val items = List(12) { it }
         for (i in items.indices step 2) {
@@ -373,9 +377,9 @@ fun ShoesList() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesItem()
+                ShoesItem(shoesList[i])
                 if (i + 1 < items.size) {
-                    ShoesItem()
+                    ShoesItem(shoesList[i + 1])
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))
@@ -394,9 +398,14 @@ fun CustomShoesText(
         style = body5Regular,
         color = textColor,
         modifier =
-            Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .background(backgroundColor)
-                .padding(10.dp),
+        Modifier
+            .clip(RoundedCornerShape(10.dp))
+            .background(backgroundColor)
+            .padding(10.dp),
     )
 }
+
+
+
+
+
