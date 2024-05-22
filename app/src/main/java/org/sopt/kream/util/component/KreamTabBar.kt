@@ -154,6 +154,9 @@ fun KreamTab(
     textColor: Color = Black02,
     position: Int,
     selected: Boolean,
+    paddingTop: Int = 24,
+    paddingBottom: Int = 4,
+    paddingHorizontal: Int = 12,
     onClick: (Int) -> Unit = {},
 ) {
     Text(
@@ -162,7 +165,7 @@ fun KreamTab(
         color = textColor,
         modifier =
             Modifier
-                .padding(bottom = 4.dp, top = 24.dp, start = 12.dp, end = 12.dp)
+                .padding(bottom = paddingBottom.dp, top = paddingTop.dp, start = paddingHorizontal.dp, end = paddingHorizontal.dp)
                 .wrapContentWidth(Alignment.CenterHorizontally)
                 .noRippleClickable(
                     onClick = { onClick(position) },
@@ -177,9 +180,9 @@ fun KreamTabBarPreview() {
 
     val items =
         listOf(
-            stringResource(R.string.top_bar_main_recommend),
-            stringResource(R.string.top_bar_main_ranking),
-            stringResource(R.string.top_bar_main_information),
+            stringResource(R.string.home_tap_bar_recommend),
+            stringResource(R.string.home_tap_bar_ranking),
+            stringResource(R.string.home_tap_bar_information),
         )
 
     KreamTabBar(selectedTabPosition = selectedTabPosition) {

@@ -9,16 +9,40 @@
     <string name="bnv_my">MY</string>
 
     <!-- searchbar -->
-    <string name="search_bar_label">"브랜드, 상품, 프로필, 태그 등"</string>
+    <string name="search_bar_label">브랜드, 상품, 프로필, 태그 등</string>
 
-    <!-- top bar main -->
-    <string name="top_bar_main_md">"서재페MD"</string>
-    <string name="top_bar_main_recommend">추천</string>
-    <string name="top_bar_main_ranking">랭킹</string>
-    <string name="top_bar_main_information">발매정보</string>
-    <string name="top_bar_main_luxury">럭셔리</string>
-    <string name="top_bar_main_male">남성</string>
-    <string name="top_bar_main_female">여성</string>
-    <string name="top_bar_main_found">발견</string>
-    <string name="top_bar_main_event">이벤트</string>
+    <!-- home tap bar -->
+    <string name="home_tap_bar_md">서재페MD</string>
+    <string name="home_tap_bar_recommend">추천</string>
+    <string name="home_tap_bar_ranking">랭킹</string>
+    <string name="home_tap_bar_information">발매정보</string>
+    <string name="home_tap_bar_luxury">럭셔리</string>
+    <string name="home_tap_bar_male">남성</string>
+    <string name="home_tap_bar_female">여성</string>
+    <string name="home_tap_bar_found">발견</string>
+    <string name="home_tap_bar_event">이벤트</string>
+
+    <!-- search -->
+    <string name="search_product">상품 7,928</string>
+    <string name="search_popularity">인기순</string>
+    <string name="search_related_search_word">연관검색어</string>
+    <string name="search_search_result">검색결과</string>
+    <string name="search_details">더보기</string>
+
+    <!-- search tap bar -->
+    <string name="search_tap_bar_product">상품</string>
+    <string name="search_tap_bar_style">스타일</string>
+    <string name="search_tap_bar_profile">프로필</string>
+
+    <!-- search chip -->
+    <string name="search_chip_fast_delivery">빠른배송</string>
+    <string name="search_chip_category">카테고리</string>
+    <string name="search_chip_gender">성별</string>
+    <string name="search_chip_color">색상</string>
+    <string name="search_chip_brand">브랜드</string>
+    <string name="search_chip_size">사이즈</string>
+    <string name="search_chip_benefit_price">혜택/가격</string>
+
+    <!-- item search find product -->
+    <string name="item_search_find_product_instant_purchase_price">즉시구매가</string>
 </resources>
