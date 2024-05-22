@@ -5,29 +5,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.ItemRecommendAdBinding
 
-class RecommendAdViewPagerAdapter(val data: List<Int>) : RecyclerView.Adapter<RecommendAdViewPagerAdapter.ViewHolder>() {
-    val item = data
-
-    inner class ViewHolder(private val binding: ItemRecommendAdBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Int) {
-            binding.ivRecommendAd.setImageResource(item)
-        }
-    }
+class RecommendAdViewPagerAdapter(private val data: List<Int>) : RecyclerView.Adapter<RecommendAdvertisementViewHolder>() {
+    private val item = data
 
     override fun getItemCount(): Int = item.size
 
     override fun onBindViewHolder(
-        holder: ViewHolder,
+        holder: RecommendAdvertisementViewHolder,
         position: Int,
     ) {
-        holder.bind(data[position])
+        holder.onBind(item[position])
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ViewHolder {
+    ): RecommendAdvertisementViewHolder {
         val binding = ItemRecommendAdBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+        return RecommendAdvertisementViewHolder(binding)
     }
 }

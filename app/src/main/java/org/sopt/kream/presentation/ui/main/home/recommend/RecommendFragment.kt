@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentRecommendBinding
+import org.sopt.kream.presentation.ui.type.RecommendAdvertisementType
 import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
 import org.sopt.kream.util.base.BindingFragment
 
@@ -29,7 +30,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun initRecommendAds() {
-        binding.vpRecommendAd.adapter = RecommendAdViewPagerAdapter(recommendViewModel.getAdImage())
+        binding.vpRecommendAd.adapter = RecommendAdViewPagerAdapter(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
         TabLayoutMediator(binding.tabKreamIndicator.tabKreamIndicator, binding.vpRecommendAd) { tab, position ->
         }.attach()
     }

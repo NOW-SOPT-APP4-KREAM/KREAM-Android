@@ -6,14 +6,6 @@ import org.sopt.kream.domain.model.RecommendForYouProductModel
 import org.sopt.kream.domain.model.RecommendJustDroppedProductModel
 
 class RecommendViewModel : ViewModel() {
-    private val adImageList: List<Int> =
-        listOf(
-            R.drawable.img_recommend_ad_01,
-            R.drawable.img_recommend_ad_02,
-            R.drawable.img_recommend_ad_03,
-            R.drawable.img_recommend_ad_04,
-        )
-
     private val forYouList: List<RecommendForYouProductModel> =
         listOf(
             RecommendForYouProductModel(
@@ -194,10 +186,6 @@ class RecommendViewModel : ViewModel() {
                 id = "@zzz.myam",
             ),
         )
-
-    fun getAdImage(): List<Int> {
-        return adImageList
-    }
 
     fun getForYouList(): List<RecommendForYouProductModel> {
         return forYouList
