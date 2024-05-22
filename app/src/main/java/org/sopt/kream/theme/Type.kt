@@ -130,9 +130,11 @@ val body8SemiBold =
         fontSize = 8.sp,
     )
 
-val robotoBold = TextStyle( fontFamily = FontFamily(Font(R.font.roboto_bold)),
-    fontSize = 31.sp)
-
+val robotoBold =
+    TextStyle(
+        fontFamily = FontFamily(Font(R.font.roboto_bold)),
+        fontSize = 31.sp,
+    )
 
 val notosanskr =
     FontFamily(
@@ -148,4 +150,4 @@ val notosanskr =
     )
 
 val Roboto =
-    Font(R.font.roboto_bold,FontWeight.Bold,FontStyle.Normal)
+    Font(R.font.roboto_bold, FontWeight.Bold, FontStyle.Normal)
