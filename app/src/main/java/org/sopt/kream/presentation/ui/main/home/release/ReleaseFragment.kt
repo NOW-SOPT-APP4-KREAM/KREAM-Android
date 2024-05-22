@@ -50,6 +50,7 @@ import org.sopt.kream.databinding.FragmentReleaseBinding
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
+import org.sopt.kream.theme.robotoBold
 import org.sopt.kream.util.base.BindingFragment
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
@@ -128,14 +129,14 @@ fun CustomViewPager(advertisements: List<Advertisement>, targetTimeInMillis: Lon
                     .aspectRatio(1f),
             )
             if (page == 0) {
-                CountdownTimer(targetTimeInMillis)
-            }
+                CountdownTimer(targetTimeInMillis, textStyle = robotoBold)            }
         }
     }
 }
 
+
 @Composable
-fun CountdownTimer(targetTimeInMillis: Long) {
+fun CountdownTimer(targetTimeInMillis: Long, textStyle: androidx.compose.ui.text.TextStyle) {
     var remainingTime by remember { mutableStateOf(calculateRemainingTime(targetTimeInMillis)) }
 
     LaunchedEffect(Unit) {
@@ -150,19 +151,24 @@ fun CountdownTimer(targetTimeInMillis: Long) {
     val minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60
     val seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60
 
+    val formattedDays = String.format("%02d", days)
+    val formattedHours = String.format("%02d", hours)
+    val formattedMinutes = String.format("%02d", minutes)
+    val formattedSeconds = String.format("%02d", seconds)
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 56.dp),
+            .padding(top = 42.dp),
         horizontalArrangement = Arrangement.Center
     ) {
-        Text(text = "$days")
-        Spacer(modifier = Modifier.width(12.dp))
-        Text(text = "$hours")
-        Spacer(modifier = Modifier.width(12.dp))
-        Text(text = "$minutes")
-        Spacer(modifier = Modifier.width(12.dp))
-        Text(text = "$seconds")
+        Text(text = formattedDays, style = textStyle)
+        Spacer(modifier = Modifier.width(23.dp))
+        Text(text = formattedHours, style = textStyle)
+        Spacer(modifier = Modifier.width(23.dp))
+        Text(text = formattedMinutes, style = textStyle)
+        Spacer(modifier = Modifier.width(23.dp))
+        Text(text = formattedSeconds, style = textStyle)
     }
 }
 
@@ -170,7 +176,6 @@ fun calculateRemainingTime(targetTimeInMillis: Long): Long {
     val currentTimeInMillis = System.currentTimeMillis()
     return targetTimeInMillis - currentTimeInMillis
 }
-
 @Composable
 fun CustomAdvertisement(
     imgResource: Int,
