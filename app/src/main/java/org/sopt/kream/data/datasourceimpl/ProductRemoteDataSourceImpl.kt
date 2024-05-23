@@ -10,5 +10,9 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
     private val productService = ServicePool.productService
 
     override suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto> = productService.getSearchProduct(findName = findName)
-    override suspend fun deleteScrap(memberId: Int, productId: Int): BaseResponse<Unit> = productService.deleteScrap(memberId, RequestDeleteScrapDto(productId))
+
+    override suspend fun deleteScrap(
+        memberId: Int,
+        productId: Int,
+    ): BaseResponse<Unit> = productService.deleteScrap(memberId, RequestDeleteScrapDto(productId))
 }

@@ -6,7 +6,6 @@ import org.sopt.kream.data.datasourceimpl.DummyRemoteDataSourceImpl
 import org.sopt.kream.data.datasourceimpl.ProductRemoteDataSourceImpl
 import org.sopt.kream.data.repository.DummyRepositoryImpl
 import org.sopt.kream.data.repository.ProductRepositoryImpl
-import org.sopt.kream.domain.repository.ProductRepository
 import org.sopt.kream.presentation.ui.dummy.DummyViewModel
 import org.sopt.kream.presentation.ui.main.home.release.ReleaseProductViewModel
 import org.sopt.kream.presentation.ui.search.SearchViewModel

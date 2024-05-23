@@ -9,10 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.kream.data.ServicePool
-import org.sopt.kream.data.model.request.RequestDeleteScrapDto
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.domain.repository.ProductRepository
-import org.sopt.kream.util.base.BaseResponse
 import org.sopt.kream.util.view.UiState
 
 class ReleaseProductViewModel(
@@ -29,11 +27,9 @@ class ReleaseProductViewModel(
     val getReleaseProductState get() = _getReleaseProductState.asStateFlow()
     val deleteScrapState get() = _deleteScrapState.asStateFlow()
 
-    private val _productList =   MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
+    private val _productList = MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
 
     val productList get() = _productList.asStateFlow()
-
-
 
     fun getReleaseProduct() {
         viewModelScope.launch {
@@ -47,7 +43,8 @@ class ReleaseProductViewModel(
             }
         }
     }
-    fun deleteScrap(productIndex:Int){
+
+    fun deleteScrap(productIndex: Int) {
         Log.d("okhttp", "hi 1")
         viewModelScope.launch {
             repository.deleteScrap(2, productIndex)
@@ -60,7 +57,6 @@ class ReleaseProductViewModel(
                 }
         }
     }
-
 
     private fun generateDummyAdvertisement(): List<Advertisement> {
         return AdvertisementType.entries.mapIndexed { index, adEnum ->

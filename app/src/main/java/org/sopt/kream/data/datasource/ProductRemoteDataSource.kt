@@ -5,5 +5,9 @@ import org.sopt.kream.util.base.BaseResponse
 
 interface ProductRemoteDataSource {
     suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto>
-    suspend fun deleteScrap(memberId: Int, productId: Int): BaseResponse<Unit>
+
+    suspend fun deleteScrap(
+        memberId: Int,
+        productId: Int,
+    ): BaseResponse<Unit>
 }

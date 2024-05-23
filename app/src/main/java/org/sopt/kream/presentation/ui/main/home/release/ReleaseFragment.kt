@@ -1,7 +1,6 @@
 package org.sopt.kream.presentation.ui.main.home.release
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -68,7 +67,7 @@ import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleaseBinding.inflate(it) }) {
-    private val viewModel : ReleaseProductViewModel by viewModels { ViewModelFactory() }
+    private val viewModel: ReleaseProductViewModel by viewModels { ViewModelFactory() }
 
     override fun onViewCreated(
         view: View,
@@ -87,23 +86,19 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
                 else -> Unit
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-
-
-
     }
 }
 
 @Composable
 fun UiStateISSuccess(
-    viewModel: ReleaseProductViewModel
+    viewModel: ReleaseProductViewModel,
 ) {
     val advertisement by remember { mutableStateOf(viewModel.advertisements) }
     Box(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
@@ -299,7 +294,11 @@ fun CustomMidNaviBar() {
 }
 
 @Composable
-fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto,productIndex:Int,viewModel: ReleaseProductViewModel) {
+fun ShoesItem(
+    releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto,
+    productIndex: Int,
+    viewModel: ReleaseProductViewModel,
+) {
     var isIconChanged by remember { mutableStateOf(releaseProductResponseDto.isScrap) }
     val iconResource =
         if (isIconChanged) {
@@ -352,10 +351,10 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
                     modifier =
                         Modifier.clickable {
                             isIconChanged = !isIconChanged
-                            if (releaseProductResponseDto.isScrap){
-                                viewModel.deleteScrap(productIndex)
-                            }
-
+                            if (releaseProductResponseDto.isScrap)
+                                {
+                                    viewModel.deleteScrap(productIndex)
+                                }
                         },
                 )
             }
@@ -370,7 +369,7 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
 }
 
 @Composable
-fun ShoesList(viewModel:ReleaseProductViewModel) {
+fun ShoesList(viewModel: ReleaseProductViewModel) {
     val shoesList = viewModel.productList.collectAsState().value
     Column {
         val items = List(12) { it }
@@ -379,9 +378,9 @@ fun ShoesList(viewModel:ReleaseProductViewModel) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesItem( shoesList[i],i+1, viewModel)
+                ShoesItem(shoesList[i], i + 1, viewModel)
                 if (i + 1 < items.size) {
-                    ShoesItem(shoesList[i + 1],i+2,viewModel)
+                    ShoesItem(shoesList[i + 1], i + 2, viewModel)
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))

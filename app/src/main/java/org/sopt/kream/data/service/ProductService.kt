@@ -5,7 +5,6 @@ import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse
 import retrofit2.http.Body
-import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.HTTP
 import retrofit2.http.Header
