@@ -22,7 +22,7 @@ import org.sopt.kream.util.view.UiState
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
     private val recommendViewModel: RecommendViewModel by viewModels { ViewModelFactory() }
     private var memberId: Int = 1
-    private lateinit var advertisementAdapter: RecommendAdViewPagerAdapter
+    private lateinit var advertisementAdapter: RecommendAdvertisementViewPagerAdapter
     private lateinit var circleMenuAdapter: RecommendCircleMenuAdapter
     private lateinit var forYouAdapter: RecommendForYouViewPagerAdapter
     private lateinit var justDroppedAdapter: RecommendJustDroppedAdapter
@@ -41,7 +41,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun initAdapter() {
-        advertisementAdapter = RecommendAdViewPagerAdapter(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
+        advertisementAdapter = RecommendAdvertisementViewPagerAdapter(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
         circleMenuAdapter = RecommendCircleMenuAdapter(RecommendCircleMenuType.entries)
         forYouAdapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, ::navigateToSearch)
         justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail)
@@ -49,7 +49,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
         with(binding) {
             vpRecommendAdvertisement.adapter = advertisementAdapter
-            TabLayoutMediator(tabKreamIndicator.tabKreamIndicator, vpRecommendAdvertisement) { tab, position ->
+            TabLayoutMediator(includeKreamIndicator.tabKreamIndicator, vpRecommendAdvertisement) { tab, position ->
             }.attach()
             rvRecommendCircleMenu.adapter = circleMenuAdapter
             vpRecommendForYouContent.adapter = forYouAdapter

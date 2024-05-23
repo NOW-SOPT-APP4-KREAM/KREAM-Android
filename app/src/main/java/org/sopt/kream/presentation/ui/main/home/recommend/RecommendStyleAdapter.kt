@@ -8,7 +8,7 @@ import org.sopt.kream.presentation.model.InstagramModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendStyleAdapter() : ListAdapter<
-        InstagramModel,
+    InstagramModel,
     RecommendStyleViewHolder,
     >(
     ItemDiffCallback<InstagramModel>(
