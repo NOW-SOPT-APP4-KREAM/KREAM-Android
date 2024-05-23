@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.kream.R
-import org.sopt.kream.domain.model.InstagramModel
 import org.sopt.kream.domain.model.RecommendProductModel
 import org.sopt.kream.domain.repository.ProductRepository
+import org.sopt.kream.presentation.model.InstagramModel
 import org.sopt.kream.util.view.UiState
 
 class RecommendViewModel(

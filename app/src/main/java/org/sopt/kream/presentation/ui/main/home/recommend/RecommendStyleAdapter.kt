@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import org.sopt.kream.databinding.ItemRecommendStyleBinding
-import org.sopt.kream.domain.model.InstagramModel
+import org.sopt.kream.presentation.model.InstagramModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendStyleAdapter() : ListAdapter<
-    InstagramModel,
+        InstagramModel,
     RecommendStyleViewHolder,
     >(
     ItemDiffCallback<InstagramModel>(

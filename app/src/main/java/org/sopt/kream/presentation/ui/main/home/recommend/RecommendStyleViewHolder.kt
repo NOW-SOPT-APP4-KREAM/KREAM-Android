@@ -2,7 +2,7 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.ItemRecommendStyleBinding
-import org.sopt.kream.domain.model.InstagramModel
+import org.sopt.kream.presentation.model.InstagramModel
 
 class RecommendStyleViewHolder(
     private val binding: ItemRecommendStyleBinding,
