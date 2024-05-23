@@ -29,8 +29,8 @@ enum class RecommendCircleMenuType(
     CHANEL(
         menu = R.string.type_circle_menu_chanel,
     ),
-    APRIL(
-        menu = R.string.type_circle_menu_april,
+    MAY(
+        menu = R.string.type_circle_menu_may,
     ),
     SONY_SUPREME(
         menu = R.string.type_circle_menu_sony_supreme,
