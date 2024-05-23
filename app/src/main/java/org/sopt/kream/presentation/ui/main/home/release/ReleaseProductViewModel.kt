@@ -35,18 +35,17 @@ class ReleaseProductViewModel : ViewModel() {
         MutableStateFlow<UiState<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>>(UiState.Empty)
     val getReleaseProductState get() = _getReleaseProductState.asStateFlow()
 
-  fun getReleaseProduct() {
+    fun getReleaseProduct() {
         viewModelScope.launch {
             runCatching {
                 authService.getReleaseProduct(2)
             }.onSuccess {
                 _getReleaseProductState.value = UiState.Success(it.data.releaseProducts)
-            }.onFailure {exception: Throwable ->
+            }.onFailure { exception: Throwable ->
                 _getReleaseProductState.value = UiState.Error(exception.message)
             }
         }
     }
-
 
     private fun generateDummyAdvertisement(): List<Advertisement> {
         return AdvertisementType.entries.mapIndexed { index, adEnum ->
@@ -57,4 +56,3 @@ class ReleaseProductViewModel : ViewModel() {
         }
     }
 }
-

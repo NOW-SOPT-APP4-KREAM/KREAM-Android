@@ -83,23 +83,25 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
                 else -> Unit
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
     }
 }
 
 @Composable
-fun UiStateISSuccess(uiState: List<ResponseReleaseProductDto.ReleaseProductResponseDto>, advertisements: List<Advertisement>) {
+fun UiStateISSuccess(
+    uiState: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
+    advertisements: List<Advertisement>,
+) {
     val advertisement by remember { mutableStateOf(advertisements) }
     Box(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
-            Modifier
-                .fillMaxWidth(),
+                Modifier
+                    .fillMaxWidth(),
         ) {
             val targetDate =
                 Calendar.getInstance().apply {
@@ -136,9 +138,9 @@ fun CustomViewPager(
             CustomAdvertisement(
                 imgResource = advertisement.imgResource,
                 modifier =
-                Modifier
-                    .fillMaxSize()
-                    .aspectRatio(1f),
+                    Modifier
+                        .fillMaxSize()
+                        .aspectRatio(1f),
             )
             if (page == 0) {
                 CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
@@ -173,9 +175,9 @@ fun CountdownTimer(
 
     Row(
         modifier =
-        Modifier
-            .fillMaxWidth()
-            .padding(top = 42.dp),
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 42.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
         Text(text = formattedDays, style = textStyle)
@@ -227,10 +229,10 @@ fun CustomMidNaviBar() {
     Column {
         LazyRow(
             modifier =
-            Modifier
-                .padding(0.dp)
-                .fillMaxWidth()
-                .background(Color.White),
+                Modifier
+                    .padding(0.dp)
+                    .fillMaxWidth()
+                    .background(Color.White),
         ) {
             items(shoes.size) { index ->
                 val isSelected = index == selectedIndex
@@ -240,11 +242,11 @@ fun CustomMidNaviBar() {
                 if (index == 0) {
                     Row(
                         modifier =
-                        Modifier
-                            .padding(top = 10.dp)
-                            .padding(start = 14.dp)
-                            .padding(end = 6.dp)
-                            .clickable { selectedIndex = 0 },
+                            Modifier
+                                .padding(top = 10.dp)
+                                .padding(start = 14.dp)
+                                .padding(end = 6.dp)
+                                .clickable { selectedIndex = 0 },
                     ) {
                         Spacer(modifier = Modifier.width(4.dp))
 
@@ -256,31 +258,31 @@ fun CustomMidNaviBar() {
 
                         Box(
                             modifier =
-                            Modifier
-                                .align(Alignment.CenterVertically)
-                                .padding(start = 9.dp)
-                                .width(1.dp)
-                                .height(23.dp)
-                                .background(colorResource(id = R.color.gray04)),
+                                Modifier
+                                    .align(Alignment.CenterVertically)
+                                    .padding(start = 9.dp)
+                                    .width(1.dp)
+                                    .height(23.dp)
+                                    .background(colorResource(id = R.color.gray04)),
                         )
                     }
                 } else {
                     Column(
                         modifier =
-                        Modifier
-                            .padding(top = 10.dp)
-                            .padding(bottom = 10.dp)
-                            .padding(end = 6.dp)
-                            .clickable { selectedIndex = index },
+                            Modifier
+                                .padding(top = 10.dp)
+                                .padding(bottom = 10.dp)
+                                .padding(end = 6.dp)
+                                .clickable { selectedIndex = index },
                     ) {
                         Text(
                             text = shoes[index],
                             style = body5Regular.copy(color = textColor),
                             modifier =
-                            Modifier
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(backgroundColor)
-                                .padding(10.dp),
+                                Modifier
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(backgroundColor)
+                                    .padding(10.dp),
                         )
                     }
                 }
@@ -291,7 +293,6 @@ fun CustomMidNaviBar() {
 
 @Composable
 fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto) {
-
     var isIconChanged by remember { mutableStateOf(false) }
 
     val iconResource =
@@ -300,7 +301,6 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
         } else {
             R.drawable.ic_saved_1_off_24
         }
-
 
     var cardState by remember {
         mutableStateOf("")
@@ -318,38 +318,37 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
         cardColor = R.color.red01
     } else {
         cardState = "NULL"
-        stateVisible=0f
+        stateVisible = 0f
         cardColor = R.color.gray06
     }
     Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
         Box(
             modifier =
-            Modifier
-                .size(width = 161.dp, height = 108.dp)
-                .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
+                Modifier
+                    .size(width = 161.dp, height = 108.dp)
+                    .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
         ) {
             Image(
                 painter = rememberAsyncImagePainter(releaseProductResponseDto.thumbnailUrl),
                 contentDescription = null,
                 modifier =
-                Modifier
-                    .size(width = 108.dp, height = 108.dp)
-                    .align(Alignment.Center),
+                    Modifier
+                        .size(width = 108.dp, height = 108.dp)
+                        .align(Alignment.Center),
             )
             Row(
                 modifier = Modifier.padding(8.dp),
             ) {
-                DrawCard(cardState,stateVisible)
+                DrawCard(cardState, stateVisible)
                 Icon(
                     painter = painterResource(id = iconResource),
                     contentDescription = null,
                     modifier =
-                    Modifier.clickable {
-                        isIconChanged = !isIconChanged
-                    },
+                        Modifier.clickable {
+                            isIconChanged = !isIconChanged
+                        },
                 )
             }
-
         }
         Column(modifier = Modifier.fillMaxWidth()) {
             Spacer(modifier = Modifier.height(15.dp))
@@ -390,40 +389,44 @@ fun CustomShoesText(
         style = body5Regular,
         color = textColor,
         modifier =
-        Modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(backgroundColor)
-            .padding(10.dp),
+            Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(backgroundColor)
+                .padding(10.dp),
     )
 }
 
-
-
 @Composable
-fun DrawCard(cardState: String, stateVisible: Float) {
-    if (cardState=="UPDATE") {
-        Column(modifier = Modifier
-            .padding(3.dp)
-            .alpha(stateVisible)) {
+fun DrawCard(
+    cardState: String,
+    stateVisible: Float,
+) {
+    if (cardState == "UPDATE") {
+        Column(
+            modifier =
+                Modifier
+                    .padding(3.dp)
+                    .alpha(stateVisible),
+        ) {
             Box(
                 modifier =
-                Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.White)
-                    .size(width = 50.dp, height = 15.dp)
-                    .border(
-                        width = 1.dp,
-                        color = colorResource(id = R.color.gray03),
-                        shape = RoundedCornerShape(10.dp),
-                    ),
+                    Modifier
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.White)
+                        .size(width = 50.dp, height = 15.dp)
+                        .border(
+                            width = 1.dp,
+                            color = colorResource(id = R.color.gray03),
+                            shape = RoundedCornerShape(10.dp),
+                        ),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
                     modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(9.dp))
-                        .background(Color.White)
-                        .fillMaxSize(),
+                        Modifier
+                            .clip(RoundedCornerShape(9.dp))
+                            .background(Color.White)
+                            .fillMaxSize(),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
@@ -435,42 +438,43 @@ fun DrawCard(cardState: String, stateVisible: Float) {
             }
         }
         Spacer(modifier = Modifier.width(69.dp))
-    }else{
-        Column(modifier = Modifier
-            .padding(3.dp)
-            .alpha(stateVisible)) {
-            Box(
+    } else
+        {
+            Column(
                 modifier =
-                Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.White)
-                    .size(width = 35.dp, height = 15.dp)
-                    .border(
-                        width = 1.dp,
-                        color = colorResource(id = R.color.red02),
-                        shape = RoundedCornerShape(10.dp),
-                    ),
-                contentAlignment = Alignment.Center,
+                    Modifier
+                        .padding(3.dp)
+                        .alpha(stateVisible),
             ) {
                 Box(
                     modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(9.dp))
-                        .background(colorResource(id = R.color.red02))
-                        .fillMaxSize(),
+                        Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color.White)
+                            .size(width = 35.dp, height = 15.dp)
+                            .border(
+                                width = 1.dp,
+                                color = colorResource(id = R.color.red02),
+                                shape = RoundedCornerShape(10.dp),
+                            ),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Text(
-                        text = cardState,
-                        style = body6Regular,
-                        color = Color.White,
-                    )
+                    Box(
+                        modifier =
+                            Modifier
+                                .clip(RoundedCornerShape(9.dp))
+                                .background(colorResource(id = R.color.red02))
+                                .fillMaxSize(),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = cardState,
+                            style = body6Regular,
+                            color = Color.White,
+                        )
+                    }
                 }
             }
+            Spacer(modifier = Modifier.width(84.dp))
         }
-        Spacer(modifier = Modifier.width(84.dp))
-    }
 }
-
-
-
