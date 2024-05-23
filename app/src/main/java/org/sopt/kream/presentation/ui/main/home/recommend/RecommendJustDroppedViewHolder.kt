@@ -25,35 +25,16 @@ class RecommendJustDroppedViewHolder(
             tvJustDroppedProductName.text = recommendJustDroppedProductModel.engTitle
             tvJustDroppedProductPrice.text = recommendJustDroppedProductModel.price
             tvJustDroppedProductTransaction.text = recommendJustDroppedProductModel.transactionCount
-            ivJustDroppedProductScrap.setImageResource(
-                if (recommendJustDroppedProductModel.isScrap) {
-                    R.drawable.ic_saved_2_on_24
-                } else {
-                    R.drawable.ic_saved_2_off_24
-                },
-            )
-            tvJustDroppedProductCoupon.visibility =
-                if (recommendJustDroppedProductModel.isCoupon) {
-                    View.VISIBLE
-                } else {
-                    View.GONE
-                }
-            tvJustDroppedProductSave.visibility =
-                if (recommendJustDroppedProductModel.isSave) {
-                    View.VISIBLE
-                } else {
-                    View.GONE
-                }
-            tvJustDroppedProductFreeDeliver.visibility =
-                if (recommendJustDroppedProductModel.isFreeDeliver) {
-                    View.VISIBLE
-                } else {
-                    View.INVISIBLE
-                }
+            ivJustDroppedProductScrap.setImageResource(if (recommendJustDroppedProductModel.isScrap) R.drawable.ic_saved_2_on_24 else R.drawable.ic_saved_2_off_24,)
+            includeJustDroppedProductFastDelivery.tvFastDelivery.visibility = if(recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
+            includeJustDroppedProductFastDelivery.ivFastDelivery.visibility = if(recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
+            tvJustDroppedProductCoupon.visibility = if (recommendJustDroppedProductModel.isCoupon) View.VISIBLE else View.GONE
+            tvJustDroppedProductSave.visibility = if (recommendJustDroppedProductModel.isSave) View.VISIBLE else View.GONE
+            tvJustDroppedProductFreeDeliver.visibility = if (recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
         }
     }
 
-    fun initScrapClickListener(
+    private fun initScrapClickListener(
         isScrap: Boolean,
         productId: Int,
     ) {

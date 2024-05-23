@@ -17,6 +17,7 @@ import org.sopt.kream.presentation.common.ViewModelFactory
 import org.sopt.kream.presentation.ui.type.RecommendAdvertisementType
 import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
 import org.sopt.kream.util.base.BindingFragment
+import org.sopt.kream.util.chunkList
 import org.sopt.kream.util.view.UiState
 
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
@@ -67,7 +68,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                     is UiState.Success -> {
                         with(recommendProductState.data) {
                             forYouTotalPage = recommendForYouProducts.size / 6
-                            forYouAdapter.submitList(listOf(recommendForYouProducts))
+                            forYouAdapter.submitList(chunkList(recommendForYouProducts, FOR_YOU_SIZE))
                             justDroppedAdapter.submitList(recommendJustDroppedProducts)
                             styleAdapter.submitList(recommendViewModel.instagramList)
                         }
@@ -78,7 +79,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    fun setForYouPage() {
+    private fun setForYouPage() {
         with(binding) {
             tvRecommendForYouTotalPage.text = forYouTotalPage.toString()
             tvRecommendForYouCurrentPage.text = (vpRecommendForYouContent.currentItem + 1).toString()
@@ -86,7 +87,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun navigateToProductDetail(productId: Int) {
-        findNavController().navigate(R.id.action_recommend_to_product_detail, bundleOf(PRODUCT_ID to productId))
+        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(PRODUCT_ID to productId))
     }
 
     private fun navigateToSearch(searchKeyword: String) {
@@ -110,5 +111,6 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     companion object {
         const val PRODUCT_ID = "productId"
         const val SEARCH_WORD = "searchWord"
+        const val FOR_YOU_SIZE = 6
     }
 }
