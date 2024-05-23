@@ -438,43 +438,42 @@ fun DrawCard(
             }
         }
         Spacer(modifier = Modifier.width(69.dp))
-    } else
-        {
-            Column(
+    } else {
+        Column(
+            modifier =
+                Modifier
+                    .padding(3.dp)
+                    .alpha(stateVisible),
+        ) {
+            Box(
                 modifier =
                     Modifier
-                        .padding(3.dp)
-                        .alpha(stateVisible),
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.White)
+                        .size(width = 35.dp, height = 15.dp)
+                        .border(
+                            width = 1.dp,
+                            color = colorResource(id = R.color.red02),
+                            shape = RoundedCornerShape(10.dp),
+                        ),
+                contentAlignment = Alignment.Center,
             ) {
                 Box(
                     modifier =
                         Modifier
-                            .clip(RoundedCornerShape(10.dp))
-                            .background(Color.White)
-                            .size(width = 35.dp, height = 15.dp)
-                            .border(
-                                width = 1.dp,
-                                color = colorResource(id = R.color.red02),
-                                shape = RoundedCornerShape(10.dp),
-                            ),
+                            .clip(RoundedCornerShape(9.dp))
+                            .background(colorResource(id = R.color.red02))
+                            .fillMaxSize(),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Box(
-                        modifier =
-                            Modifier
-                                .clip(RoundedCornerShape(9.dp))
-                                .background(colorResource(id = R.color.red02))
-                                .fillMaxSize(),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = cardState,
-                            style = body6Regular,
-                            color = Color.White,
-                        )
-                    }
+                    Text(
+                        text = cardState,
+                        style = body6Regular,
+                        color = Color.White,
+                    )
                 }
             }
-            Spacer(modifier = Modifier.width(84.dp))
         }
+        Spacer(modifier = Modifier.width(84.dp))
+    }
 }
