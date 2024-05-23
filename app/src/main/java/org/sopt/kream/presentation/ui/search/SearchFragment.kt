@@ -22,6 +22,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
@@ -43,7 +44,8 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
     private lateinit var searchRelatedSearchWordAdapter: SearchRelatedSearchWordAdapter
     private lateinit var searchRelateRecommendProductAdapter: SearchRelateRecommendProductAdapter
     private lateinit var searchSearchFindProductAdapter: SearchSearchFindProductAdapter
-
+    private lateinit var rvSearchSearchFindProductListLayoutManager: GridLayoutManager
+    private lateinit var rvSearchSearchFindProductListSecondLayoutManager: GridLayoutManager
 
     override fun onViewCreated(
         view: View,
@@ -52,10 +54,13 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         super.onViewCreated(view, savedInstanceState)
 
         findName = getSearchWord()
+        rvSearchSearchFindProductListLayoutManager = GridLayoutManager(requireContext(), SPAN_COUNT_2)
+        rvSearchSearchFindProductListSecondLayoutManager = GridLayoutManager(requireContext(), SPAN_COUNT_2)
+        searchViewModel.getSearchProduct(findName = findName)
         initLayout()
         initAdapter()
-        searchViewModel.getSearchProduct(findName = findName)
         collectSearchProductState()
+        setIvSearchTopBarProductSortingClickListener()
     }
 
     private fun initLayout() {
@@ -94,6 +99,23 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
                     else -> Unit
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun setIvSearchTopBarProductSortingClickListener() {
+        binding.ivSearchTopBarProductSorting.setOnClickListener {
+            rvSearchSearchFindProductListLayoutManager.run {
+                spanCount = if (spanCount == SPAN_COUNT_2) SPAN_COUNT_3 else SPAN_COUNT_2
+            }
+
+            rvSearchSearchFindProductListSecondLayoutManager.run {
+                spanCount = if (spanCount == SPAN_COUNT_2) SPAN_COUNT_3 else SPAN_COUNT_2
+            }
+
+            with(binding) {
+                rvSearchSearchFindProductList.layoutManager = rvSearchSearchFindProductListLayoutManager
+                rvSearchSearchFindProductListSecond.layoutManager = rvSearchSearchFindProductListSecondLayoutManager
+            }
+        }
     }
 
     @Composable
@@ -145,5 +167,7 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
     companion object {
         const val DEFAULT_SELECTED_TAB_POSITION = 0
         const val PRODUCT_ID = "productId"
+        const val SPAN_COUNT_2 = 2
+        const val SPAN_COUNT_3 =3
     }
 }
