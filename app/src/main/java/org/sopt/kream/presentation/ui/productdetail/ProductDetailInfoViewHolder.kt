@@ -19,7 +19,7 @@ class ProductDetailInfoViewHolder(
             tvProductDetailInfoTitle.text = context.stringOf(productDetailInfoModel.productDetailInfoType.titleStringRes)
             tvProductDetailInfoContent.text = productDetailInfoModel.content
             tvProductDetailInfoAdditionalContent.text = productDetailInfoModel.additionalContent
-            ivProductDetailInfoAdditionalContent.visibility = if (productDetailInfoModel.additionalContent.isNullOrEmpty()) View.INVISIBLE else View.GONE
+            ivProductDetailInfoAdditionalContent.visibility = if (productDetailInfoModel.additionalContent.isNullOrEmpty()) View.INVISIBLE else View.VISIBLE
             (viewProductDetailInfo.layoutParams as? ViewGroup.MarginLayoutParams)?.run {
                 marginStart = productDetailInfoModel.productDetailInfoType.margin.toPx()
                 viewProductDetailInfo.layoutParams = this

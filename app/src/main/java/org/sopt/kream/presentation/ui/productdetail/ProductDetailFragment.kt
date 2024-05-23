@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import coil.load
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -29,6 +30,7 @@ class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ Fr
         productDetailViewModel.getProductDetail(getProductId() + 1)
         initLayout()
         initAdapter()
+        setIvProductDetailBack()
         collectProductDetailState()
     }
 
@@ -42,6 +44,12 @@ class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ Fr
     private fun initAdapter() {
         productDetailInfoAdapter = ProductDetailInfoAdapter()
         binding.rvProductDetail.adapter = productDetailInfoAdapter
+    }
+
+    private fun setIvProductDetailBack() {
+        binding.ivProductDetailBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun collectProductDetailState() {
