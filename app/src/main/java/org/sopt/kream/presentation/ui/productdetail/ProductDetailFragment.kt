@@ -2,7 +2,6 @@ package org.sopt.kream.presentation.ui.productdetail
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -19,7 +18,6 @@ import org.sopt.kream.presentation.ui.type.ProductDetailButtonType
 import org.sopt.kream.presentation.ui.type.ProductDetailInfoType
 import org.sopt.kream.util.base.BindingFragment
 import org.sopt.kream.util.component.KreamProductDetailStyleImageView
-import org.sopt.kream.util.context.colorOf
 import org.sopt.kream.util.view.UiState
 
 class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ FragmentProductDetailBinding.inflate(it) }) {
