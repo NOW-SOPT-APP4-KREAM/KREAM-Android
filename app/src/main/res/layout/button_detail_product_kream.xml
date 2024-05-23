@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_btn_detail_product_kream"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_border_radius_8"
+    android:backgroundTint="@color/red02">
+
+    <TextView
+        android:id="@+id/tv_btn_detail_product_kream_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="14dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body3.SemiBold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="구매" />
+
+    <View
+        android:id="@+id/view_btn_detail_product_kream_middle_bar"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/red04"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_btn_detail_product_kream_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_btn_detail_product_kream_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body5.SemiBold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/tv_btn_detail_product_kream_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_btn_detail_product_kream_middle_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="1,100,000원" />
+
+    <TextView
+        android:id="@+id/tv_btn_detail_product_kream_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/red03"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_btn_detail_product_kream_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_btn_detail_product_kream_price"
+        tools:text="즉시구매가" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

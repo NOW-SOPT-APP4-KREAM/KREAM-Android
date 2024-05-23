@@ -51,4 +51,6 @@
 
     <color name="green02">#00B856</color>
     <color name="green03">#41B979</color>
+
+    <color name="detail_foreground">#80000000</color>
 </resources>
