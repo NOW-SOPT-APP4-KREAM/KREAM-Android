@@ -41,7 +41,8 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nsv_product_detail"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_product_detail_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_product_detail_back">
@@ -67,7 +68,7 @@
             <ImageView
                 android:id="@+id/iv_product_detail_thumbnail"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:background="@color/yellow01"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,6 +157,19 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_product_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:clipToPadding="true"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_product_detail_size"
+                tools:listitem="@layout/item_product_detail_info" />
+
             <View
                 android:id="@+id/view_product_detail_info"
                 android:layout_width="0dp"
@@ -164,7 +178,7 @@
                 android:background="@color/gray06"
                 app:layout_constraintEnd_toEndOf="@id/gl_end"
                 app:layout_constraintStart_toStartOf="@id/gl_start"
-                app:layout_constraintTop_toBottomOf="@id/layout_product_detail_size" />
+                app:layout_constraintTop_toBottomOf="@id/rv_product_detail" />
 
             <TextView
                 android:id="@+id/tv_product_detail_additional_benefits"
@@ -440,16 +454,95 @@
                     app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_upload" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_product_detail_style"
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_first"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="3dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_product_detail_style_second"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_weight="2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_style"
-                app:spanCount="3" />
+                app:layout_constraintTop_toBottomOf="@id/tv_product_detail_style" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_second"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toTopOf="@id/iv_product_detail_style_third"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_first"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_first"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_third"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_product_detail_style_first"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_first"
+                app:layout_constraintStart_toStartOf="@+id/iv_product_detail_style_second"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_style_second" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_fourth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_product_detail_style_fifth"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_style_first" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_fifth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_product_detail_style_sixth"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_fourth"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_fourth" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_sixth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_fifth"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_fourth" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_seventh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_product_detail_style_eight"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_style_fourth" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_eight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toStartOf="@id/iv_product_detail_style_ninth"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_seventh"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_seventh" />
+
+            <org.sopt.kream.util.component.KreamProductDetailStyleImageView
+                android:id="@+id/iv_product_detail_style_ninth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_product_detail_style_eight"
+                app:layout_constraintTop_toTopOf="@id/iv_product_detail_style_seventh" />
 
             <TextView
                 android:id="@+id/tv_product_detail_style_more"
@@ -466,7 +559,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/gl_end"
                 app:layout_constraintStart_toStartOf="@id/gl_start"
-                app:layout_constraintTop_toBottomOf="@id/rv_product_detail_style" />
+                app:layout_constraintTop_toBottomOf="@id/iv_product_detail_style_seventh" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
