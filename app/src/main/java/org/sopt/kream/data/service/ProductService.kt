@@ -1,6 +1,7 @@
 package org.sopt.kream.data.service
 
 import org.sopt.kream.data.model.response.ResponseProductDetailDto
+import org.sopt.kream.data.model.response.ResponseRecommendProductDto
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse
@@ -35,4 +36,9 @@ interface ProductService {
     companion object {
         const val MEMBER_ID = 1
     }
+
+    @GET("product/recommend")
+    suspend fun getRecommendProduct(
+        @Header("memberId") memberId: Int,
+    ): BaseResponse<ResponseRecommendProductDto>
 }

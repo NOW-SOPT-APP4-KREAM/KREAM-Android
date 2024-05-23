@@ -94,4 +94,53 @@
     <string name="product_purchase">구매</string>
     <string name="product_sale">판매</string>
 
+    <!-- item search find product -->
+    <string name="item_search_find_product_instant_purchase_price">즉시구매가</string>
+
+    <string name="recommend_for_you_title">For You</string>
+    <string name="recommend_for_you_content">크리미님을 위해 준비해 봤어요.</string>
+    <string name="recommend_for_you_slash">/</string>
+    <string name="recommend_just_dropped_title">Just Dropped</string>
+    <string name="recommend_just_dropped_content">발매 상품</string>
+    <string name="recommend_style_title">애매한 날씨에도 폭룡적인 코디센스</string>
+
+    <!-- item recommend for you -->
+    <string name="item_recommend_for_you_see">내가 본</string>
+    <string name="item_recommend_for_you_recent">최근 본</string>
+    <string name="item_recommend_for_you_more_content">아디다스 스니커즈</string>
+    <string name="item_recommend_for_you_text">의</string>
+    <string name="item_recommend_for_you_more_recommend">추천 상품</string>
+
+    <!-- item recommend just dropped product -->
+    <string name="item_recommend_just_dropped_coupon">쿠폰</string>
+    <string name="item_recommend_just_dropped_save">적립</string>
+    <string name="item_recommend_just_dropped_free_deliver">무료배송</string>
+    <string name="item_recommend_instant_price">즉시 구매가</string>
+
+    <!-- for you bottom sheet -->
+    <string name="recommend_bottom_sheet_for_you_content">
+        개인별로 최근 본 상품의 데이터를 분석해 상품을 추천합니다.
+        \n&#8226; 추천 상품은 매시간마다 갱신됩니다.
+        \n&#8226; 상품 자체가 가지고 있는 다양한 특성을분석해 연관도 높은 상품을 추천합니다.
+    </string>
+    <string name="recommend_bottom_sheet_suggestion">Suggestion</string>
+    <string name="recommend_bottom_sheet_suggestion_content">
+        성별&#8226;연령대의 최근 데이터와 검색량을 수집하여 상품을 추천합니다.
+        \n&#8226; 추천 상품은 매시간마다 갱신됩니다.
+        \n&#8226; 인기 급상승은 성별•연령대별 조회, 관심, 거래량을 반영한 랭킹입니다.
+        \n&#8226; 키워드별 인기 상품은 특정 기간의 검색량을 반영한 랭킹입니다.
+    </string>
+
+    <!-- Circle Menu Type -->
+    <string name="type_circle_menu_kream_card">KREAM 카드</string>
+    <string name="type_circle_menu_kream_draw">크림 드로우</string>
+    <string name="type_circle_menu_man_recommend">남성 추천</string>
+    <string name="type_circle_menu_woman_recommend">여성 추천</string>
+    <string name="type_circle_menu_new_recommend">색다른 추천</string>
+    <string name="type_circle_menu_under_price">정가 아래</string>
+    <string name="type_circle_menu_spring_sale">스프링 세일!</string>
+    <string name="type_circle_menu_chanel">샤넬 최대 ~42%</string>
+    <string name="type_circle_menu_may">5월 혜택</string>
+    <string name="type_circle_menu_sony_supreme">소니&#38;슈프림 선물</string>
+
 </resources>
