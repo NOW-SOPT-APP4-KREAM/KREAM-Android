@@ -55,6 +55,7 @@ import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.databinding.FragmentReleaseBinding
+import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
@@ -77,7 +78,7 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
             when (getReleaseProductState) {
                 is UiState.Success -> {
                     binding.cvRelease.setContent {
-                        UiStateISSuccess(getReleaseProductState.data, viewModel.advertisements)
+                        ReleaseView(getReleaseProductState.data, viewModel.advertisements)
                     }
                 }
 
@@ -88,7 +89,7 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
 }
 
 @Composable
-fun UiStateISSuccess(
+fun ReleaseView(
     uiState: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
     advertisements: List<Advertisement>,
 ) {

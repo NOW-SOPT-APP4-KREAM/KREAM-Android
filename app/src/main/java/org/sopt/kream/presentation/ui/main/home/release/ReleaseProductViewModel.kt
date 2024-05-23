@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.kream.data.ServicePool
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
+import org.sopt.kream.presentation.ui.model.Advertisement
+import org.sopt.kream.presentation.ui.type.AdvertisementType
 import org.sopt.kream.util.view.UiState
 
 class ReleaseProductViewModel : ViewModel() {
