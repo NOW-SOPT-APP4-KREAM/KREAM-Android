@@ -351,10 +351,9 @@ fun ShoesItem(
                     modifier =
                         Modifier.clickable {
                             isIconChanged = !isIconChanged
-                            if (releaseProductResponseDto.isScrap)
-                                {
-                                    viewModel.deleteScrap(productIndex)
-                                }
+                            if (releaseProductResponseDto.isScrap) {
+                                viewModel.deleteScrap(productIndex)
+                            }
                         },
                 )
             }
