@@ -3,7 +3,7 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import org.sopt.kream.databinding.FragmentRecommendForYouBinding
+import org.sopt.kream.databinding.ItemRecommendForYouBinding
 import org.sopt.kream.domain.model.RecommendForYouProductModel
 import org.sopt.kream.util.view.ItemDiffCallback
 
@@ -30,7 +30,7 @@ class RecommendForYouViewPagerAdapter(
         parent: ViewGroup,
         viewType: Int,
     ): RecommendForYouViewPagerViewHolder {
-        val binding = FragmentRecommendForYouBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemRecommendForYouBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendForYouViewPagerViewHolder(binding, navigateToProductDetail, navigateToSearch)
     }
 }

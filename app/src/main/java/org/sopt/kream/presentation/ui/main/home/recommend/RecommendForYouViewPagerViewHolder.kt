@@ -1,11 +1,11 @@
 package org.sopt.kream.presentation.ui.main.home.recommend
 
 import androidx.recyclerview.widget.RecyclerView
-import org.sopt.kream.databinding.FragmentRecommendForYouBinding
+import org.sopt.kream.databinding.ItemRecommendForYouBinding
 import org.sopt.kream.domain.model.RecommendForYouProductModel
 
 class RecommendForYouViewPagerViewHolder(
-    private val binding: FragmentRecommendForYouBinding,
+    private val binding: ItemRecommendForYouBinding,
     private val navigateToProductDetail: (Int) -> Unit,
     private val navigateToSearch: (String) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {

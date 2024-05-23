@@ -48,8 +48,8 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         styleAdapter = RecommendStyleAdapter()
 
         with(binding) {
-            vpRecommendAd.adapter = advertisementAdapter
-            TabLayoutMediator(tabKreamIndicator.tabKreamIndicator, vpRecommendAd) { tab, position ->
+            vpRecommendAdvertisement.adapter = advertisementAdapter
+            TabLayoutMediator(tabKreamIndicator.tabKreamIndicator, vpRecommendAdvertisement) { tab, position ->
             }.attach()
             rvRecommendCircleMenu.adapter = circleMenuAdapter
             vpRecommendForYouContent.adapter = forYouAdapter
