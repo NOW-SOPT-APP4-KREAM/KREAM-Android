@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_recommend_bottom_sheet_top_radius_10">
+
+    <TextView
+        android:id="@+id/tv_for_you_bottom_sheet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body2.SemiBold"
+        android:textColor="@color/black02"
+        app:layout_constraintBottom_toBottomOf="@id/iv_for_you_bottom_sheet_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_for_you_bottom_sheet_back"
+        tools:text="이용안내" />
+
+    <ImageView
+        android:id="@+id/iv_for_you_bottom_sheet_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="6dp"
+        android:padding="9dp"
+        android:src="@drawable/ic_delete_black_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_for_you_bottom_sheet_for_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.Bold"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_for_you_bottom_sheet_back"
+        android:text="@string/recommend_for_you_title"/>
+
+    <TextView
+        android:id="@+id/tv_for_you_bottom_sheet_for_you_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
+        android:textColor="@color/black02"
+        android:text="@string/recommend_bottom_sheet_for_you_content"
+        app:layout_constraintStart_toStartOf="@id/tv_for_you_bottom_sheet_for_you"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_you_bottom_sheet_for_you"/>
+
+    <TextView
+        android:id="@+id/tv_for_you_bottom_sheet_suggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body4.Bold"
+        android:textColor="@color/black02"
+        app:layout_constraintStart_toStartOf="@id/tv_for_you_bottom_sheet_for_you"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_you_bottom_sheet_for_you_content"
+        android:text="@string/recommend_bottom_sheet_suggestion"/>
+
+    <TextView
+        android:id="@+id/tv_for_you_bottom_sheet_suggestion_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="14dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
+        android:textColor="@color/black02"
+        android:text="@string/recommend_bottom_sheet_suggestion_content"
+        app:layout_constraintStart_toStartOf="@id/tv_for_you_bottom_sheet_for_you"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_you_bottom_sheet_suggestion"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

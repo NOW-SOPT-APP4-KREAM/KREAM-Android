@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">KREAM-Android</string>
+    <!-- all -->
+    <string name="all_details">더보기</string>
 
     <!-- bottom navigation -->
     <string name="bnv_home">HOME</string>
@@ -27,7 +29,6 @@
     <string name="search_popularity">인기순</string>
     <string name="search_related_search_word">연관검색어</string>
     <string name="search_search_result">검색결과</string>
-    <string name="search_details">더보기</string>
 
     <!-- search tap bar -->
     <string name="search_tap_bar_product">상품</string>
@@ -63,6 +64,83 @@
     <string name="search_chip_size">사이즈</string>
     <string name="search_chip_benefit_price">혜택/가격</string>
 
+    <!-- product -->
+    <string name="product_instant_purchase_price">즉시구매가</string>
+    <string name="product_instant_sale_price">즉시판매가</string>
+
+    <!-- product detail -->
+    <string name="product_detail_all_size">모든 사이즈</string>
+    <string name="product_detail_recent_price">최근거래가</string>
+    <string name="product_detail_release_price">발매가</string>
+    <string name="product_detail_model_number">모델번호</string>
+    <string name="product_detail_release_date">출시일</string>
+    <string name="product_detail_additional_benefits">추가 혜택</string>
+    <string name="product_detail_point">포인트</string>
+    <string name="product_detail_point_content">계좌 간편 결제 시 1% 적립</string>
+    <string name="product_detail_payment">결제</string>
+    <string name="product_detail_payment_content">계좌간편결제 최대 5만 포인트 적립 &amp; 수수료 할인</string>
+    <string name="product_detail_payment_etc">외 7건</string>
+    <string name="product_detail_delivery_info">배송 정보</string>
+    <string name="product_detail_fast_delivery_price">빠른배송 5,000원</string>
+    <string name="product_detail_fast_delivery_content_payment">지금 결제시</string>
+    <string name="product_detail_fast_delivery_content">내일 4/25(목) 도착 예정</string>
+    <string name="product_detail_general_delivery">일반배송 3,000원</string>
+    <string name="product_detail_general_delivery_content">검수 후 배송 ・ 5–7일 내 도착 예정</string>
+    <string name="product_detail_storage">창고보관 첫 30일 무료</string>
+    <string name="product_detail_storage_content">배송 없이 창고에 보관・빠르게 판매 가능</string>
+    <string name="product_style">스타일 %s</string>
+    <string name="product_style_upload">스타일 올리기</string>
+    <string name="product_style_more">스타일 더보기</string>
+    <string name="product_purchase">구매</string>
+    <string name="product_sale">판매</string>
+
     <!-- item search find product -->
     <string name="item_search_find_product_instant_purchase_price">즉시구매가</string>
+
+    <string name="recommend_for_you_title">For You</string>
+    <string name="recommend_for_you_content">크리미님을 위해 준비해 봤어요.</string>
+    <string name="recommend_for_you_slash">/</string>
+    <string name="recommend_just_dropped_title">Just Dropped</string>
+    <string name="recommend_just_dropped_content">발매 상품</string>
+    <string name="recommend_style_title">애매한 날씨에도 폭룡적인 코디센스</string>
+
+    <!-- item recommend for you -->
+    <string name="item_recommend_for_you_see">내가 본</string>
+    <string name="item_recommend_for_you_recent">최근 본</string>
+    <string name="item_recommend_for_you_more_content">아디다스 스니커즈</string>
+    <string name="item_recommend_for_you_text">의</string>
+    <string name="item_recommend_for_you_more_recommend">추천 상품</string>
+
+    <!-- item recommend just dropped product -->
+    <string name="item_recommend_just_dropped_coupon">쿠폰</string>
+    <string name="item_recommend_just_dropped_save">적립</string>
+    <string name="item_recommend_just_dropped_free_deliver">무료배송</string>
+    <string name="item_recommend_instant_price">즉시 구매가</string>
+
+    <!-- for you bottom sheet -->
+    <string name="recommend_bottom_sheet_for_you_content">
+        개인별로 최근 본 상품의 데이터를 분석해 상품을 추천합니다.
+        \n&#8226; 추천 상품은 매시간마다 갱신됩니다.
+        \n&#8226; 상품 자체가 가지고 있는 다양한 특성을분석해 연관도 높은 상품을 추천합니다.
+    </string>
+    <string name="recommend_bottom_sheet_suggestion">Suggestion</string>
+    <string name="recommend_bottom_sheet_suggestion_content">
+        성별&#8226;연령대의 최근 데이터와 검색량을 수집하여 상품을 추천합니다.
+        \n&#8226; 추천 상품은 매시간마다 갱신됩니다.
+        \n&#8226; 인기 급상승은 성별•연령대별 조회, 관심, 거래량을 반영한 랭킹입니다.
+        \n&#8226; 키워드별 인기 상품은 특정 기간의 검색량을 반영한 랭킹입니다.
+    </string>
+
+    <!-- Circle Menu Type -->
+    <string name="type_circle_menu_kream_card">KREAM 카드</string>
+    <string name="type_circle_menu_kream_draw">크림 드로우</string>
+    <string name="type_circle_menu_man_recommend">남성 추천</string>
+    <string name="type_circle_menu_woman_recommend">여성 추천</string>
+    <string name="type_circle_menu_new_recommend">색다른 추천</string>
+    <string name="type_circle_menu_under_price">정가 아래</string>
+    <string name="type_circle_menu_spring_sale">스프링 세일!</string>
+    <string name="type_circle_menu_chanel">샤넬 최대 ~42%</string>
+    <string name="type_circle_menu_may">5월 혜택</string>
+    <string name="type_circle_menu_sony_supreme">소니&#38;슈프림 선물</string>
+
 </resources>
