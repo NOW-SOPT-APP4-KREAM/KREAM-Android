@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@drawable/shape_recommend_bottom_sheet_top_radius_10">
 
     <TextView
         android:id="@+id/tv_for_you_bottom_sheet_title"
