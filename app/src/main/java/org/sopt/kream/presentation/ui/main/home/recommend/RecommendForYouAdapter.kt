@@ -41,6 +41,4 @@ class RecommendForYouAdapter(
             position = position,
         )
     }
-
-    override fun getItemCount(): Int = 6
 }

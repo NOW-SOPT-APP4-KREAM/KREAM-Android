@@ -11,8 +11,6 @@ class RecommendJustDroppedViewHolder(
     private val binding: ItemRecommendJustDroppedProductBinding,
     private val navigateToProductDetail: (Int) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
-    private var recommendJustDroppedAdapter: RecommendJustDroppedAdapter = RecommendJustDroppedAdapter(navigateToProductDetail)
-
     fun onBind(
         recommendJustDroppedProductModel: RecommendJustDroppedProductModel,
         position: Int,
