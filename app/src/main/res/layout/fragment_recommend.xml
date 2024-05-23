@@ -208,7 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:padding="14dp"
-            android:text="@string/recommend_more"
+            android:text="@string/all_details"
             android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
             android:textColor="@color/black06"
             app:layout_constraintBottom_toBottomOf="@id/tv_recommend_just_dropped_content"

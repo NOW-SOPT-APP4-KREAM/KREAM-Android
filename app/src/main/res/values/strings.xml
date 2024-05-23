@@ -97,9 +97,6 @@
     <!-- item search find product -->
     <string name="item_search_find_product_instant_purchase_price">즉시구매가</string>
 
-    <!-- recommend fragment -->
-    <string name="recommend_more">더보기</string>
-
     <string name="recommend_for_you_title">For You</string>
     <string name="recommend_for_you_content">크리미님을 위해 준비해 봤어요.</string>
     <string name="recommend_for_you_slash">/</string>
