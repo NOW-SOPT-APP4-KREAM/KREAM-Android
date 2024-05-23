@@ -20,23 +20,23 @@ class RecommendViewModel(
     private val _instagramList =
         listOf(
             InstagramModel(
-                image = R.drawable.view2_img_style_01,
+                image = R.drawable.img_recommend_style_01,
                 id = "@zzz.myam",
             ),
             InstagramModel(
-                image = R.drawable.view2_img_style_01,
+                image = R.drawable.img_recommend_style_01,
                 id = "@zzz.myam",
             ),
             InstagramModel(
-                image = R.drawable.view2_img_style_01,
+                image = R.drawable.img_recommend_style_01,
                 id = "@zzz.myam",
             ),
             InstagramModel(
-                image = R.drawable.view2_img_style_01,
+                image = R.drawable.img_recommend_style_01,
                 id = "@zzz.myam",
             ),
             InstagramModel(
-                image = R.drawable.view2_img_style_01,
+                image = R.drawable.img_recommend_style_01,
                 id = "@zzz.myam",
             ),
         )
