@@ -1,5 +1,6 @@
 package org.sopt.kream.presentation.ui.main.home.release
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.Image
@@ -149,6 +150,7 @@ fun CustomViewPager(
     }
 }
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun CountdownTimer(
     targetTimeInMillis: Long,
