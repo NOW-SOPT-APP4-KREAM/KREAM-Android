@@ -1,7 +1,10 @@
 [versions]
 # Kotlin
 accompanistPager = "0.20.1"
+accompanistPagerIndicators = "0.24.13-rc"
+accompanistPagerVersion = "0.24.13-rc"
 agp = "8.3.2"
+coilCompose = "2.6.0"
 foundation = "1.9.23"
 kotlin = "1.9.23"
 kotlinSerializationJson = "1.5.1"
@@ -40,7 +43,10 @@ foundationAndroid = "1.6.7"
 # Kotlin
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
 accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPager" }
+accompanist-pager-indicators-v02413rc = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPagerIndicators" }
+accompanist-pager-v02413rc = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPagerVersion" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
 kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 

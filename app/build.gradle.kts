@@ -76,10 +76,15 @@ dependencies {
 
     // Coil
     implementation(libs.coil)
+    implementation(libs.coil.compose)
 
     // Network
     implementation(platform(libs.okhttp.bom))
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
+
+    // Pager
+    implementation(libs.accompanist.pager.v02413rc)
+    implementation(libs.accompanist.pager.indicators.v02413rc)
 }
