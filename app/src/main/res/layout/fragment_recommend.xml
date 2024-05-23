@@ -125,10 +125,10 @@
             android:layout_marginEnd="6dp"
             android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
             android:textColor="@color/black02"
+            android:text="@string/recommend_for_you_current_page"
             app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
             app:layout_constraintEnd_toStartOf="@id/tv_recommend_for_you_slash"
-            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back"
-            tools:text="1" />
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back" />
 
         <TextView
             android:id="@+id/tv_recommend_for_you_slash"

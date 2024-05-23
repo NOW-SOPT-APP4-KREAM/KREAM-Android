@@ -99,6 +99,7 @@
 
     <string name="recommend_for_you_title">For You</string>
     <string name="recommend_for_you_content">크리미님을 위해 준비해 봤어요.</string>
+    <string name="recommend_for_you_current_page">1</string>
     <string name="recommend_for_you_slash">/</string>
     <string name="recommend_just_dropped_title">Just Dropped</string>
     <string name="recommend_just_dropped_content">발매 상품</string>

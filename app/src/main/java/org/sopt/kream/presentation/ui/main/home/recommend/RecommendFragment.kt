@@ -3,10 +3,12 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.size
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.launchIn
@@ -23,7 +25,6 @@ import org.sopt.kream.util.view.UiState
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
     private val recommendViewModel: RecommendViewModel by viewModels { ViewModelFactory() }
     private var memberId: Int = 1
-    private var forYouTotalPage: Int = 1
     private lateinit var advertisementAdapter: RecommendAdvertisementViewPagerAdapter
     private lateinit var circleMenuAdapter: RecommendCircleMenuAdapter
     private lateinit var forYouAdapter: RecommendForYouViewPagerAdapter
@@ -37,10 +38,22 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         super.onViewCreated(view, savedInstanceState)
 
         recommendViewModel.getRecommendProduct(memberId = memberId)
+        addListeners()
         initAdapter()
         setBottomSheet()
         collectRecommendProductState()
-        setForYouPage()
+    }
+
+    private fun addListeners() {
+        with(binding) {
+            ivRecommendForYouBack.setOnClickListener {
+                if (vpRecommendForYouContent.currentItem != 0) vpRecommendForYouContent.currentItem--
+            }
+
+            ivRecommendForYouNext.setOnClickListener {
+                if (vpRecommendForYouContent.currentItem != vpRecommendForYouContent.size) vpRecommendForYouContent.currentItem++
+            }
+        }
     }
 
     private fun initAdapter() {
@@ -58,6 +71,13 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
             vpRecommendForYouContent.adapter = forYouAdapter
             rvRecommendJustDroppedContent.adapter = justDroppedAdapter
             rvRecommendStyle.adapter = styleAdapter
+
+            vpRecommendForYouContent.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    tvRecommendForYouCurrentPage.text = (position + 1).toString()
+                }
+            })
         }
     }
 
@@ -67,8 +87,10 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                 when (recommendProductState) {
                     is UiState.Success -> {
                         with(recommendProductState.data) {
-                            forYouTotalPage = recommendForYouProducts.size / 6
-                            forYouAdapter.submitList(chunkList(recommendForYouProducts, FOR_YOU_SIZE))
+                            chunkList(recommendForYouProducts, FOR_YOU_SIZE).let { recommendForYouProductList ->
+                                forYouAdapter.submitList(recommendForYouProductList)
+                                binding.tvRecommendForYouTotalPage.text = recommendForYouProductList.size.toString()
+                            }
                             justDroppedAdapter.submitList(recommendJustDroppedProducts)
                             styleAdapter.submitList(recommendViewModel.instagramList)
                         }
@@ -77,13 +99,6 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                     else -> Unit
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
-    }
-
-    private fun setForYouPage() {
-        with(binding) {
-            tvRecommendForYouTotalPage.text = forYouTotalPage.toString()
-            tvRecommendForYouCurrentPage.text = (vpRecommendForYouContent.currentItem + 1).toString()
-        }
     }
 
     private fun navigateToProductDetail(productId: Int) {
