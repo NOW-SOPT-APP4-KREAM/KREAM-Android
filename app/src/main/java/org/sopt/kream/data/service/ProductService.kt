@@ -17,7 +17,7 @@ interface ProductService {
     @GET("product/{productId}")
     suspend fun getProductDetail(
         @Header("memberId") memberId: Int = MEMBER_ID,
-        @Path("productId") productId: Int
+        @Path("productId") productId: Int,
     ): BaseResponse<ResponseProductDetailDto>
 
     companion object {

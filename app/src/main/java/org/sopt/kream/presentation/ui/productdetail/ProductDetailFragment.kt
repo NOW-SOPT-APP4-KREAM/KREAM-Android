@@ -24,7 +24,10 @@ class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ Fr
     private val productDetailViewModel: ProductDetailViewModel by viewModels { ViewModelFactory() }
     private lateinit var productDetailInfoAdapter: ProductDetailInfoAdapter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         productDetailViewModel.getProductDetail(getProductId() + 1)
@@ -79,21 +82,21 @@ class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ Fr
                                     ProductDetailInfo(
                                         productDetailInfoType = ProductDetailInfoType.RECENT_PRICE,
                                         content = productDetailState.data.recentPrice,
-                                        additionalContent = productDetailState.data.variablePrice + productDetailState.data.variablePercent
+                                        additionalContent = productDetailState.data.variablePrice + productDetailState.data.variablePercent,
                                     ),
                                     ProductDetailInfo(
                                         productDetailInfoType = ProductDetailInfoType.RELEASE_PRICE,
-                                        content = productDetailState.data.releasePrice
+                                        content = productDetailState.data.releasePrice,
                                     ),
                                     ProductDetailInfo(
                                         productDetailInfoType = ProductDetailInfoType.MODEL_NUMBER,
-                                        content = productDetailState.data.modelNumber
+                                        content = productDetailState.data.modelNumber,
                                     ),
                                     ProductDetailInfo(
                                         productDetailInfoType = ProductDetailInfoType.RELEASE_DATE,
-                                        content = productDetailState.data.releaseDate
-                                    )
-                                )
+                                        content = productDetailState.data.releaseDate,
+                                    ),
+                                ),
                             )
                         }
                     }

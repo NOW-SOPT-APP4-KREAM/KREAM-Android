@@ -10,7 +10,7 @@ import org.sopt.kream.domain.repository.ProductRepository
 import org.sopt.kream.util.view.UiState
 
 class ProductDetailViewModel(
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
 ) : ViewModel() {
     private val _productDetailState = MutableStateFlow<UiState<ProductDetailModel>>(UiState.Empty)
     val productDetailState get() = _productDetailState.asStateFlow()

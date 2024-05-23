@@ -6,15 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.ItemProductDetailInfoBinding
 import org.sopt.kream.presentation.ui.model.ProductDetailInfo
-import org.sopt.kream.presentation.ui.type.ProductDetailInfoType
 import org.sopt.kream.util.context.stringOf
 import org.sopt.kream.util.int.toPx
 
 class ProductDetailInfoViewHolder(
     private val binding: ItemProductDetailInfoBinding,
-    private val context: Context
+    private val context: Context,
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(productDetailInfoModel: ProductDetailInfo, isLast: Boolean) {
+    fun onBind(
+        productDetailInfoModel: ProductDetailInfo,
+        isLast: Boolean,
+    ) {
         with(binding) {
             tvProductDetailInfoTitle.text = context.stringOf(productDetailInfoModel.productDetailInfoType.titleStringRes)
             tvProductDetailInfoContent.text = productDetailInfoModel.content

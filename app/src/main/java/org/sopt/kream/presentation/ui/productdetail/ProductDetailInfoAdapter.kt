@@ -13,16 +13,23 @@ class ProductDetailInfoAdapter() : ListAdapter<ProductDetailInfo, ProductDetailI
         onItemsTheSame = { old, new -> old.content == new.content },
     ),
 ) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductDetailInfoViewHolder = ProductDetailInfoViewHolder(
-        ItemProductDetailInfoBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        ),
-        parent.context
-    )
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): ProductDetailInfoViewHolder =
+        ProductDetailInfoViewHolder(
+            ItemProductDetailInfoBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false,
+            ),
+            parent.context,
+        )
 
-    override fun onBindViewHolder(holder: ProductDetailInfoViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ProductDetailInfoViewHolder,
+        position: Int,
+    ) {
         holder.onBind(currentList[position], currentList.size - 1 == position)
     }
 }

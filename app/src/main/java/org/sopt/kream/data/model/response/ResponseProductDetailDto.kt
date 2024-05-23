@@ -41,6 +41,6 @@ data class ResponseProductDetailDto(
         @SerialName("imageUrl")
         val imageUrl: String,
         @SerialName("isVideo")
-        val isVideo: Boolean
+        val isVideo: Boolean,
     )
 }
