@@ -10,11 +10,15 @@ import org.sopt.kream.domain.model.RecommendJustDroppedProductModel
 class RecommendJustDroppedViewHolder(
     private val binding: ItemRecommendJustDroppedProductBinding,
     private val navigateToProductDetail: (Int) -> Unit,
+    private val recommendViewModel: RecommendViewModel,
+    private val memberId: Int,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(
         recommendJustDroppedProductModel: RecommendJustDroppedProductModel,
         position: Int,
     ) {
+        initScrapClickListener(recommendJustDroppedProductModel.isScrap, position + 1)
+
         with(binding) {
             ivJustDroppedProduct.load(recommendJustDroppedProductModel.thumbnailUrl)
             tvJustDroppedProductBrand.text = recommendJustDroppedProductModel.brandTitle
@@ -46,6 +50,20 @@ class RecommendJustDroppedViewHolder(
                 } else {
                     View.INVISIBLE
                 }
+        }
+    }
+
+    fun initScrapClickListener(
+        isScrap: Boolean,
+        productId: Int,
+    ) {
+        with(binding) {
+            ivJustDroppedProductScrap.setOnClickListener {
+                if (!isScrap) {
+                    recommendViewModel.postScrapProduct(memberId, productId)
+                    ivJustDroppedProductScrap.setImageResource(R.drawable.ic_saved_2_on_24)
+                }
+            }
         }
     }
 }

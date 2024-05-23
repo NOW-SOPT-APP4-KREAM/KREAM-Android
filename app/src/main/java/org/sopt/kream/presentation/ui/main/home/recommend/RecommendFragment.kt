@@ -46,7 +46,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         advertisementAdapter = RecommendAdvertisementViewPagerAdapter(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
         circleMenuAdapter = RecommendCircleMenuAdapter(RecommendCircleMenuType.entries)
         forYouAdapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, ::navigateToSearch)
-        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail)
+        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, recommendViewModel, memberId)
         styleAdapter = RecommendStyleAdapter()
 
         with(binding) {

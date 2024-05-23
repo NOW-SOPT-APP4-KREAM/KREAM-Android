@@ -9,6 +9,8 @@ import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendJustDroppedAdapter(
     private val navigateToProductDetail: (Int) -> Unit,
+    private val recommendViewModel: RecommendViewModel,
+    private val memberId: Int,
 ) : ListAdapter<
         RecommendJustDroppedProductModel,
         RecommendJustDroppedViewHolder,
@@ -29,6 +31,8 @@ class RecommendJustDroppedAdapter(
                 false,
             ),
             navigateToProductDetail,
+            recommendViewModel,
+            memberId,
         )
 
     override fun onBindViewHolder(

@@ -26,4 +26,12 @@ class ProductRepositoryImpl(
         runCatching {
             productRemoteDataSource.getRecommendProduct(memberId = memberId).data.toRecommendProductModel()
         }
+
+    override suspend fun postScrap(
+        memberId: Int,
+        productId: Int,
+    ): Result<Unit> =
+        runCatching {
+            productRemoteDataSource.postScrap(memberId = memberId, productId = productId)
+        }
 }
