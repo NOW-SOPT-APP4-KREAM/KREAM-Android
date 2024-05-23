@@ -1,6 +1,7 @@
 package org.sopt.kream.presentation.ui.main.home.release
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,6 +27,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
@@ -42,6 +44,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import coil.compose.rememberAsyncImagePainter
@@ -54,6 +57,7 @@ import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.databinding.FragmentReleaseBinding
+import org.sopt.kream.presentation.common.ViewModelFactory
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
@@ -64,7 +68,7 @@ import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleaseBinding.inflate(it) }) {
-    private val viewModel = ReleaseProductViewModel()
+    private val viewModel : ReleaseProductViewModel by viewModels { ViewModelFactory() }
 
     override fun onViewCreated(
         view: View,
@@ -77,28 +81,29 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
             when (getReleaseProductState) {
                 is UiState.Success -> {
                     binding.cvRelease.setContent {
-                        UiStateISSuccess(getReleaseProductState.data, viewModel.advertisements)
-
+                        UiStateISSuccess(viewModel)
                     }
                 }
-
                 else -> Unit
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+
+
+
     }
 }
 
 @Composable
 fun UiStateISSuccess(
-    uiState: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
-    advertisements: List<Advertisement>,
+    viewModel: ReleaseProductViewModel
 ) {
-    val advertisement by remember { mutableStateOf(advertisements) }
+    val advertisement by remember { mutableStateOf(viewModel.advertisements) }
     Box(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
@@ -116,7 +121,7 @@ fun UiStateISSuccess(
                 targetTimeInMillis = targetTimeInMillis,
             )
             CustomMidNaviBar()
-            ShoesList(uiState)
+            ShoesList(viewModel)
         }
     }
 }
@@ -294,9 +299,8 @@ fun CustomMidNaviBar() {
 }
 
 @Composable
-fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto) {
-    var isIconChanged by remember { mutableStateOf(false) }
-
+fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto,productIndex:Int,viewModel: ReleaseProductViewModel) {
+    var isIconChanged by remember { mutableStateOf(releaseProductResponseDto.isScrap) }
     val iconResource =
         if (isIconChanged) {
             R.drawable.ic_saved_1_on_24
@@ -348,6 +352,9 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
                     modifier =
                         Modifier.clickable {
                             isIconChanged = !isIconChanged
+                            if (releaseProductResponseDto.isScrap){
+                                viewModel.deleteScrap(productIndex)
+                            }
 
                         },
                 )
@@ -363,7 +370,8 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
 }
 
 @Composable
-fun ShoesList(shoesList: List<ResponseReleaseProductDto.ReleaseProductResponseDto>) {
+fun ShoesList(viewModel:ReleaseProductViewModel) {
+    val shoesList = viewModel.productList.collectAsState().value
     Column {
         val items = List(12) { it }
         for (i in items.indices step 2) {
@@ -371,9 +379,9 @@ fun ShoesList(shoesList: List<ResponseReleaseProductDto.ReleaseProductResponseDt
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesItem(shoesList[i])
+                ShoesItem( shoesList[i],i+1, viewModel)
                 if (i + 1 < items.size) {
-                    ShoesItem(shoesList[i + 1])
+                    ShoesItem(shoesList[i + 1],i+2,viewModel)
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))

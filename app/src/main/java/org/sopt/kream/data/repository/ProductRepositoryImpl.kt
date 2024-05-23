@@ -12,4 +12,10 @@ class ProductRepositoryImpl(
         runCatching {
             productRemoteDataSource.getSearchProduct(findName = findName).data.toSearchProductModel()
         }
+
+    override suspend fun deleteScrap(memberId: Int, productId: Int): Result<Unit> {
+        return runCatching {
+            productRemoteDataSource.deleteScrap(memberId, productId)
+        }
+    }
 }
