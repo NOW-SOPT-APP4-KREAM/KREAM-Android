@@ -26,8 +26,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -35,15 +35,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import coil.compose.rememberAsyncImagePainter
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -288,9 +289,9 @@ fun CustomMidNaviBar() {
     }
 }
 
-
 @Composable
 fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto) {
+
     var isIconChanged by remember { mutableStateOf(false) }
 
     val iconResource =
@@ -300,47 +301,45 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
             R.drawable.ic_saved_1_off_24
         }
 
+
+    var cardState by remember {
+        mutableStateOf("")
+    }
+    var stateVisible by remember {
+        mutableFloatStateOf(1f)
+    }
+    var cardColor by remember {
+        mutableIntStateOf(R.color.blue03)
+    }
+    if (releaseProductResponseDto.isUpdate) {
+        cardState = "UPDATE"
+    } else if (releaseProductResponseDto.isNew) {
+        cardState = "NEW"
+        cardColor = R.color.red01
+    } else {
+        cardState = "NULL"
+        stateVisible=0f
+        cardColor = R.color.gray06
+    }
     Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
         Box(
             modifier =
             Modifier
                 .size(width = 161.dp, height = 108.dp)
-                .background(colorResource(id = R.color.blue03), shape = RoundedCornerShape(10.dp)),
+                .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
         ) {
+            Image(
+                painter = rememberAsyncImagePainter(releaseProductResponseDto.thumbnailUrl),
+                contentDescription = null,
+                modifier =
+                Modifier
+                    .size(width = 108.dp, height = 108.dp)
+                    .align(Alignment.Center),
+            )
             Row(
                 modifier = Modifier.padding(8.dp),
             ) {
-                Column(modifier = Modifier.padding(3.dp)) {
-                    Box(
-                        modifier =
-                        Modifier
-                            .clip(RoundedCornerShape(10.dp))
-                            .background(Color.White)
-                            .size(width = 50.dp, height = 15.dp)
-                            .border(
-                                width = 1.dp,
-                                color = colorResource(id = R.color.gray03),
-                                shape = RoundedCornerShape(10.dp),
-                            ),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Box(
-                            modifier =
-                            Modifier
-                                .clip(RoundedCornerShape(9.dp))
-                                .background(Color.White)
-                                .fillMaxSize(),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Text(
-                                text = "UPDATE",
-                                style = body6Regular,
-                                color = colorResource(id = R.color.black06),
-                            )
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.width(69.dp))
+                DrawCard(cardState,stateVisible)
                 Icon(
                     painter = painterResource(id = iconResource),
                     contentDescription = null,
@@ -350,14 +349,7 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
                     },
                 )
             }
-            Image(
-                painter = painterResource(id = R.drawable.img_view1_swipe_dummy),
-                contentDescription = null,
-                modifier =
-                Modifier
-                    .size(width = 108.dp, height = 108.dp)
-                    .align(Alignment.Center),
-            )
+
         }
         Column(modifier = Modifier.fillMaxWidth()) {
             Spacer(modifier = Modifier.height(15.dp))
@@ -406,6 +398,79 @@ fun CustomShoesText(
 }
 
 
+
+@Composable
+fun DrawCard(cardState: String, stateVisible: Float) {
+    if (cardState=="UPDATE") {
+        Column(modifier = Modifier
+            .padding(3.dp)
+            .alpha(stateVisible)) {
+            Box(
+                modifier =
+                Modifier
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .size(width = 50.dp, height = 15.dp)
+                    .border(
+                        width = 1.dp,
+                        color = colorResource(id = R.color.gray03),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                Box(
+                    modifier =
+                    Modifier
+                        .clip(RoundedCornerShape(9.dp))
+                        .background(Color.White)
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = cardState,
+                        style = body6Regular,
+                        color = colorResource(id = R.color.black06),
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier.width(69.dp))
+    }else{
+        Column(modifier = Modifier
+            .padding(3.dp)
+            .alpha(stateVisible)) {
+            Box(
+                modifier =
+                Modifier
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .size(width = 35.dp, height = 15.dp)
+                    .border(
+                        width = 1.dp,
+                        color = colorResource(id = R.color.red02),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                Box(
+                    modifier =
+                    Modifier
+                        .clip(RoundedCornerShape(9.dp))
+                        .background(colorResource(id = R.color.red02))
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = cardState,
+                        style = body6Regular,
+                        color = Color.White,
+                    )
+                }
+            }
+        }
+        Spacer(modifier = Modifier.width(84.dp))
+    }
+}
 
 
 

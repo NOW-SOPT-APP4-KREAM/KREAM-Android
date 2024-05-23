@@ -76,6 +76,7 @@ dependencies {
 
     // Coil
     implementation(libs.coil)
+    implementation (libs.coil.compose)
 
     // Network
     implementation(platform(libs.okhttp.bom))

@@ -17,7 +17,7 @@ data class ResponseReleaseProductDto(
         @SerialName("title")
         val title: String,
         @SerialName("isScrap")
-        val isScrap: Boolean,
+        var isScrap: Boolean,
         @SerialName("isUpdate")
         val isUpdate: Boolean,
         @SerialName("isNew")
