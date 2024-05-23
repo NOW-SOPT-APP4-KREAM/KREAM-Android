@@ -14,8 +14,8 @@ data class ResponseReleaseProductDto(
         val thumbnailUrl: String,
         @SerialName("brandTitle")
         val brandTitle: String,
-        @SerialName("title")
-        val title: String,
+        @SerialName("engTitle")
+        val engTitle: String,
         @SerialName("isScrap")
         var isScrap: Boolean,
         @SerialName("isUpdate")

@@ -354,7 +354,7 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
             Spacer(modifier = Modifier.height(15.dp))
             Text(text = releaseProductResponseDto.brandTitle, style = body4Bold, color = colorResource(id = R.color.black02))
             Spacer(modifier = Modifier.height(6.dp))
-            Text(text = releaseProductResponseDto.title, style = body5Regular, color = colorResource(id = R.color.black02))
+            Text(text = releaseProductResponseDto.engTitle, style = body5Regular, color = colorResource(id = R.color.black02))
         }
     }
 }
