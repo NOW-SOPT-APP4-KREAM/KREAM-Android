@@ -198,6 +198,8 @@
                 android:layout_marginTop="4dp"
                 android:padding="14dp"
                 android:text="@string/all_details"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black06"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/view_product_detail_info" />
 
