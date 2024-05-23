@@ -1,36 +1,38 @@
 package org.sopt.kream.presentation.ui.type
 
+import org.sopt.kream.R
+
 enum class RecommendCircleMenuType(
-    val menu: String,
+    val menu: Int,
 ) {
     KREAM_CARD(
-        menu = "KREAM 카드",
+        menu = R.string.type_circle_menu_kream_card,
     ),
     CREAM_DRAW(
-        menu = "크림 드로우",
+        menu = R.string.type_circle_menu_kream_draw,
     ),
     MAN_RECOMMEND(
-        menu = "남성 추천",
+        menu = R.string.type_circle_menu_man_recommend,
     ),
     WOMAN_RECOMMEND(
-        menu = "여성 추천",
+        menu = R.string.type_circle_menu_woman_recommend,
     ),
     NEW_RECOMMEND(
-        menu = "색다른 추천",
+        menu = R.string.type_circle_menu_new_recommend,
     ),
     UNDER_PRICE(
-        menu = "정가 아래",
+        menu = R.string.type_circle_menu_under_price,
     ),
     SPRING_SALE(
-        menu = "스프링 세일!",
+        menu = R.string.type_circle_menu_spring_sale,
     ),
     CHANEL(
-        menu = "샤넬 최대 ~42%",
+        menu = R.string.type_circle_menu_chanel,
     ),
     APRIL(
-        menu = "4월 혜택",
+        menu = R.string.type_circle_menu_april,
     ),
-    SOCY_SUPREME(
-        menu = "소니&슈프림 선물",
+    SONY_SUPREME(
+        menu = R.string.type_circle_menu_sony_supreme,
     ),
 }

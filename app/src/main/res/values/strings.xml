@@ -93,4 +93,16 @@
         \n&#8226; 키워드별 인기 상품은 특정 기간의 검색량을 반영한 랭킹입니다.
     </string>
 
+    <!-- Circle Menu Type -->
+    <string name="type_circle_menu_kream_card">KREAM 카드</string>
+    <string name="type_circle_menu_kream_draw">크림 드로우</string>
+    <string name="type_circle_menu_man_recommend">남성 추천</string>
+    <string name="type_circle_menu_woman_recommend">여성 추천</string>
+    <string name="type_circle_menu_new_recommend">색다른 추천</string>
+    <string name="type_circle_menu_under_price">정가 아래</string>
+    <string name="type_circle_menu_spring_sale">스프링 세일!</string>
+    <string name="type_circle_menu_chanel">샤넬 최대 ~42%</string>
+    <string name="type_circle_menu_april">4월 혜택</string>
+    <string name="type_circle_menu_sony_supreme">소니&#38;슈프림 선물</string>
+
 </resources>

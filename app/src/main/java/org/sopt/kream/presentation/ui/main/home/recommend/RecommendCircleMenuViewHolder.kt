@@ -7,10 +7,10 @@ class RecommendCircleMenuViewHolder(
     private val binding: ItemRecommendCircleMenuBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(
-        item: String,
+        item: Int,
     ) {
         with(binding) {
-            tvCircleMenuTitle.text = item
+            tvCircleMenuTitle.setText(item)
         }
     }
 }
