@@ -168,6 +168,6 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
         const val DEFAULT_SELECTED_TAB_POSITION = 0
         const val PRODUCT_ID = "productId"
         const val SPAN_COUNT_2 = 2
-        const val SPAN_COUNT_3 =3
+        const val SPAN_COUNT_3 = 3
     }
 }
