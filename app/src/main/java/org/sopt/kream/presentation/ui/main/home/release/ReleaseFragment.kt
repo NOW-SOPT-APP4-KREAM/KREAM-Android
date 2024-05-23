@@ -72,11 +72,13 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
     ) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getReleaseProduct()
+
         viewModel.getReleaseProductState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach { getReleaseProductState ->
             when (getReleaseProductState) {
                 is UiState.Success -> {
                     binding.cvRelease.setContent {
                         UiStateISSuccess(getReleaseProductState.data, viewModel.advertisements)
+
                     }
                 }
 
@@ -346,6 +348,7 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
                     modifier =
                         Modifier.clickable {
                             isIconChanged = !isIconChanged
+
                         },
                 )
             }

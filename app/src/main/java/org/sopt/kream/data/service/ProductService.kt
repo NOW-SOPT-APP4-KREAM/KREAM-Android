@@ -16,11 +16,11 @@ interface ProductService {
 
     @GET("product/release")
     suspend fun getReleaseProduct(
-        @Header("memberId") userid: Int,
+        @Header("memberId") memberId: Int,
     ): BaseResponse<ResponseReleaseProductDto>
 
     @DELETE("product/release")
     suspend fun deleteScrap(
-        @Header("memberId") userid: Int,
-    ): BaseResponse<ResponseReleaseProductDto>
+        @Header("memberId") memberId: Int,
+    ): BaseResponse<Unit>
 }
