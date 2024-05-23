@@ -8,11 +8,15 @@ import org.sopt.kream.util.base.BaseResponse
 interface ProductRemoteDataSource {
     suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto>
 
+
+    suspend fun deleteScrap(
+
     suspend fun getProductDetail(productId: Int): BaseResponse<ResponseProductDetailDto>
 
     suspend fun getRecommendProduct(memberId: Int): BaseResponse<ResponseRecommendProductDto>
 
     suspend fun postScrap(
+
         memberId: Int,
         productId: Int,
     ): BaseResponse<Unit>
