@@ -8,4 +8,9 @@ interface ProductRemoteDataSource {
     suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto>
 
     suspend fun getRecommendProduct(memberId: Int): BaseResponse<ResponseRecommendProductDto>
+
+    suspend fun postScrap(
+        memberId: Int,
+        productId: Int,
+    ): BaseResponse<Unit>
 }
