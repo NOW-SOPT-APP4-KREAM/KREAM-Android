@@ -17,6 +17,9 @@ class RecommendViewModel(
     private val _recommendProductState = MutableStateFlow<UiState<RecommendProductModel>>(UiState.Empty)
     val recommendProductState get() = _recommendProductState.asStateFlow()
 
+    private val _postScrapState = MutableStateFlow<UiState<Unit>>(UiState.Empty)
+    val postScrapState get() = _postScrapState.asStateFlow()
+
     private val _instagramList =
         listOf(
             InstagramModel(
@@ -49,6 +52,20 @@ class RecommendViewModel(
                 _recommendProductState.value = UiState.Success(recommendProductModel)
             }.onFailure { exception: Throwable ->
                 _recommendProductState.value = UiState.Error(exception.message)
+            }
+        }
+    }
+
+    fun postScrapProduct(
+        memberId: Int,
+        productId: Int,
+    ) {
+        viewModelScope.launch {
+            _postScrapState.value = UiState.Loading
+            productRepository.postScrap(memberId = memberId, productId = productId).onSuccess { postScrapResult ->
+                _postScrapState.value = UiState.Success(postScrapResult)
+            }.onFailure { exception: Throwable ->
+                _postScrapState.value = UiState.Error(exception.message)
             }
         }
     }
