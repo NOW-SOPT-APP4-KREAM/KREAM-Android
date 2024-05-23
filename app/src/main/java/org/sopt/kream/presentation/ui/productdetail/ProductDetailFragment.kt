@@ -71,7 +71,7 @@ class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ Fr
                             val productDetailStyleList: List<KreamProductDetailStyleImageView> = listOf(ivProductDetailStyleFirst, ivProductDetailStyleSecond, ivProductDetailStyleThird, ivProductDetailStyleFourth, ivProductDetailStyleFifth, ivProductDetailStyleSixth, ivProductDetailStyleSeventh, ivProductDetailStyleEight, ivProductDetailStyleNinth)
 
                             productDetailState.data.styles.onEachIndexed { index, productDetailStyleModel ->
-                                productDetailStyleList[index].setImageViewData(productDetailStyleModel = productDetailStyleModel, isLast = index == productDetailState.data.styles.size - 1)
+                                productDetailStyleList[index].setImageViewData(productDetailStyleModel = productDetailStyleModel, isLast = index == (productDetailState.data.styles.size - 1))
                             }
 
                             productDetailInfoAdapter.submitList(

@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import coil.load
 import org.sopt.kream.R
 import org.sopt.kream.databinding.ViewImageStyleDetailProductKreamBinding
 import org.sopt.kream.domain.model.ProductDetailStyleModel
@@ -24,7 +25,7 @@ class KreamProductDetailStyleImageView @JvmOverloads constructor(
 
     fun setImageViewData(productDetailStyleModel: ProductDetailStyleModel, isLast: Boolean) {
         with(binding) {
-            //ivProductDetailStyle.load(productDetailStyleModel.imageUrl)
+            ivProductDetailStyle.load(productDetailStyleModel.imageUrl)
             ivProductDetailStyleVideo.visibility = if (productDetailStyleModel.isVideo) View.VISIBLE else View.INVISIBLE
 
             if (isLast) ivProductDetailStyle.foreground = context.getDrawable(R.color.detail_foreground)
