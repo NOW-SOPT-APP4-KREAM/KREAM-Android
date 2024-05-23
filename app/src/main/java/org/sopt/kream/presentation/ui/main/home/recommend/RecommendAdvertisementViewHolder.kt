@@ -6,9 +6,7 @@ import org.sopt.kream.databinding.ItemRecommendAdvertisementBinding
 class RecommendAdvertisementViewHolder(
     private val binding: ItemRecommendAdvertisementBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(
-        item: Int,
-    ) {
+    fun onBind(item: Int) {
         with(binding) {
             ivRecommendAdvertisement.setImageResource(item)
         }

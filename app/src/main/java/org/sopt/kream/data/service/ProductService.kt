@@ -38,16 +38,16 @@ interface ProductService {
 
     @GET("product/recommend")
     suspend fun getRecommendProduct(
-        @Header("memberId") memberId: Int,
+        @Header("memberId") memberId: Int = MEMBER_ID,
     ): BaseResponse<ResponseRecommendProductDto>
 
     @POST("scrap")
     suspend fun postScrap(
-        @Header("memberId") memberId: Int,
+        @Header("memberId") memberId: Int = MEMBER_ID,
         @Body request: RequestPostScrapDto,
     ): BaseResponse<Unit>
 
     companion object {
-        const val MEMBER_ID = 1
+        const val MEMBER_ID = 2
     }
 }

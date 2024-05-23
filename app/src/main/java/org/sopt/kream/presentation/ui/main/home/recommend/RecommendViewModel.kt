@@ -45,10 +45,10 @@ class RecommendViewModel(
         )
     val instagramList get() = _instagramList
 
-    fun getRecommendProduct(memberId: Int) {
+    fun getRecommendProduct() {
         viewModelScope.launch {
             _recommendProductState.value = UiState.Loading
-            productRepository.getRecommendProduct(memberId = memberId).onSuccess { recommendProductModel ->
+            productRepository.getRecommendProduct().onSuccess { recommendProductModel ->
                 _recommendProductState.value = UiState.Success(recommendProductModel)
             }.onFailure { exception: Throwable ->
                 _recommendProductState.value = UiState.Error(exception.message)
@@ -57,12 +57,11 @@ class RecommendViewModel(
     }
 
     fun postScrapProduct(
-        memberId: Int,
         productId: Int,
     ) {
         viewModelScope.launch {
             _postScrapState.value = UiState.Loading
-            productRepository.postScrap(memberId = memberId, productId = productId).onSuccess { postScrapResult ->
+            productRepository.postScrap(productId = productId).onSuccess { postScrapResult ->
                 _postScrapState.value = UiState.Success(postScrapResult)
             }.onFailure { exception: Throwable ->
                 _postScrapState.value = UiState.Error(exception.message)

@@ -10,10 +10,7 @@ interface ProductRemoteDataSource {
 
     suspend fun getProductDetail(productId: Int): BaseResponse<ResponseProductDetailDto>
 
-    suspend fun getRecommendProduct(memberId: Int): BaseResponse<ResponseRecommendProductDto>
+    suspend fun getRecommendProduct(): BaseResponse<ResponseRecommendProductDto>
 
-    suspend fun postScrap(
-        memberId: Int,
-        productId: Int,
-    ): BaseResponse<Unit>
+    suspend fun postScrap(productId: Int): BaseResponse<Unit>
 }

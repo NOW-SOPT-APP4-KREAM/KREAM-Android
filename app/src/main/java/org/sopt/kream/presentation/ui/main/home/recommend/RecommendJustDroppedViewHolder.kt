@@ -10,8 +10,7 @@ import org.sopt.kream.domain.model.RecommendJustDroppedProductModel
 class RecommendJustDroppedViewHolder(
     private val binding: ItemRecommendJustDroppedProductBinding,
     private val navigateToProductDetail: (Int) -> Unit,
-    private val recommendViewModel: RecommendViewModel,
-    private val memberId: Int,
+    private val postScrapProduct: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(
         recommendJustDroppedProductModel: RecommendJustDroppedProductModel,
@@ -25,12 +24,15 @@ class RecommendJustDroppedViewHolder(
             tvJustDroppedProductName.text = recommendJustDroppedProductModel.engTitle
             tvJustDroppedProductPrice.text = recommendJustDroppedProductModel.price
             tvJustDroppedProductTransaction.text = recommendJustDroppedProductModel.transactionCount
-            ivJustDroppedProductScrap.setImageResource(if (recommendJustDroppedProductModel.isScrap) R.drawable.ic_saved_2_on_24 else R.drawable.ic_saved_2_off_24,)
-            includeJustDroppedProductFastDelivery.tvFastDelivery.visibility = if(recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
-            includeJustDroppedProductFastDelivery.ivFastDelivery.visibility = if(recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
+            ivJustDroppedProductScrap.setImageResource(if (recommendJustDroppedProductModel.isScrap) R.drawable.ic_saved_2_on_24 else R.drawable.ic_saved_2_off_24)
+            includeJustDroppedProductFastDelivery.tvFastDelivery.visibility = if (recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
+            includeJustDroppedProductFastDelivery.ivFastDelivery.visibility = if (recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
             tvJustDroppedProductCoupon.visibility = if (recommendJustDroppedProductModel.isCoupon) View.VISIBLE else View.GONE
             tvJustDroppedProductSave.visibility = if (recommendJustDroppedProductModel.isSave) View.VISIBLE else View.GONE
             tvJustDroppedProductFreeDeliver.visibility = if (recommendJustDroppedProductModel.isFreeDeliver) View.VISIBLE else View.GONE
+            root.setOnClickListener {
+                navigateToProductDetail(position + 1)
+            }
         }
     }
 
@@ -41,8 +43,11 @@ class RecommendJustDroppedViewHolder(
         with(binding) {
             ivJustDroppedProductScrap.setOnClickListener {
                 if (!isScrap) {
-                    recommendViewModel.postScrapProduct(memberId, productId)
-                    ivJustDroppedProductScrap.setImageResource(R.drawable.ic_saved_2_on_24)
+                    postScrapProduct(productId)
+                    ivJustDroppedProductScrap.setImageResource(R.drawable.ic_saved_1_on_24)
+                } else {
+                    // TODO 스크랩 취소
+                    ivJustDroppedProductScrap.setImageResource(R.drawable.ic_saved_1_off_24)
                 }
             }
         }

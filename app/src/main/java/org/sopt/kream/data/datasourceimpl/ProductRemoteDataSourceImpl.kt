@@ -15,10 +15,7 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
 
     override suspend fun getProductDetail(productId: Int): BaseResponse<ResponseProductDetailDto> = productService.getProductDetail(productId = productId)
 
-    override suspend fun getRecommendProduct(memberId: Int): BaseResponse<ResponseRecommendProductDto> = productService.getRecommendProduct(memberId = memberId)
+    override suspend fun getRecommendProduct(): BaseResponse<ResponseRecommendProductDto> = productService.getRecommendProduct()
 
-    override suspend fun postScrap(
-        memberId: Int,
-        productId: Int,
-    ): BaseResponse<Unit> = productService.postScrap(memberId = memberId, request = RequestPostScrapDto(productId))
+    override suspend fun postScrap(productId: Int): BaseResponse<Unit> = productService.postScrap(request = RequestPostScrapDto(productId))
 }

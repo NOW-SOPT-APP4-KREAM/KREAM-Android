@@ -24,7 +24,6 @@ import org.sopt.kream.util.view.UiState
 
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
     private val recommendViewModel: RecommendViewModel by viewModels { ViewModelFactory() }
-    private var memberId: Int = 1
     private lateinit var advertisementAdapter: RecommendAdvertisementViewPagerAdapter
     private lateinit var circleMenuAdapter: RecommendCircleMenuAdapter
     private lateinit var forYouAdapter: RecommendForYouViewPagerAdapter
@@ -37,7 +36,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        recommendViewModel.getRecommendProduct(memberId = memberId)
+        recommendViewModel.getRecommendProduct()
         addListeners()
         initAdapter()
         setBottomSheet()
@@ -57,10 +56,10 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     }
 
     private fun initAdapter() {
-        advertisementAdapter = RecommendAdvertisementViewPagerAdapter(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
-        circleMenuAdapter = RecommendCircleMenuAdapter(RecommendCircleMenuType.entries)
+        advertisementAdapter = RecommendAdvertisementViewPagerAdapter()
+        circleMenuAdapter = RecommendCircleMenuAdapter()
         forYouAdapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, ::navigateToSearch)
-        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, recommendViewModel, memberId)
+        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, ::postScrapProduct)
         styleAdapter = RecommendStyleAdapter()
 
         with(binding) {
@@ -79,6 +78,10 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                 }
             })
         }
+
+        advertisementAdapter.submitList(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
+        circleMenuAdapter.submitList(RecommendCircleMenuType.entries)
+        styleAdapter.submitList(recommendViewModel.instagramList)
     }
 
     private fun collectRecommendProductState() {
@@ -92,7 +95,6 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                                 binding.tvRecommendForYouTotalPage.text = recommendForYouProductList.size.toString()
                             }
                             justDroppedAdapter.submitList(recommendJustDroppedProducts)
-                            styleAdapter.submitList(recommendViewModel.instagramList)
                         }
                     }
 
@@ -121,6 +123,10 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         binding.ivRecommendForYouEtc.setOnClickListener {
             forYouBottomSheet.show()
         }
+    }
+
+    private fun postScrapProduct(productId: Int) {
+        recommendViewModel.postScrapProduct(productId = productId)
     }
 
     companion object {
