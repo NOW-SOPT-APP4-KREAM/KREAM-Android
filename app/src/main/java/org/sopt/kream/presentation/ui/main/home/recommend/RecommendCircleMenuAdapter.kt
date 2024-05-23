@@ -22,7 +22,7 @@ class RecommendCircleMenuAdapter(private val list: EnumEntries<RecommendCircleMe
         holder: RecommendCircleMenuViewHolder,
         position: Int,
     ) {
-        holder.onBind(item.get(position).menu)
+        holder.onBind(item.get(position))
     }
 
     override fun getItemCount(): Int = list.size
