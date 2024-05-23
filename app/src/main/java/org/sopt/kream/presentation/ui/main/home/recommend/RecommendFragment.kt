@@ -22,6 +22,7 @@ import org.sopt.kream.util.view.UiState
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
     private val recommendViewModel: RecommendViewModel by viewModels { ViewModelFactory() }
     private var memberId: Int = 1
+    private var forYouTotalPage: Int = 1
     private lateinit var advertisementAdapter: RecommendAdvertisementViewPagerAdapter
     private lateinit var circleMenuAdapter: RecommendCircleMenuAdapter
     private lateinit var forYouAdapter: RecommendForYouViewPagerAdapter
@@ -38,6 +39,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         initAdapter()
         setBottomSheet()
         collectRecommendProductState()
+        setForYouPage()
     }
 
     private fun initAdapter() {
@@ -64,6 +66,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                 when (recommendProductState) {
                     is UiState.Success -> {
                         with(recommendProductState.data) {
+                            forYouTotalPage = recommendForYouProducts.size / 6
                             forYouAdapter.submitList(listOf(recommendForYouProducts))
                             justDroppedAdapter.submitList(recommendJustDroppedProducts)
                             styleAdapter.submitList(recommendViewModel.instagramList)
@@ -73,6 +76,13 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                     else -> Unit
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    fun setForYouPage() {
+        with(binding) {
+            tvRecommendForYouTotalPage.text = forYouTotalPage.toString()
+            tvRecommendForYouCurrentPage.text = (vpRecommendForYouContent.currentItem + 1).toString()
+        }
     }
 
     private fun navigateToProductDetail(productId: Int) {
