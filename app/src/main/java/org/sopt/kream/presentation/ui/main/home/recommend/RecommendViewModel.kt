@@ -24,20 +24,20 @@ class RecommendViewModel(
                 id = "@zzz.myam",
             ),
             InstagramModel(
-                image = R.drawable.img_recommend_style_01,
-                id = "@zzz.myam",
+                image = R.drawable.img_recommend_style_02,
+                id = "@minimin.0.0",
             ),
             InstagramModel(
-                image = R.drawable.img_recommend_style_01,
-                id = "@zzz.myam",
+                image = R.drawable.img_recommend_style_03,
+                id = "@jyeo._.ni__",
             ),
             InstagramModel(
-                image = R.drawable.img_recommend_style_01,
-                id = "@zzz.myam",
+                image = R.drawable.img_recommend_style_04,
+                id = "@_minsuk__",
             ),
             InstagramModel(
-                image = R.drawable.img_recommend_style_01,
-                id = "@zzz.myam",
+                image = R.drawable.img_recommend_style_05,
+                id = "@hyobeen_0926",
             ),
         )
     val instagramList get() = _instagramList
