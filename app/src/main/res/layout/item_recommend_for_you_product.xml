@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/iv_for_you"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_border_radius_7"
         android:backgroundTint="@color/gray06"
@@ -20,12 +20,15 @@
 
     <TextView
         android:id="@+id/tv_for_you_see"
-        android:layout_width="31dp"
-        android:layout_height="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_border_radius_3"
         android:backgroundTint="@color/blue02"
+        android:paddingHorizontal="3dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="2dp"
         android:text="@string/item_recommend_for_you_see"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.Kream.Body8.Regular"
