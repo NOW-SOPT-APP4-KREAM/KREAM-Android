@@ -10,5 +10,6 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
     private val productService = ServicePool.productService
 
     override suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto> = productService.getSearchProduct(findName = findName)
+
     override suspend fun getRecommendProduct(memberId: Int): BaseResponse<ResponseRecommendProductDto> = productService.getRecommendProduct(memberId = memberId)
 }

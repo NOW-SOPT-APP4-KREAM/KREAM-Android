@@ -6,5 +6,5 @@ import org.sopt.kream.domain.model.RecommendProductModel
 fun ResponseRecommendProductDto.toRecommendProductModel() =
     RecommendProductModel(
         recommendForYouProducts = this.forYouList.map { it.toRecommendForYouProductModel() },
-        recommendJustDroppedProducts = this.justDropList.map { it.toRecommendJustDroppedProductModel() }
+        recommendJustDroppedProducts = this.justDropList.map { it.toRecommendJustDroppedProductModel() },
     )

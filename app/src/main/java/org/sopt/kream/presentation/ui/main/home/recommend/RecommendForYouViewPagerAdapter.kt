@@ -2,22 +2,28 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import org.sopt.kream.databinding.FragmentRecommendForYouBinding
 import org.sopt.kream.domain.model.RecommendForYouProductModel
+import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendForYouViewPagerAdapter(
     private val navigateToProductDetail: (Int) -> Unit,
     private val navigateToSearch: (String) -> Unit,
-    private val data: List<RecommendForYouProductModel>,
-) : RecyclerView.Adapter<RecommendForYouViewPagerViewHolder>() {
-    override fun getItemCount(): Int = data.size / 6
-
+) : ListAdapter<
+        List<RecommendForYouProductModel>,
+        RecommendForYouViewPagerViewHolder,
+        >(
+        ItemDiffCallback<List<RecommendForYouProductModel>>(
+            onContentsTheSame = { old, new -> old == new },
+            onItemsTheSame = { old, new -> old[0].engTitle == new[0].engTitle },
+        ),
+    ) {
     override fun onBindViewHolder(
         holder: RecommendForYouViewPagerViewHolder,
         position: Int,
     ) {
-        holder.onBind(data, position)
+        holder.onBind(currentList[position], position)
     }
 
     override fun onCreateViewHolder(
