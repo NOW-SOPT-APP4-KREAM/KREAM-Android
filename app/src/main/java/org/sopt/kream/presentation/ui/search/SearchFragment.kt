@@ -22,7 +22,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ConcatAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
@@ -41,11 +40,10 @@ import org.sopt.kream.util.view.UiState
 class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBinding.inflate(it) }) {
     private val searchViewModel: SearchViewModel by viewModels { ViewModelFactory() }
     private lateinit var findName: String
-    private lateinit var searchTopBarAdapter: SearchTopBarAdapter
-    private lateinit var searchRelatedSearchWordListAdapter: SearchRelatedSearchWordListAdapter
-    private lateinit var searchRelateRecommendProductListAdapter: SearchRelateRecommendProductListAdapter
-    private lateinit var firstSearchSearchFindProductListAdapter: SearchSearchFindProductListAdapter
-    private lateinit var secondSearchSearchFindProductListAdapter: SearchSearchFindProductListAdapter
+    private lateinit var searchRelatedSearchWordAdapter: SearchRelatedSearchWordAdapter
+    private lateinit var searchRelateRecommendProductAdapter: SearchRelateRecommendProductAdapter
+    private lateinit var searchSearchFindProductAdapter: SearchSearchFindProductAdapter
+
 
     override fun onViewCreated(
         view: View,
@@ -53,34 +51,33 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        initTop()
-        initAdapter()
         findName = getSearchWord()
+        initLayout()
+        initAdapter()
         searchViewModel.getSearchProduct(findName = findName)
         collectSearchProductState()
     }
 
-    private fun initTop() {
+    private fun initLayout() {
         binding.cvSearchTop.setContent {
             TopLayout()
         }
+        binding.tvSearchRelateRecommendProductListSearchWord.text = findName
     }
 
     private fun initAdapter() {
-        searchTopBarAdapter = SearchTopBarAdapter()
-        searchRelatedSearchWordListAdapter = SearchRelatedSearchWordListAdapter()
-        searchRelateRecommendProductListAdapter = SearchRelateRecommendProductListAdapter(::navigateToProductDetail)
-        firstSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter(::navigateToProductDetail)
-        secondSearchSearchFindProductListAdapter = SearchSearchFindProductListAdapter(::navigateToProductDetail)
+        searchRelatedSearchWordAdapter = SearchRelatedSearchWordAdapter()
+        searchRelateRecommendProductAdapter = SearchRelateRecommendProductAdapter(::navigateToProductDetail)
+        searchSearchFindProductAdapter = SearchSearchFindProductAdapter(::navigateToProductDetail)
 
-        binding.rvSearch.adapter =
-            ConcatAdapter(
-                searchTopBarAdapter,
-                firstSearchSearchFindProductListAdapter,
-                searchRelatedSearchWordListAdapter,
-                secondSearchSearchFindProductListAdapter,
-                searchRelateRecommendProductListAdapter,
-            )
+        with(binding) {
+            rvSearchRelatedSearchWordList.adapter = searchRelatedSearchWordAdapter
+            rvSearchRelatedProductList.adapter = searchRelateRecommendProductAdapter
+            rvSearchSearchFindProductList.adapter = searchSearchFindProductAdapter
+            rvSearchSearchFindProductListSecond.adapter = searchSearchFindProductAdapter
+        }
+
+        searchRelatedSearchWordAdapter.submitList(searchViewModel.relatedSearchWordList)
     }
 
     private fun collectSearchProductState() {
@@ -89,11 +86,8 @@ class SearchFragment : BindingFragment<FragmentSearchBinding>({ FragmentSearchBi
                 when (searchProductState) {
                     is UiState.Success -> {
                         with(searchProductState.data) {
-                            searchTopBarAdapter.submitList(listOf(Unit))
-                            searchRelatedSearchWordListAdapter.submitList(listOf(searchViewModel.relatedSearchWordList))
-                            firstSearchSearchFindProductListAdapter.submitList(listOf(searchFindProducts))
-                            secondSearchSearchFindProductListAdapter.submitList(listOf(searchFindProducts))
-                            searchRelateRecommendProductListAdapter.submitList(listOf(Pair(relateRecommendProducts, findName)))
+                            searchRelateRecommendProductAdapter.submitList(relateRecommendProducts)
+                            searchSearchFindProductAdapter.submitList(searchFindProducts)
                         }
                     }
 

@@ -19,9 +19,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
+        android:paddingBottom="10dp"
         android:clipToPadding="false"
         android:scrollbars="none"
-        app:layout_constraintBottom_toTopOf="@id/rv_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cv_search_top">
@@ -113,15 +113,204 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_search"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_search"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sv_search_chip" />
+        app:layout_constraintTop_toBottomOf="@id/sv_search_chip">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_search_top_bar_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="@string/search_product"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+                android:textColor="@color/black04"
+                app:layout_constraintBottom_toBottomOf="@id/iv_search_top_bar_product_sorting"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_search_top_bar_product_sorting" />
+
+            <TextView
+                android:id="@+id/tv_search_top_bar_popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:text="@string/search_popularity"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black04"
+                app:layout_constraintBottom_toBottomOf="@id/iv_search_top_bar_product_sorting"
+                app:layout_constraintEnd_toStartOf="@id/iv_search_top_bar_sort"
+                app:layout_constraintTop_toTopOf="@id/iv_search_top_bar_product_sorting" />
+
+            <ImageView
+                android:id="@+id/iv_search_top_bar_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_etc_sort_16"
+                app:layout_constraintBottom_toBottomOf="@id/iv_search_top_bar_product_sorting"
+                app:layout_constraintEnd_toStartOf="@id/view_search_top_bar"
+                app:layout_constraintTop_toTopOf="@id/iv_search_top_bar_product_sorting" />
+
+            <View
+                android:id="@+id/view_search_top_bar"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="4dp"
+                android:background="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@id/iv_search_top_bar_product_sorting"
+                app:layout_constraintEnd_toStartOf="@id/iv_search_top_bar_product_sorting"
+                app:layout_constraintTop_toTopOf="@id/iv_search_top_bar_product_sorting" />
+
+            <ImageView
+                android:id="@+id/iv_search_top_bar_product_sorting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="9dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_search_sorting_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search_search_find_product_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginHorizontal="14dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_search_top_bar_product_sorting"
+                app:spanCount="2"
+                tools:listitem="@layout/item_search_search_find_product" />
+
+            <TextView
+                android:id="@+id/tv_search_related_search_word_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/search_related_search_word"
+                android:textAppearance="@style/TextAppearance.Kream.Body2.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_search_search_find_product_list" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search_related_search_word_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginTop="13dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_search_related_search_word_list_title"
+                app:spanCount="2"
+                tools:listitem="@layout/item_search_related_search_word" />
+
+            <View
+                android:id="@+id/view_search_related_word_list"
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginVertical="14dp"
+                android:background="@color/gray06"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_search_related_search_word_list" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search_search_find_product_list_second"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginHorizontal="14dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_search_related_word_list"
+                app:spanCount="2"
+                tools:listitem="@layout/item_search_search_find_product" />
+
+            <ImageView
+                android:id="@+id/iv_search_relate_recommend_product_list_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:src="@drawable/ic_search_light_24"
+                app:layout_constraintBottom_toBottomOf="@id/tv_search_relate_recommend_product_list_details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_search_relate_recommend_product_list_details" />
+
+            <TextView
+                android:id="@+id/tv_search_relate_recommend_product_list_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="14dp"
+                android:text="@string/search_details"
+                android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+                android:textColor="@color/black03"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_search_search_find_product_list_second" />
+
+            <TextView
+                android:id="@+id/tv_search_relate_recommend_product_list_search_word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:textAppearance="@style/TextAppearance.Kream.Body3.SemiBold"
+                android:textColor="@color/black02"
+                app:layout_constraintBottom_toBottomOf="@id/iv_search_relate_recommend_product_list_search"
+                app:layout_constraintStart_toEndOf="@id/iv_search_relate_recommend_product_list_search"
+                app:layout_constraintTop_toTopOf="@id/iv_search_relate_recommend_product_list_search"
+                tools:text="아디다스 흰색" />
+
+            <TextView
+                android:id="@+id/tv_search_relate_recommend_product_list_search_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/search_search_result"
+                android:textAppearance="@style/TextAppearance.Kream.Body3.Regular"
+                android:textColor="@color/black06"
+                app:layout_constraintBottom_toBottomOf="@id/tv_search_relate_recommend_product_list_search_word"
+                app:layout_constraintStart_toEndOf="@id/tv_search_relate_recommend_product_list_search_word"
+                app:layout_constraintTop_toTopOf="@id/tv_search_relate_recommend_product_list_search_word" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search_related_product_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="24dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_search_relate_recommend_product_list_details"
+                tools:listitem="@layout/item_search_relate_recommend_product" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
