@@ -2,9 +2,7 @@ package org.sopt.kream.presentation.common
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.sopt.kream.data.datasourceimpl.DummyRemoteDataSourceImpl
 import org.sopt.kream.data.datasourceimpl.ProductRemoteDataSourceImpl
-import org.sopt.kream.data.repository.DummyRepositoryImpl
 import org.sopt.kream.data.repository.ProductRepositoryImpl
 import org.sopt.kream.presentation.ui.dummy.DummyViewModel
 import org.sopt.kream.presentation.ui.main.home.recommend.RecommendViewModel
