@@ -78,7 +78,7 @@
 
     <include
         android:id="@+id/include_just_dropped_product_fast_delivery"
-        layout="@layout/view_fast_delivery"
+        layout="@layout/view_recommend_fast_delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
@@ -142,7 +142,7 @@
         android:textColor="@color/black02"
         android:layout_marginTop="9dp"
         app:layout_constraintStart_toStartOf="@id/tv_just_dropped_product_brand"
-        app:layout_constraintTop_toBottomOf="@+id/include_just_dropped_product_fast_delivery"
+        app:layout_constraintTop_toBottomOf="@+id/tv_just_dropped_product_free_deliver"
         tools:text="13,000원" />
 
     <TextView

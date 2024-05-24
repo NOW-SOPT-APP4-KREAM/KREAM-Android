@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="2dp"
-        android:src="@drawable/ic_fd_16"
+        android:src="@drawable/ic_fd_10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,6 +20,8 @@
         android:id="@+id/tv_recommend_fast_delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="2dp"
+        android:layout_marginStart="1dp"
         android:layout_marginEnd="2dp"
         android:text="@string/search_chip_fast_delivery"
         android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
