@@ -20,7 +20,7 @@
         android:id="@+id/tv_fast_delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
+        android:layout_marginEnd="2dp"
         android:text="@string/search_chip_fast_delivery"
         android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
         android:textColor="@color/green02"

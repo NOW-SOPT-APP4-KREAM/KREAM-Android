@@ -1,11 +1,6 @@
-package org.sopt.kream.presentation.ui.main.home.release
+package org.sopt.kream.presentation.ui.type
 
 import org.sopt.kream.R
-
-data class Advertisement(
-    val id: Int,
-    val imgResource: Int,
-)
 
 enum class AdvertisementType(val imgResource: Int) {
     AD_01(R.drawable.img_view1_ad_01),

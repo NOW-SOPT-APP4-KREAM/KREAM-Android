@@ -7,14 +7,11 @@ import org.sopt.kream.domain.model.SearchProductModel
 interface ProductRepository {
     suspend fun getSearchProduct(findName: String): Result<SearchProductModel>
 
-    suspend fun deleteScrap(
-
     suspend fun getProductDetail(productId: Int): Result<ProductDetailModel>
 
-    suspend fun getRecommendProduct(memberId: Int): Result<RecommendProductModel>
+    suspend fun getRecommendProduct(): Result<RecommendProductModel>
 
-    suspend fun postScrap(
-        memberId: Int,
-        productId: Int,
-    ): Result<Unit>
+    suspend fun postScrap(productId: Int): Result<Unit>
+
+    suspend fun deleteScrap(productId: Int): Result<Unit>
 }

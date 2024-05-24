@@ -1,19 +1,14 @@
 package org.sopt.kream.data.service
 
-
 import org.sopt.kream.data.model.request.RequestDeleteScrapDto
-
 import org.sopt.kream.data.model.request.RequestPostScrapDto
 import org.sopt.kream.data.model.response.ResponseProductDetailDto
 import org.sopt.kream.data.model.response.ResponseRecommendProductDto
-
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse
+import org.sopt.kream.util.base.NullableBaseResponse
 import retrofit2.http.Body
-
-import retrofit2.http.DELETE
-
 import retrofit2.http.GET
 import retrofit2.http.HTTP
 import retrofit2.http.Header
@@ -38,24 +33,24 @@ interface ProductService {
         @Header("memberId") memberId: Int,
     ): BaseResponse<ResponseReleaseProductDto>
 
-    @HTTP(method = "DELETE", path = "scrap", hasBody = true)
-    suspend fun deleteScrap(
-
-        @Header("memberId") userid: Int,
-    ): BaseResponse<ResponseReleaseProductDto>
-
     @GET("product/recommend")
     suspend fun getRecommendProduct(
-        @Header("memberId") memberId: Int,
+        @Header("memberId") memberId: Int = MEMBER_ID,
     ): BaseResponse<ResponseRecommendProductDto>
 
     @POST("scrap")
     suspend fun postScrap(
-        @Header("memberId") memberId: Int,
+        @Header("memberId") memberId: Int = MEMBER_ID,
         @Body request: RequestPostScrapDto,
-    ): BaseResponse<Unit>
+    ): NullableBaseResponse<Unit>
+
+    @HTTP(method = "DELETE", path = "scrap", hasBody = true)
+    suspend fun deleteScrap(
+        @Header("memberId") userid: Int = MEMBER_ID,
+        @Body request: RequestDeleteScrapDto,
+    ): NullableBaseResponse<Unit>
 
     companion object {
-        const val MEMBER_ID = 1
+        const val MEMBER_ID = 2
     }
 }

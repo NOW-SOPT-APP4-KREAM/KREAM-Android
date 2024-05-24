@@ -5,15 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import org.sopt.kream.databinding.ItemRecommendForYouProductBinding
 import org.sopt.kream.domain.model.RecommendForYouProductModel
+import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment.Companion.FOR_YOU_SIZE
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendForYouAdapter(
     private val navigateToProductDetail: (Int) -> Unit,
     private val page: Int,
-) : ListAdapter<
-        RecommendForYouProductModel,
-        RecommendForYouViewHolder,
-        >(
+) : ListAdapter<RecommendForYouProductModel, RecommendForYouViewHolder>(
         ItemDiffCallback<RecommendForYouProductModel>(
             onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old.engTitle == new.engTitle },
@@ -37,8 +35,8 @@ class RecommendForYouAdapter(
         position: Int,
     ) {
         holder.onBind(
-            recommendForYouProductModel = currentList[page * 6 + position],
-            position = position,
+            recommendForYouProductModel = currentList[position],
+            position = page * FOR_YOU_SIZE + position,
         )
     }
 }
