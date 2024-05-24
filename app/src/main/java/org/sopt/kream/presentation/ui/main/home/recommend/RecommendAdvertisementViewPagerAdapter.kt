@@ -10,7 +10,7 @@ class RecommendAdvertisementViewPagerAdapter() : ListAdapter<Int, RecommendAdver
     ItemDiffCallback<Int>(
         onContentsTheSame = { old, new -> old == new },
         onItemsTheSame = { old, new -> old == new },
-    )
+    ),
 ) {
     override fun onBindViewHolder(
         holder: RecommendAdvertisementViewHolder,

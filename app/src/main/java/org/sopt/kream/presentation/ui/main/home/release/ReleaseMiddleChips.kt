@@ -46,10 +46,10 @@ fun ReleaseMiddleChips() {
     Column {
         LazyRow(
             modifier =
-            Modifier
-                .padding(0.dp)
-                .fillMaxWidth()
-                .background(Color.White),
+                Modifier
+                    .padding(0.dp)
+                    .fillMaxWidth()
+                    .background(Color.White),
         ) {
             items(shoes.size) { index ->
                 val isSelected = index == selectedIndex
@@ -59,11 +59,11 @@ fun ReleaseMiddleChips() {
                 if (index == 0) {
                     Row(
                         modifier =
-                        Modifier
-                            .padding(top = 10.dp)
-                            .padding(start = 14.dp)
-                            .padding(end = 6.dp)
-                            .clickable { selectedIndex = 0 },
+                            Modifier
+                                .padding(top = 10.dp)
+                                .padding(start = 14.dp)
+                                .padding(end = 6.dp)
+                                .clickable { selectedIndex = 0 },
                     ) {
                         Spacer(modifier = Modifier.width(4.dp))
 
@@ -75,31 +75,31 @@ fun ReleaseMiddleChips() {
 
                         Box(
                             modifier =
-                            Modifier
-                                .align(Alignment.CenterVertically)
-                                .padding(start = 9.dp)
-                                .width(1.dp)
-                                .height(23.dp)
-                                .background(colorResource(id = R.color.gray04)),
+                                Modifier
+                                    .align(Alignment.CenterVertically)
+                                    .padding(start = 9.dp)
+                                    .width(1.dp)
+                                    .height(23.dp)
+                                    .background(colorResource(id = R.color.gray04)),
                         )
                     }
                 } else {
                     Column(
                         modifier =
-                        Modifier
-                            .padding(top = 10.dp)
-                            .padding(bottom = 10.dp)
-                            .padding(end = 6.dp)
-                            .clickable { selectedIndex = index },
+                            Modifier
+                                .padding(top = 10.dp)
+                                .padding(bottom = 10.dp)
+                                .padding(end = 6.dp)
+                                .clickable { selectedIndex = index },
                     ) {
                         Text(
                             text = shoes[index],
                             style = body5Regular.copy(color = textColor),
                             modifier =
-                            Modifier
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(backgroundColor)
-                                .padding(10.dp),
+                                Modifier
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(backgroundColor)
+                                    .padding(10.dp),
                         )
                     }
                 }

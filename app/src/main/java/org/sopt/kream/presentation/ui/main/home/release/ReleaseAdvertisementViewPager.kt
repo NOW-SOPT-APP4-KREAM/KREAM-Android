@@ -49,9 +49,9 @@ fun ReleaseAdvertisementViewPager(
             Advertisement(
                 imgResource = advertisement.imgResource,
                 modifier =
-                Modifier
-                    .fillMaxSize()
-                    .aspectRatio(1f),
+                    Modifier
+                        .fillMaxSize()
+                        .aspectRatio(1f),
             )
             if (page == 0) {
                 CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
@@ -87,9 +87,9 @@ fun CountdownTimer(
 
     Row(
         modifier =
-        Modifier
-            .fillMaxWidth()
-            .padding(top = 42.dp),
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 42.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
         Text(text = formattedDays, style = textStyle)

@@ -23,7 +23,6 @@ class RecommendViewModel(
     private val _deleteScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
     val deleteScrapState get() = _postScrapState.asStateFlow()
 
-
     private val _instagramList =
         listOf(
             InstagramModel(

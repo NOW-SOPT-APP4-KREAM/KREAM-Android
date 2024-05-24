@@ -77,7 +77,7 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
                             getReleaseProductState.data,
                             ::postScrapProduct,
                             ::deleteScrapProduct,
-                            ::navigateToProductDetail
+                            ::navigateToProductDetail,
                         )
                     }
                 }
@@ -106,19 +106,19 @@ fun ReleaseView(
     releaseProductResponseDtoList: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
     postScrapProduct: (Int) -> Unit,
     deleteScrapProduct: (Int) -> Unit,
-    navigateToProductDetail: (Int) -> Unit
+    navigateToProductDetail: (Int) -> Unit,
 ) {
     val advertisement by remember { mutableStateOf(advertisements) }
     Box(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
-            Modifier
-                .fillMaxWidth(),
+                Modifier
+                    .fillMaxWidth(),
         ) {
             val targetDate =
                 Calendar.getInstance().apply {
@@ -135,7 +135,7 @@ fun ReleaseView(
                 releaseProductResponseDtoList,
                 postScrapProduct,
                 deleteScrapProduct,
-                navigateToProductDetail
+                navigateToProductDetail,
             )
         }
     }
@@ -147,7 +147,7 @@ fun ShoesItem(
     index: Int,
     postScrapProduct: (Int) -> Unit,
     deleteScrapProduct: (Int) -> Unit,
-    navigateToProductDetail: (Int) -> Unit
+    navigateToProductDetail: (Int) -> Unit,
 ) {
     var isIconChanged by remember { mutableStateOf(false) }
 
@@ -177,24 +177,27 @@ fun ShoesItem(
         stateVisible = 0f
         cardColor = R.color.gray06
     }
-    Column(modifier = Modifier
-        .size(width = 161.dp, height = 177.dp)
-        .noRippleClickable {
-            navigateToProductDetail(index)
-        }) {
+    Column(
+        modifier =
+            Modifier
+                .size(width = 161.dp, height = 177.dp)
+                .noRippleClickable {
+                    navigateToProductDetail(index)
+                },
+    ) {
         Box(
             modifier =
-            Modifier
-                .size(width = 161.dp, height = 108.dp)
-                .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
+                Modifier
+                    .size(width = 161.dp, height = 108.dp)
+                    .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
         ) {
             Image(
                 painter = rememberAsyncImagePainter(releaseProductResponseDto.thumbnailUrl),
                 contentDescription = null,
                 modifier =
-                Modifier
-                    .size(width = 108.dp, height = 108.dp)
-                    .align(Alignment.Center),
+                    Modifier
+                        .size(width = 108.dp, height = 108.dp)
+                        .align(Alignment.Center),
             )
             Row(
                 modifier = Modifier.padding(8.dp),
@@ -204,15 +207,15 @@ fun ShoesItem(
                     painter = painterResource(id = iconResource),
                     contentDescription = null,
                     modifier =
-                    Modifier.noRippleClickable {
-                        if (isIconChanged) {
-                            deleteScrapProduct(index + 1)
-                        } else {
-                            postScrapProduct(index + 1)
-                        }
+                        Modifier.noRippleClickable {
+                            if (isIconChanged) {
+                                deleteScrapProduct(index + 1)
+                            } else {
+                                postScrapProduct(index + 1)
+                            }
 
-                        isIconChanged = !isIconChanged
-                    },
+                            isIconChanged = !isIconChanged
+                        },
                 )
             }
         }
@@ -230,7 +233,7 @@ fun ShoesList(
     releaseProductResponseDtoList: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
     postScrapProduct: (Int) -> Unit,
     deleteScrapProduct: (Int) -> Unit,
-    navigateToProductDetail: (Int) -> Unit
+    navigateToProductDetail: (Int) -> Unit,
 ) {
     Column {
         val items = List(12) { it }
@@ -260,10 +263,10 @@ fun CustomShoesText(
         style = body5Regular,
         color = textColor,
         modifier =
-        Modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(backgroundColor)
-            .padding(10.dp),
+            Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(backgroundColor)
+                .padding(10.dp),
     )
 }
 
@@ -275,29 +278,29 @@ fun DrawCard(
     if (cardState == "UPDATE") {
         Column(
             modifier =
-            Modifier
-                .padding(3.dp)
-                .alpha(stateVisible),
+                Modifier
+                    .padding(3.dp)
+                    .alpha(stateVisible),
         ) {
             Box(
                 modifier =
-                Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.White)
-                    .size(width = 50.dp, height = 15.dp)
-                    .border(
-                        width = 1.dp,
-                        color = colorResource(id = R.color.gray03),
-                        shape = RoundedCornerShape(10.dp),
-                    ),
+                    Modifier
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.White)
+                        .size(width = 50.dp, height = 15.dp)
+                        .border(
+                            width = 1.dp,
+                            color = colorResource(id = R.color.gray03),
+                            shape = RoundedCornerShape(10.dp),
+                        ),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
                     modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(9.dp))
-                        .background(Color.White)
-                        .fillMaxSize(),
+                        Modifier
+                            .clip(RoundedCornerShape(9.dp))
+                            .background(Color.White)
+                            .fillMaxSize(),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
@@ -312,29 +315,29 @@ fun DrawCard(
     } else {
         Column(
             modifier =
-            Modifier
-                .padding(3.dp)
-                .alpha(stateVisible),
+                Modifier
+                    .padding(3.dp)
+                    .alpha(stateVisible),
         ) {
             Box(
                 modifier =
-                Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(Color.White)
-                    .size(width = 35.dp, height = 15.dp)
-                    .border(
-                        width = 1.dp,
-                        color = colorResource(id = R.color.red02),
-                        shape = RoundedCornerShape(10.dp),
-                    ),
+                    Modifier
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.White)
+                        .size(width = 35.dp, height = 15.dp)
+                        .border(
+                            width = 1.dp,
+                            color = colorResource(id = R.color.red02),
+                            shape = RoundedCornerShape(10.dp),
+                        ),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
                     modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(9.dp))
-                        .background(colorResource(id = R.color.red02))
-                        .fillMaxSize(),
+                        Modifier
+                            .clip(RoundedCornerShape(9.dp))
+                            .background(colorResource(id = R.color.red02))
+                            .fillMaxSize(),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(

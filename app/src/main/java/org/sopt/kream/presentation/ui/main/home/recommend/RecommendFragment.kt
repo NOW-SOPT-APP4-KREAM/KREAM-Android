@@ -71,12 +71,14 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
             rvRecommendJustDroppedContent.adapter = justDroppedAdapter
             rvRecommendStyle.adapter = styleAdapter
 
-            vpRecommendForYouContent.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    tvRecommendForYouCurrentPage.text = (position + 1).toString()
-                }
-            })
+            vpRecommendForYouContent.registerOnPageChangeCallback(
+                object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        tvRecommendForYouCurrentPage.text = (position + 1).toString()
+                    }
+                },
+            )
         }
 
         advertisementAdapter.submitList(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)

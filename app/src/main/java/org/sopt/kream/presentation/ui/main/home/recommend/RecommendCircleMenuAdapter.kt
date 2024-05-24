@@ -11,7 +11,7 @@ class RecommendCircleMenuAdapter() : ListAdapter<RecommendCircleMenuType, Recomm
     ItemDiffCallback<RecommendCircleMenuType>(
         onContentsTheSame = { old, new -> old == new },
         onItemsTheSame = { old, new -> old.name == new.name },
-    )
+    ),
 ) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
