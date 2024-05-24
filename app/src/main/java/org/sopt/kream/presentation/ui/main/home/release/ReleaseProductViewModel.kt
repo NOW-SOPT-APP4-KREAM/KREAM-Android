@@ -30,11 +30,9 @@ class ReleaseProductViewModel(
     val postScrapState get() = _postScrapState.asStateFlow()
 
     private val _deleteScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
-    val deleteScrapState get() = _postScrapState.asStateFlow()
 
     private val _productList = MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
 
-    val productList get() = _productList.asStateFlow()
 
     fun getReleaseProduct() {
         viewModelScope.launch {

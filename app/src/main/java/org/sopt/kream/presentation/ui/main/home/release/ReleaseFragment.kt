@@ -35,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
@@ -99,6 +100,7 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
         viewModel.deleteScrapProduct(productId = productId)
     }
 }
+
 
 @Composable
 fun ReleaseView(
