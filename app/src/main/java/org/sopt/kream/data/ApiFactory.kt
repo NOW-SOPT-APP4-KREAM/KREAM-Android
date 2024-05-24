@@ -29,6 +29,5 @@ object ApiFactory {
 }
 
 object ServicePool {
-    val dummyService = ApiFactory.create<DummyService>()
     val productService = ApiFactory.create<ProductService>()
 }
