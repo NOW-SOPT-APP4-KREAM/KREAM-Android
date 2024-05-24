@@ -28,8 +28,8 @@ import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentSearchBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
-import org.sopt.kream.presentation.ui.main.home.HomeFragment.Companion.SEARCH_WORD
 import org.sopt.kream.presentation.type.SearchTabBarType
+import org.sopt.kream.presentation.ui.main.home.HomeFragment.Companion.SEARCH_WORD
 import org.sopt.kream.util.base.BindingFragment
 import org.sopt.kream.util.component.KreamTab
 import org.sopt.kream.util.component.KreamTabBar

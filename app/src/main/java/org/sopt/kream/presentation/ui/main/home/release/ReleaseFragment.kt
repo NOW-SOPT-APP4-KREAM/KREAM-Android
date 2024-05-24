@@ -48,8 +48,8 @@ import org.sopt.kream.R
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.databinding.FragmentReleaseBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
-import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment
 import org.sopt.kream.presentation.model.Advertisement
+import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular

@@ -13,9 +13,9 @@ import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentProductDetailBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
 import org.sopt.kream.presentation.model.ProductDetailInfo
-import org.sopt.kream.presentation.ui.search.SearchFragment.Companion.PRODUCT_ID
 import org.sopt.kream.presentation.type.ProductDetailButtonType
 import org.sopt.kream.presentation.type.ProductDetailInfoType
+import org.sopt.kream.presentation.ui.search.SearchFragment.Companion.PRODUCT_ID
 import org.sopt.kream.util.base.BindingFragment
 import org.sopt.kream.util.component.KreamProductDetailStyleImageView
 import org.sopt.kream.util.view.UiState
