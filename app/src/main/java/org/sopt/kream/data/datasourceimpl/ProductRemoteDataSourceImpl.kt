@@ -2,6 +2,7 @@ package org.sopt.kream.data.datasourceimpl
 
 import org.sopt.kream.data.ServicePool
 import org.sopt.kream.data.datasource.ProductRemoteDataSource
+import org.sopt.kream.data.model.request.RequestDeleteScrapDto
 import org.sopt.kream.data.model.request.RequestPostScrapDto
 import org.sopt.kream.data.model.response.ResponseProductDetailDto
 import org.sopt.kream.data.model.response.ResponseRecommendProductDto
@@ -18,4 +19,6 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
     override suspend fun getRecommendProduct(): BaseResponse<ResponseRecommendProductDto> = productService.getRecommendProduct()
 
     override suspend fun postScrap(productId: Int): BaseResponse<Unit> = productService.postScrap(request = RequestPostScrapDto(productId))
+
+    override suspend fun deleteScrap(productId: Int): BaseResponse<Unit> = productService.deleteScrap(RequestDeleteScrapDto(productId))
 }

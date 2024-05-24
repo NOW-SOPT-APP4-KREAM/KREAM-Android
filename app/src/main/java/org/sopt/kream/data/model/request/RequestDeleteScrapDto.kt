@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RequestDeleteScrapDto(
-    @SerialName("memberId")
-    val memberId: String,
+    @SerialName("productId")
+    val productId: Int,
 )

@@ -13,29 +13,23 @@ import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.presentation.ui.type.AdvertisementType
 import org.sopt.kream.util.view.UiState
 
-class ReleaseProductViewModel : ViewModel() {
+class ReleaseProductViewModel(
+    private val repository: ProductRepository,
+) : ViewModel() {
     val advertisements by mutableStateOf(generateDummyAdvertisement())
-    val authService by lazy { ServicePool.productService }
-
-//    private val _getRememberAllState =
-//        MutableStateFlow<UiState<List<ResponseRememberAllDto>>>(UiState.Empty)
-//    val getRememberAllState get() = _getRememberAllState.asStateFlow()
-//
-//    fun getRememberAll() {
-//        viewModelScope.launch {
-//            _getRememberAllState.value = UiState.Loading
-//            runCatching {
-//                weLikedItRepository.getRememberAll()
-//            }.onSuccess {
-//                _getRememberAllState.value = UiState.Success(it)
-//            }.onFailure { exception: Throwable ->
-//                _getRememberAllState.value = UiState.Error(exception.message)
-//            }
-//        }
+    private val authService by lazy { ServicePool.productService }
 
     private val _getReleaseProductState =
         MutableStateFlow<UiState<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>>(UiState.Empty)
+
+    private val _deleteScrapState =
+        MutableStateFlow<UiState<Unit>>(UiState.Empty)
     val getReleaseProductState get() = _getReleaseProductState.asStateFlow()
+    val deleteScrapState get() = _deleteScrapState.asStateFlow()
+
+    private val _productList = MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
+
+    val productList get() = _productList.asStateFlow()
 
     fun getReleaseProduct() {
         viewModelScope.launch {
@@ -43,9 +37,24 @@ class ReleaseProductViewModel : ViewModel() {
                 authService.getReleaseProduct(2)
             }.onSuccess {
                 _getReleaseProductState.value = UiState.Success(it.data.releaseProducts)
+                _productList.value = it.data.releaseProducts
             }.onFailure { exception: Throwable ->
                 _getReleaseProductState.value = UiState.Error(exception.message)
             }
+        }
+    }
+
+    fun deleteScrap(productIndex: Int) {
+        Log.d("okhttp", "hi 1")
+        viewModelScope.launch {
+            repository.deleteScrap(2, productIndex)
+                .onSuccess {
+                    Log.d("okhttp", "hi 3")
+                    _deleteScrapState.value = UiState.Success(it)
+                }.onFailure { exception: Throwable ->
+                    Log.d("okhttp", "hi 4 : ${exception.message}")
+                    _deleteScrapState.value = UiState.Error(exception.message)
+                }
         }
     }
 
