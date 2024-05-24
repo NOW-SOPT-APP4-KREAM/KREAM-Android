@@ -6,6 +6,8 @@ accompanistPagerVersion = "0.24.13-rc"
 agp = "8.3.2"
 coilCompose = "2.6.0"
 foundation = "1.9.23"
+foundationVersion = "1.6.7"
+googleAccompanistPager = "0.16.0"
 kotlin = "1.9.23"
 kotlinSerializationJson = "1.5.1"
 kotlinxCoroutines = "1.7.3"
@@ -19,6 +21,7 @@ coreKtx = "1.13.1"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 fragment = "1.7.0"
+materialVersion = "1.6.7"
 navigation = "2.7.7"
 material3Android = "1.2.1"
 recyclerview = "1.2.0"
@@ -44,8 +47,11 @@ foundationAndroid = "1.6.7"
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
 accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPager" }
 accompanist-pager-indicators-v02413rc = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPagerIndicators" }
+accompanist-pager-v0160 = { module = "com.google.accompanist:accompanist-pager", version.ref = "googleAccompanistPager" }
 accompanist-pager-v02413rc = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPagerVersion" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+androidx-foundation-v167 = { module = "androidx.compose.foundation:foundation", version.ref = "foundationVersion" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
 kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }

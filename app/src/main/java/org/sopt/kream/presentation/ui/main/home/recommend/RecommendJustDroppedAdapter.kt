@@ -9,15 +9,15 @@ import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendJustDroppedAdapter(
     private val navigateToProductDetail: (Int) -> Unit,
-    private val recommendViewModel: RecommendViewModel,
-    private val memberId: Int,
+    private val postScrapProduct: (Int) -> Unit,
+    private val deleteScrapProduct: (Int) -> Unit,
 ) : ListAdapter<
         RecommendJustDroppedProductModel,
         RecommendJustDroppedViewHolder,
         >(
         ItemDiffCallback<RecommendJustDroppedProductModel>(
             onContentsTheSame = { old, new -> old == new },
-            onItemsTheSame = { old, new -> old.engTitle == new.engTitle },
+            onItemsTheSame = { old, new -> old == new },
         ),
     ) {
     override fun onCreateViewHolder(
@@ -31,8 +31,8 @@ class RecommendJustDroppedAdapter(
                 false,
             ),
             navigateToProductDetail,
-            recommendViewModel,
-            memberId,
+            postScrapProduct,
+            deleteScrapProduct,
         )
 
     override fun onBindViewHolder(

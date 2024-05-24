@@ -6,7 +6,7 @@ data class RecommendJustDroppedProductModel(
     val engTitle: String,
     val price: String,
     val transactionCount: String,
-    val isScrap: Boolean,
+    var isScrap: Boolean,
     val isFast: Boolean,
     val isFreeDeliver: Boolean,
     val isSave: Boolean,

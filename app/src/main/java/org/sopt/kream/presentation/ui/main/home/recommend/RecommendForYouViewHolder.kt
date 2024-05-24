@@ -21,6 +21,10 @@ class RecommendForYouViewHolder(
             tvForYouPrice.text = recommendForYouProductModel.price
             tvForYouTransaction.text = recommendForYouProductModel.transactionCount
             tvForYouSee.visibility = View.INVISIBLE
+
+            root.setOnClickListener {
+                navigateToProductDetail(position)
+            }
         }
     }
 }

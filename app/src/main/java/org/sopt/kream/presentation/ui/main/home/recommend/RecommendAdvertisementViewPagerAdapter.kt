@@ -2,19 +2,21 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 import org.sopt.kream.databinding.ItemRecommendAdvertisementBinding
+import org.sopt.kream.util.view.ItemDiffCallback
 
-class RecommendAdvertisementViewPagerAdapter(private val data: List<Int>) : RecyclerView.Adapter<RecommendAdvertisementViewHolder>() {
-    private val item = data
-
-    override fun getItemCount(): Int = item.size
-
+class RecommendAdvertisementViewPagerAdapter() : ListAdapter<Int, RecommendAdvertisementViewHolder>(
+    ItemDiffCallback<Int>(
+        onContentsTheSame = { old, new -> old == new },
+        onItemsTheSame = { old, new -> old == new },
+    ),
+) {
     override fun onBindViewHolder(
         holder: RecommendAdvertisementViewHolder,
         position: Int,
     ) {
-        holder.onBind(item[position])
+        holder.onBind(currentList[position])
     }
 
     override fun onCreateViewHolder(

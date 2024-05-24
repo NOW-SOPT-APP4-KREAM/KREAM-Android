@@ -13,27 +13,23 @@
         <action
             android:id="@+id/action_home_to_search"
             app:destination="@id/search" />
+
+        <action
+            android:id="@+id/action_home_to_product_detail"
+            app:destination="@id/product_detail" />
     </fragment>
 
     <fragment
         android:id="@+id/recommend"
         android:name="org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment"
         android:label="fragment_recommend"
-        tools:layout="@layout/fragment_recommend">
-        <action
-            android:id="@+id/action_recommend_to_product_detail"
-            app:destination="@id/product_detail" />
-    </fragment>
+        tools:layout="@layout/fragment_recommend" />
 
     <fragment
         android:id="@+id/release"
         android:name="org.sopt.kream.presentation.ui.main.home.release.ReleaseFragment"
         android:label="fragment_release"
-        tools:layout="@layout/fragment_release">
-        <action
-            android:id="@+id/action_release_to_product_detail"
-            app:destination="@id/product_detail" />
-    </fragment>
+        tools:layout="@layout/fragment_release" />
 
     <fragment
         android:id="@+id/search"

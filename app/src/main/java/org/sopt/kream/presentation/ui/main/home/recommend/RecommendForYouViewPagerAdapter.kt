@@ -10,10 +10,7 @@ import org.sopt.kream.util.view.ItemDiffCallback
 class RecommendForYouViewPagerAdapter(
     private val navigateToProductDetail: (Int) -> Unit,
     private val navigateToSearch: (String) -> Unit,
-) : ListAdapter<
-        List<RecommendForYouProductModel>,
-        RecommendForYouViewPagerViewHolder,
-        >(
+) : ListAdapter<List<RecommendForYouProductModel>, RecommendForYouViewPagerViewHolder>(
         ItemDiffCallback<List<RecommendForYouProductModel>>(
             onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old[0].engTitle == new[0].engTitle },

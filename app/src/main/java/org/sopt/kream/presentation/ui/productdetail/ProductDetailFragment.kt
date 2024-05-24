@@ -108,6 +108,19 @@ class ProductDetailFragment : BindingFragment<FragmentProductDetailBinding>({ Fr
                                     ),
                                 ),
                             )
+
+                            var isScrap = productDetailState.data.isScrap
+                            layoutProductDetailBottomScrap.setOnClickListener {
+                                if (isScrap) {
+                                    productDetailViewModel.deleteScrapProduct(getProductId() + 1)
+                                    ivProductDetailBottomScrap.setImageResource(R.drawable.ic_saved_1_off_24)
+                                    isScrap = false
+                                } else {
+                                    productDetailViewModel.postScrapProduct(getProductId() + 1)
+                                    ivProductDetailBottomScrap.setImageResource(R.drawable.ic_saved_1_on_24)
+                                    isScrap = true
+                                }
+                            }
                         }
                     }
 

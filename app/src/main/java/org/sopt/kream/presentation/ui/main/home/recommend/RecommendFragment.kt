@@ -3,10 +3,12 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.size
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.launchIn
@@ -17,12 +19,11 @@ import org.sopt.kream.presentation.common.ViewModelFactory
 import org.sopt.kream.presentation.ui.type.RecommendAdvertisementType
 import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
 import org.sopt.kream.util.base.BindingFragment
+import org.sopt.kream.util.chunkList
 import org.sopt.kream.util.view.UiState
 
 class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRecommendBinding.inflate(it) }) {
     private val recommendViewModel: RecommendViewModel by viewModels { ViewModelFactory() }
-    private var memberId: Int = 1
-    private var forYouTotalPage: Int = 1
     private lateinit var advertisementAdapter: RecommendAdvertisementViewPagerAdapter
     private lateinit var circleMenuAdapter: RecommendCircleMenuAdapter
     private lateinit var forYouAdapter: RecommendForYouViewPagerAdapter
@@ -35,18 +36,30 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        recommendViewModel.getRecommendProduct(memberId = memberId)
+        recommendViewModel.getRecommendProduct()
+        addListeners()
         initAdapter()
         setBottomSheet()
         collectRecommendProductState()
-        setForYouPage()
+    }
+
+    private fun addListeners() {
+        with(binding) {
+            ivRecommendForYouBack.setOnClickListener {
+                if (vpRecommendForYouContent.currentItem != 0) vpRecommendForYouContent.currentItem--
+            }
+
+            ivRecommendForYouNext.setOnClickListener {
+                if (vpRecommendForYouContent.currentItem != vpRecommendForYouContent.size) vpRecommendForYouContent.currentItem++
+            }
+        }
     }
 
     private fun initAdapter() {
-        advertisementAdapter = RecommendAdvertisementViewPagerAdapter(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
-        circleMenuAdapter = RecommendCircleMenuAdapter(RecommendCircleMenuType.entries)
+        advertisementAdapter = RecommendAdvertisementViewPagerAdapter()
+        circleMenuAdapter = RecommendCircleMenuAdapter()
         forYouAdapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, ::navigateToSearch)
-        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, recommendViewModel, memberId)
+        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, ::postScrapProduct, ::deleteScrapProduct)
         styleAdapter = RecommendStyleAdapter()
 
         with(binding) {
@@ -57,7 +70,20 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
             vpRecommendForYouContent.adapter = forYouAdapter
             rvRecommendJustDroppedContent.adapter = justDroppedAdapter
             rvRecommendStyle.adapter = styleAdapter
+
+            vpRecommendForYouContent.registerOnPageChangeCallback(
+                object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        tvRecommendForYouCurrentPage.text = (position + 1).toString()
+                    }
+                },
+            )
         }
+
+        advertisementAdapter.submitList(RecommendAdvertisementType.RECOMMEND_ADVERTISEMENT.advertisementList)
+        circleMenuAdapter.submitList(RecommendCircleMenuType.entries)
+        styleAdapter.submitList(recommendViewModel.instagramList)
     }
 
     private fun collectRecommendProductState() {
@@ -66,10 +92,11 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
                 when (recommendProductState) {
                     is UiState.Success -> {
                         with(recommendProductState.data) {
-                            forYouTotalPage = recommendForYouProducts.size / 6
-                            forYouAdapter.submitList(listOf(recommendForYouProducts))
+                            chunkList(recommendForYouProducts, FOR_YOU_SIZE).let { recommendForYouProductList ->
+                                forYouAdapter.submitList(recommendForYouProductList)
+                                binding.tvRecommendForYouTotalPage.text = recommendForYouProductList.size.toString()
+                            }
                             justDroppedAdapter.submitList(recommendJustDroppedProducts)
-                            styleAdapter.submitList(recommendViewModel.instagramList)
                         }
                     }
 
@@ -78,15 +105,8 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    fun setForYouPage() {
-        with(binding) {
-            tvRecommendForYouTotalPage.text = forYouTotalPage.toString()
-            tvRecommendForYouCurrentPage.text = (vpRecommendForYouContent.currentItem + 1).toString()
-        }
-    }
-
     private fun navigateToProductDetail(productId: Int) {
-        findNavController().navigate(R.id.action_recommend_to_product_detail, bundleOf(PRODUCT_ID to productId))
+        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(PRODUCT_ID to productId))
     }
 
     private fun navigateToSearch(searchKeyword: String) {
@@ -107,8 +127,17 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         }
     }
 
+    private fun postScrapProduct(productId: Int) {
+        recommendViewModel.postScrapProduct(productId = productId)
+    }
+
+    private fun deleteScrapProduct(productId: Int) {
+        recommendViewModel.deleteScrapProduct(productId = productId)
+    }
+
     companion object {
         const val PRODUCT_ID = "productId"
         const val SEARCH_WORD = "searchWord"
+        const val FOR_YOU_SIZE = 6
     }
 }
