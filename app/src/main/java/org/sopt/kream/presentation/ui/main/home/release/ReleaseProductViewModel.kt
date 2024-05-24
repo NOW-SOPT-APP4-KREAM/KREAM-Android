@@ -29,10 +29,11 @@ class ReleaseProductViewModel(
     private val _postScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
     val postScrapState get() = _postScrapState.asStateFlow()
 
-    private val _deleteScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
+    private val deleteScrapState =
+        MutableStateFlow<UiState<Int>>(UiState.Empty)
 
-    private val _productList = MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
-
+    private val productList =
+        MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
 
     fun getReleaseProduct() {
         viewModelScope.launch {
@@ -40,7 +41,7 @@ class ReleaseProductViewModel(
                 authService.getReleaseProduct(MEMBER_ID)
             }.onSuccess {
                 _getReleaseProductState.value = UiState.Success(it.data.releaseProducts)
-                _productList.value = it.data.releaseProducts
+                productList.value = it.data.releaseProducts
             }.onFailure { exception: Throwable ->
                 _getReleaseProductState.value = UiState.Error(exception.message)
             }
@@ -60,11 +61,11 @@ class ReleaseProductViewModel(
 
     fun deleteScrapProduct(productId: Int) {
         viewModelScope.launch {
-            _deleteScrapState.value = UiState.Loading
+            deleteScrapState.value = UiState.Loading
             productRepository.deleteScrap(productId = productId).onSuccess {
-                _deleteScrapState.value = UiState.Success(productId)
+                deleteScrapState.value = UiState.Success(productId)
             }.onFailure { exception: Throwable ->
-                _deleteScrapState.value = UiState.Error(exception.message)
+                deleteScrapState.value = UiState.Error(exception.message)
             }
         }
     }

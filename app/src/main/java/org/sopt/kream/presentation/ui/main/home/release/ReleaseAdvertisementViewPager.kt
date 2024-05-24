@@ -2,8 +2,10 @@ package org.sopt.kream.presentation.ui.main.home.release
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -12,6 +14,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
+import androidx.compose.material.TabRowDefaults
+import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,24 +26,17 @@ import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.delay
+import org.sopt.kream.R
 import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.theme.robotoBold
 import java.util.concurrent.TimeUnit
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
-import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
-import androidx.compose.ui.res.colorResource
-import org.sopt.kream.R
-
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -59,9 +58,9 @@ fun ReleaseAdvertisementViewPager(
                 Advertisement(
                     imgResource = advertisement.imgResource,
                     modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .aspectRatio(1f),
+                        Modifier
+                            .fillMaxSize()
+                            .aspectRatio(1f),
                 )
                 if (page == 0) {
                     CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
@@ -69,35 +68,35 @@ fun ReleaseAdvertisementViewPager(
             }
         }
 
-        Column (modifier = Modifier.fillMaxWidth()){
+        Column(modifier = Modifier.fillMaxWidth()) {
             Spacer(modifier = Modifier.height(310.dp))
 
             TabRow(
                 selectedTabIndex = pagerState.currentPage,
                 modifier = Modifier.height(2.dp).fillMaxWidth().padding(start = 14.dp).padding(end = 14.dp),
-
                 backgroundColor = colorResource(id = R.color.gray04),
                 indicator = { tabPositions ->
                     TabRowDefaults.Indicator(
                         Modifier
                             .tabIndicatorOffset(tabPositions[pagerState.currentPage])
                             .height(2.dp)
-                            .background(colorResource(id = R.color.black01))
+                            .background(colorResource(id = R.color.black01)),
                     )
                 },
-                divider = {}
-            ){
+                divider = {},
+            ) {
                 advertisements.forEachIndexed { index, _ ->
                     Tab(
                         selected = pagerState.currentPage == index,
                         onClick = { },
-                        modifier = Modifier.height(2.dp) // Match the height of the indicator
+                        modifier = Modifier.height(2.dp),
                     ) {}
                 }
             }
         }
     }
 }
+
 @SuppressLint("DefaultLocale")
 @Composable
 fun CountdownTimer(
@@ -125,9 +124,9 @@ fun CountdownTimer(
 
     Row(
         modifier =
-        Modifier
-            .fillMaxWidth()
-            .padding(top = 42.dp),
+            Modifier
+                .fillMaxWidth()
+                .padding(top = 42.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
         Text(text = formattedDays, style = textStyle)
