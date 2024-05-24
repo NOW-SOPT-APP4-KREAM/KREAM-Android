@@ -26,7 +26,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.delay
-import org.sopt.kream.presentation.model.Advertisement
+import org.sopt.kream.R
+import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.theme.robotoBold
 import java.util.concurrent.TimeUnit
 
@@ -38,23 +39,52 @@ fun ReleaseAdvertisementViewPager(
 ) {
     val pagerState = rememberPagerState()
 
-    HorizontalPager(
-        count = advertisements.size,
-        state = pagerState,
-        modifier = Modifier.height(327.dp),
-    ) { page ->
-        val advertisement = advertisements[page]
+    Box {
+        HorizontalPager(
+            count = advertisements.size,
+            state = pagerState,
+            modifier = Modifier.height(327.dp),
+        ) { page ->
+            val advertisement = advertisements[page]
 
-        Box {
-            Advertisement(
-                imgResource = advertisement.imgResource,
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .aspectRatio(1f),
-            )
-            if (page == 0) {
-                CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
+            Box {
+                Advertisement(
+                    imgResource = advertisement.imgResource,
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .aspectRatio(1f),
+                )
+                if (page == 0) {
+                    CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
+                }
+            }
+        }
+
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Spacer(modifier = Modifier.height(310.dp))
+
+            TabRow(
+                selectedTabIndex = pagerState.currentPage,
+                modifier = Modifier.height(2.dp).fillMaxWidth().padding(start = 14.dp).padding(end = 14.dp),
+                backgroundColor = colorResource(id = R.color.gray04),
+                indicator = { tabPositions ->
+                    TabRowDefaults.Indicator(
+                        Modifier
+                            .tabIndicatorOffset(tabPositions[pagerState.currentPage])
+                            .height(2.dp)
+                            .background(colorResource(id = R.color.black01)),
+                    )
+                },
+                divider = {},
+            ) {
+                advertisements.forEachIndexed { index, _ ->
+                    Tab(
+                        selected = pagerState.currentPage == index,
+                        onClick = { },
+                        modifier = Modifier.height(2.dp),
+                    ) {}
+                }
             }
         }
     }

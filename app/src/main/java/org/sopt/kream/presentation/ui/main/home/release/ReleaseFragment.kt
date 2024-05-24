@@ -87,6 +87,11 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getReleaseProduct()
+    }
+
     private fun navigateToProductDetail(productId: Int) {
         findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(RecommendFragment.PRODUCT_ID to productId))
     }
@@ -149,8 +154,7 @@ fun ShoesItem(
     deleteScrapProduct: (Int) -> Unit,
     navigateToProductDetail: (Int) -> Unit,
 ) {
-    var isIconChanged by remember { mutableStateOf(false) }
-
+    var isIconChanged by remember { mutableStateOf(releaseProductResponseDto.isScrap) }
     val iconResource =
         if (isIconChanged) {
             R.drawable.ic_saved_1_on_24
@@ -213,7 +217,6 @@ fun ShoesItem(
                             } else {
                                 postScrapProduct(index + 1)
                             }
-
                             isIconChanged = !isIconChanged
                         },
                 )

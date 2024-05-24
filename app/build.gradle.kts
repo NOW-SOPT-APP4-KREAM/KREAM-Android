@@ -83,6 +83,9 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlin.serialization.json)
+    implementation(libs.androidx.foundation.v167)
+    implementation(libs.androidx.material)
+    implementation(libs.accompanist.pager.v0160)
 
     // Pager
     implementation(libs.accompanist.pager.v02413rc)
