@@ -43,6 +43,11 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         collectRecommendProductState()
     }
 
+    override fun onResume() {
+        super.onResume()
+        recommendViewModel.getRecommendProduct()
+    }
+
     private fun addListeners() {
         with(binding) {
             ivRecommendForYouBack.setOnClickListener {
