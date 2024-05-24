@@ -20,5 +20,5 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
 
     override suspend fun postScrap(productId: Int): BaseResponse<Unit> = productService.postScrap(request = RequestPostScrapDto(productId))
 
-    override suspend fun deleteScrap(productId: Int): BaseResponse<Unit> = productService.deleteScrap(RequestDeleteScrapDto(productId))
+    override suspend fun deleteScrap(productId: Int): BaseResponse<Unit> = productService.deleteScrap(request = RequestDeleteScrapDto(productId))
 }

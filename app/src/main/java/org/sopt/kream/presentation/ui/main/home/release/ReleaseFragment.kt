@@ -44,6 +44,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import coil.compose.rememberAsyncImagePainter
@@ -57,6 +58,7 @@ import org.sopt.kream.R
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.databinding.FragmentReleaseBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
+import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
@@ -117,7 +119,7 @@ fun UiStateISSuccess(
                 targetTimeInMillis = targetTimeInMillis,
             )
             CustomMidNaviBar()
-            ShoesList(uiState)
+            ShoesList(viewModel)
         }
     }
 }
@@ -351,7 +353,6 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
                         Modifier.clickable {
                             isIconChanged = !isIconChanged
                             if (releaseProductResponseDto.isScrap) {
-                                viewModel.deleteScrap(productIndex)
                             }
                         },
                 )
@@ -376,9 +377,9 @@ fun ShoesList(viewModel: ReleaseProductViewModel) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesItem(shoesList[i], i + 1, viewModel)
+                ShoesItem(shoesList[i])
                 if (i + 1 < items.size) {
-                    ShoesItem(shoesList[i + 1], i + 2, viewModel)
+                    ShoesItem(shoesList[i + 1])
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))

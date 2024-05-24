@@ -38,12 +38,6 @@ interface ProductService {
         @Header("memberId") memberId: Int,
     ): BaseResponse<ResponseReleaseProductDto>
 
-    @HTTP(method = "DELETE", path = "scrap", hasBody = true)
-    suspend fun deleteScrap(
-
-        @Header("memberId") userid: Int,
-    ): BaseResponse<ResponseReleaseProductDto>
-
     @GET("product/recommend")
     suspend fun getRecommendProduct(
         @Header("memberId") memberId: Int = MEMBER_ID,
@@ -53,6 +47,12 @@ interface ProductService {
     suspend fun postScrap(
         @Header("memberId") memberId: Int = MEMBER_ID,
         @Body request: RequestPostScrapDto,
+    ): BaseResponse<Unit>
+
+    @HTTP(method = "DELETE", path = "scrap", hasBody = true)
+    suspend fun deleteScrap(
+        @Header("memberId") userid: Int = MEMBER_ID,
+        @Body request: RequestDeleteScrapDto,
     ): BaseResponse<Unit>
 
     companion object {
