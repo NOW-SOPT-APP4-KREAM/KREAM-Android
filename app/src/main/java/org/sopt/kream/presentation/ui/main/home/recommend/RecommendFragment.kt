@@ -42,14 +42,10 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         setBottomSheet()
         collectRecommendProductState()
     }
+
     override fun onResume() {
         super.onResume()
         recommendViewModel.getRecommendProduct()
-        addListeners()
-        initAdapter()
-        setBottomSheet()
-        collectRecommendProductState()
-
     }
 
     private fun addListeners() {
