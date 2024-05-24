@@ -4,6 +4,7 @@ import org.sopt.kream.data.model.response.ResponseProductDetailDto
 import org.sopt.kream.data.model.response.ResponseRecommendProductDto
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse
+import org.sopt.kream.util.base.NullableBaseResponse
 
 interface ProductRemoteDataSource {
     suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto>
@@ -12,7 +13,7 @@ interface ProductRemoteDataSource {
 
     suspend fun getRecommendProduct(): BaseResponse<ResponseRecommendProductDto>
 
-    suspend fun postScrap(productId: Int): BaseResponse<Unit>
+    suspend fun postScrap(productId: Int): NullableBaseResponse<Unit>
 
-    suspend fun deleteScrap(productId: Int): BaseResponse<Unit>
+    suspend fun deleteScrap(productId: Int): NullableBaseResponse<Unit>
 }

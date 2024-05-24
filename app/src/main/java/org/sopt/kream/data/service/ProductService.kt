@@ -10,6 +10,7 @@ import org.sopt.kream.data.model.response.ResponseRecommendProductDto
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse
+import org.sopt.kream.util.base.NullableBaseResponse
 import retrofit2.http.Body
 
 import retrofit2.http.DELETE
@@ -47,13 +48,13 @@ interface ProductService {
     suspend fun postScrap(
         @Header("memberId") memberId: Int = MEMBER_ID,
         @Body request: RequestPostScrapDto,
-    ): BaseResponse<Unit>
+    ): NullableBaseResponse<Unit>
 
     @HTTP(method = "DELETE", path = "scrap", hasBody = true)
     suspend fun deleteScrap(
         @Header("memberId") userid: Int = MEMBER_ID,
         @Body request: RequestDeleteScrapDto,
-    ): BaseResponse<Unit>
+    ): NullableBaseResponse<Unit>
 
     companion object {
         const val MEMBER_ID = 2

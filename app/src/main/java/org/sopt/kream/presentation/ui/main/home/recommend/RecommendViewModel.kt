@@ -17,8 +17,12 @@ class RecommendViewModel(
     private val _recommendProductState = MutableStateFlow<UiState<RecommendProductModel>>(UiState.Empty)
     val recommendProductState get() = _recommendProductState.asStateFlow()
 
-    private val _postScrapState = MutableStateFlow<UiState<Unit>>(UiState.Empty)
+    private val _postScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
     val postScrapState get() = _postScrapState.asStateFlow()
+
+    private val _deleteScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
+    val deleteScrapState get() = _postScrapState.asStateFlow()
+
 
     private val _instagramList =
         listOf(
@@ -56,15 +60,24 @@ class RecommendViewModel(
         }
     }
 
-    fun postScrapProduct(
-        productId: Int,
-    ) {
+    fun postScrapProduct(productId: Int) {
         viewModelScope.launch {
             _postScrapState.value = UiState.Loading
-            productRepository.postScrap(productId = productId).onSuccess { postScrapResult ->
-                _postScrapState.value = UiState.Success(postScrapResult)
+            productRepository.postScrap(productId = productId).onSuccess {
+                _postScrapState.value = UiState.Success(productId)
             }.onFailure { exception: Throwable ->
                 _postScrapState.value = UiState.Error(exception.message)
+            }
+        }
+    }
+
+    fun deleteScrapProduct(productId: Int) {
+        viewModelScope.launch {
+            _deleteScrapState.value = UiState.Loading
+            productRepository.deleteScrap(productId = productId).onSuccess {
+                _deleteScrapState.value = UiState.Success(productId)
+            }.onFailure { exception: Throwable ->
+                _deleteScrapState.value = UiState.Error(exception.message)
             }
         }
     }

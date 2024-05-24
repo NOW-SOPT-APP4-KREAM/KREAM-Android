@@ -8,6 +8,7 @@ import org.sopt.kream.data.model.response.ResponseProductDetailDto
 import org.sopt.kream.data.model.response.ResponseRecommendProductDto
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse
+import org.sopt.kream.util.base.NullableBaseResponse
 
 class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
     private val productService = ServicePool.productService
@@ -18,7 +19,7 @@ class ProductRemoteDataSourceImpl : ProductRemoteDataSource {
 
     override suspend fun getRecommendProduct(): BaseResponse<ResponseRecommendProductDto> = productService.getRecommendProduct()
 
-    override suspend fun postScrap(productId: Int): BaseResponse<Unit> = productService.postScrap(request = RequestPostScrapDto(productId))
+    override suspend fun postScrap(productId: Int): NullableBaseResponse<Unit> = productService.postScrap(request = RequestPostScrapDto(productId))
 
-    override suspend fun deleteScrap(productId: Int): BaseResponse<Unit> = productService.deleteScrap(request = RequestDeleteScrapDto(productId))
+    override suspend fun deleteScrap(productId: Int): NullableBaseResponse<Unit> = productService.deleteScrap(request = RequestDeleteScrapDto(productId))
 }

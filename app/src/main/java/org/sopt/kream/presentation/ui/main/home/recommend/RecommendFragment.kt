@@ -59,7 +59,7 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
         advertisementAdapter = RecommendAdvertisementViewPagerAdapter()
         circleMenuAdapter = RecommendCircleMenuAdapter()
         forYouAdapter = RecommendForYouViewPagerAdapter(::navigateToProductDetail, ::navigateToSearch)
-        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, ::postScrapProduct)
+        justDroppedAdapter = RecommendJustDroppedAdapter(::navigateToProductDetail, ::postScrapProduct, ::deleteScrapProduct)
         styleAdapter = RecommendStyleAdapter()
 
         with(binding) {
@@ -127,6 +127,10 @@ class RecommendFragment : BindingFragment<FragmentRecommendBinding>({ FragmentRe
 
     private fun postScrapProduct(productId: Int) {
         recommendViewModel.postScrapProduct(productId = productId)
+    }
+
+    private fun deleteScrapProduct(productId: Int) {
+        recommendViewModel.deleteScrapProduct(productId = productId)
     }
 
     companion object {
