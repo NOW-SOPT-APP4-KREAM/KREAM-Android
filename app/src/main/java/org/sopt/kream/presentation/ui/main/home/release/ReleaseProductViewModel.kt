@@ -9,13 +9,14 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.sopt.kream.data.ServicePool
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
+import org.sopt.kream.data.service.ProductService.Companion.MEMBER_ID
 import org.sopt.kream.domain.repository.ProductRepository
 import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.presentation.ui.type.AdvertisementType
 import org.sopt.kream.util.view.UiState
 
 class ReleaseProductViewModel(
-    private val repository: ProductRepository,
+    private val productRepository: ProductRepository,
 ) : ViewModel() {
     val advertisements by mutableStateOf(generateDummyAdvertisement())
     private val authService by lazy { ServicePool.productService }
@@ -23,10 +24,13 @@ class ReleaseProductViewModel(
     private val _getReleaseProductState =
         MutableStateFlow<UiState<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>>(UiState.Empty)
 
-    private val _deleteScrapState =
-        MutableStateFlow<UiState<Unit>>(UiState.Empty)
     val getReleaseProductState get() = _getReleaseProductState.asStateFlow()
-    val deleteScrapState get() = _deleteScrapState.asStateFlow()
+
+    private val _postScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
+    val postScrapState get() = _postScrapState.asStateFlow()
+
+    private val _deleteScrapState = MutableStateFlow<UiState<Int>>(UiState.Empty)
+    val deleteScrapState get() = _postScrapState.asStateFlow()
 
     private val _productList = MutableStateFlow<List<ResponseReleaseProductDto.ReleaseProductResponseDto>>(listOf())
 
@@ -35,7 +39,7 @@ class ReleaseProductViewModel(
     fun getReleaseProduct() {
         viewModelScope.launch {
             runCatching {
-                authService.getReleaseProduct(2)
+                authService.getReleaseProduct(MEMBER_ID)
             }.onSuccess {
                 _getReleaseProductState.value = UiState.Success(it.data.releaseProducts)
                 _productList.value = it.data.releaseProducts
@@ -45,14 +49,25 @@ class ReleaseProductViewModel(
         }
     }
 
-    fun deleteScrap(productIndex: Int) {
+    fun postScrapProduct(productId: Int) {
         viewModelScope.launch {
-            repository.deleteScrap(2)
-                .onSuccess {
-                    _deleteScrapState.value = UiState.Success(it)
-                }.onFailure { exception: Throwable ->
-                    _deleteScrapState.value = UiState.Error(exception.message)
-                }
+            _postScrapState.value = UiState.Loading
+            productRepository.postScrap(productId = productId).onSuccess {
+                _postScrapState.value = UiState.Success(productId)
+            }.onFailure { exception: Throwable ->
+                _postScrapState.value = UiState.Error(exception.message)
+            }
+        }
+    }
+
+    fun deleteScrapProduct(productId: Int) {
+        viewModelScope.launch {
+            _deleteScrapState.value = UiState.Loading
+            productRepository.deleteScrap(productId = productId).onSuccess {
+                _deleteScrapState.value = UiState.Success(productId)
+            }.onFailure { exception: Throwable ->
+                _deleteScrapState.value = UiState.Error(exception.message)
+            }
         }
     }
 

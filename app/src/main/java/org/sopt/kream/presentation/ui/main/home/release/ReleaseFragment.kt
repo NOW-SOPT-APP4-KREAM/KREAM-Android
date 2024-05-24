@@ -1,37 +1,30 @@
 package org.sopt.kream.presentation.ui.main.home.release
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -42,31 +35,28 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import coil.compose.rememberAsyncImagePainter
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.databinding.FragmentReleaseBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
+import org.sopt.kream.presentation.ui.main.home.recommend.RecommendFragment
 import org.sopt.kream.presentation.ui.model.Advertisement
 import org.sopt.kream.theme.body4Bold
 import org.sopt.kream.theme.body5Regular
 import org.sopt.kream.theme.body6Regular
-import org.sopt.kream.theme.robotoBold
 import org.sopt.kream.util.base.BindingFragment
+import org.sopt.kream.util.modifier.noRippleClickable
 import org.sopt.kream.util.view.UiState
 import java.util.Calendar
-import java.util.concurrent.TimeUnit
 
 class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleaseBinding.inflate(it) }) {
     private val viewModel: ReleaseProductViewModel by viewModels { ViewModelFactory() }
@@ -82,7 +72,13 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
             when (getReleaseProductState) {
                 is UiState.Success -> {
                     binding.cvRelease.setContent {
-                        UiStateISSuccess(viewModel)
+                        ReleaseView(
+                            viewModel.advertisements,
+                            getReleaseProductState.data,
+                            ::postScrapProduct,
+                            ::deleteScrapProduct,
+                            ::navigateToProductDetail
+                        )
                     }
                 }
 
@@ -90,23 +86,39 @@ class ReleaseFragment : BindingFragment<FragmentReleaseBinding>({ FragmentReleas
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
+
+    private fun navigateToProductDetail(productId: Int) {
+        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(RecommendFragment.PRODUCT_ID to productId))
+    }
+
+    private fun postScrapProduct(productId: Int) {
+        viewModel.postScrapProduct(productId = productId)
+    }
+
+    private fun deleteScrapProduct(productId: Int) {
+        viewModel.deleteScrapProduct(productId = productId)
+    }
 }
 
 @Composable
-fun UiStateISSuccess(
-    viewModel: ReleaseProductViewModel,
+fun ReleaseView(
+    advertisements: List<Advertisement>,
+    releaseProductResponseDtoList: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
+    postScrapProduct: (Int) -> Unit,
+    deleteScrapProduct: (Int) -> Unit,
+    navigateToProductDetail: (Int) -> Unit
 ) {
-    val advertisement by remember { mutableStateOf(viewModel.advertisements) }
+    val advertisement by remember { mutableStateOf(advertisements) }
     Box(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
+        Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
     ) {
         Column(
             modifier =
-                Modifier
-                    .fillMaxWidth(),
+            Modifier
+                .fillMaxWidth(),
         ) {
             val targetDate =
                 Calendar.getInstance().apply {
@@ -114,191 +126,29 @@ fun UiStateISSuccess(
                 }
             val targetTimeInMillis = targetDate.timeInMillis
 
-            CustomViewPager(
+            ReleaseAdvertisementViewPager(
                 advertisements = advertisement,
                 targetTimeInMillis = targetTimeInMillis,
             )
-            CustomMidNaviBar()
-            ShoesList(viewModel)
-        }
-    }
-}
-
-@OptIn(ExperimentalPagerApi::class)
-@Composable
-fun CustomViewPager(
-    advertisements: List<Advertisement>,
-    targetTimeInMillis: Long,
-) {
-    val pagerState = rememberPagerState()
-
-    HorizontalPager(
-        count = advertisements.size,
-        state = pagerState,
-        modifier = Modifier.height(327.dp),
-    ) { page ->
-        val advertisement = advertisements[page]
-
-        Box {
-            CustomAdvertisement(
-                imgResource = advertisement.imgResource,
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .aspectRatio(1f),
+            ReleaseMiddleChips()
+            ShoesList(
+                releaseProductResponseDtoList,
+                postScrapProduct,
+                deleteScrapProduct,
+                navigateToProductDetail
             )
-            if (page == 0) {
-                CountdownTimer(targetTimeInMillis, textStyle = robotoBold)
-            }
         }
     }
 }
 
-@SuppressLint("DefaultLocale")
 @Composable
-fun CountdownTimer(
-    targetTimeInMillis: Long,
-    textStyle: androidx.compose.ui.text.TextStyle,
+fun ShoesItem(
+    releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto,
+    index: Int,
+    postScrapProduct: (Int) -> Unit,
+    deleteScrapProduct: (Int) -> Unit,
+    navigateToProductDetail: (Int) -> Unit
 ) {
-    var remainingTime by remember { mutableLongStateOf(calculateRemainingTime(targetTimeInMillis)) }
-
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(1000L)
-            remainingTime = calculateRemainingTime(targetTimeInMillis)
-        }
-    }
-
-    val days = TimeUnit.MILLISECONDS.toDays(remainingTime)
-    val hours = TimeUnit.MILLISECONDS.toHours(remainingTime) % 24
-    val minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime) % 60
-    val seconds = TimeUnit.MILLISECONDS.toSeconds(remainingTime) % 60
-
-    val formattedDays = String.format("%02d", days)
-    val formattedHours = String.format("%02d", hours)
-    val formattedMinutes = String.format("%02d", minutes)
-    val formattedSeconds = String.format("%02d", seconds)
-
-    Row(
-        modifier =
-            Modifier
-                .fillMaxWidth()
-                .padding(top = 42.dp),
-        horizontalArrangement = Arrangement.Center,
-    ) {
-        Text(text = formattedDays, style = textStyle)
-        Spacer(modifier = Modifier.width(23.dp))
-        Text(text = formattedHours, style = textStyle)
-        Spacer(modifier = Modifier.width(23.dp))
-        Text(text = formattedMinutes, style = textStyle)
-        Spacer(modifier = Modifier.width(23.dp))
-        Text(text = formattedSeconds, style = textStyle)
-    }
-}
-
-fun calculateRemainingTime(targetTimeInMillis: Long): Long {
-    val currentTimeInMillis = System.currentTimeMillis()
-    return targetTimeInMillis - currentTimeInMillis
-}
-
-@Composable
-fun CustomAdvertisement(
-    imgResource: Int,
-    modifier: Modifier,
-) {
-    Box(
-        modifier = modifier,
-    ) {
-        Image(
-            painter = painterResource(id = imgResource),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-        )
-    }
-}
-
-@Composable
-fun CustomMidNaviBar() {
-    val shoes =
-        listOf(
-            stringResource(R.string.release_chip_shoes_list_today),
-            stringResource(R.string.release_chip_shoes_list_Nike),
-            stringResource(R.string.release_chip_shoes_list_Adidas),
-            stringResource(R.string.release_chip_shoes_list_Asics),
-            stringResource(R.string.release_chip_shoes_list_NewBalance),
-            stringResource(R.string.release_chip_shoes_list_Jordan),
-            stringResource(R.string.release_chip_shoes_list_converse),
-        )
-
-    var selectedIndex by remember { mutableIntStateOf(0) } // Track selected index
-
-    Column {
-        LazyRow(
-            modifier =
-                Modifier
-                    .padding(0.dp)
-                    .fillMaxWidth()
-                    .background(Color.White),
-        ) {
-            items(shoes.size) { index ->
-                val isSelected = index == selectedIndex
-                val backgroundColor = if (isSelected) colorResource(id = R.color.red01) else colorResource(id = R.color.gray05)
-                val textColor = if (isSelected) colorResource(id = R.color.red02) else Color.Black // Update to your selected and default text color
-
-                if (index == 0) {
-                    Row(
-                        modifier =
-                            Modifier
-                                .padding(top = 10.dp)
-                                .padding(start = 14.dp)
-                                .padding(end = 6.dp)
-                                .clickable { selectedIndex = 0 },
-                    ) {
-                        Spacer(modifier = Modifier.width(4.dp))
-
-                        CustomShoesText(
-                            text = shoes[index],
-                            textColor = textColor,
-                            backgroundColor = backgroundColor,
-                        )
-
-                        Box(
-                            modifier =
-                                Modifier
-                                    .align(Alignment.CenterVertically)
-                                    .padding(start = 9.dp)
-                                    .width(1.dp)
-                                    .height(23.dp)
-                                    .background(colorResource(id = R.color.gray04)),
-                        )
-                    }
-                } else {
-                    Column(
-                        modifier =
-                            Modifier
-                                .padding(top = 10.dp)
-                                .padding(bottom = 10.dp)
-                                .padding(end = 6.dp)
-                                .clickable { selectedIndex = index },
-                    ) {
-                        Text(
-                            text = shoes[index],
-                            style = body5Regular.copy(color = textColor),
-                            modifier =
-                                Modifier
-                                    .clip(RoundedCornerShape(10.dp))
-                                    .background(backgroundColor)
-                                    .padding(10.dp),
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProductResponseDto) {
     var isIconChanged by remember { mutableStateOf(false) }
 
     val iconResource =
@@ -327,20 +177,24 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
         stateVisible = 0f
         cardColor = R.color.gray06
     }
-    Column(modifier = Modifier.size(width = 161.dp, height = 177.dp)) {
+    Column(modifier = Modifier
+        .size(width = 161.dp, height = 177.dp)
+        .noRippleClickable {
+            navigateToProductDetail(index)
+        }) {
         Box(
             modifier =
-                Modifier
-                    .size(width = 161.dp, height = 108.dp)
-                    .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
+            Modifier
+                .size(width = 161.dp, height = 108.dp)
+                .background(colorResource(id = cardColor), shape = RoundedCornerShape(10.dp)),
         ) {
             Image(
                 painter = rememberAsyncImagePainter(releaseProductResponseDto.thumbnailUrl),
                 contentDescription = null,
                 modifier =
-                    Modifier
-                        .size(width = 108.dp, height = 108.dp)
-                        .align(Alignment.Center),
+                Modifier
+                    .size(width = 108.dp, height = 108.dp)
+                    .align(Alignment.Center),
             )
             Row(
                 modifier = Modifier.padding(8.dp),
@@ -350,11 +204,15 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
                     painter = painterResource(id = iconResource),
                     contentDescription = null,
                     modifier =
-                        Modifier.clickable {
-                            isIconChanged = !isIconChanged
-                            if (releaseProductResponseDto.isScrap) {
-                            }
-                        },
+                    Modifier.noRippleClickable {
+                        if (isIconChanged) {
+                            deleteScrapProduct(index + 1)
+                        } else {
+                            postScrapProduct(index + 1)
+                        }
+
+                        isIconChanged = !isIconChanged
+                    },
                 )
             }
         }
@@ -368,8 +226,12 @@ fun ShoesItem(releaseProductResponseDto: ResponseReleaseProductDto.ReleaseProduc
 }
 
 @Composable
-fun ShoesList(viewModel: ReleaseProductViewModel) {
-    val shoesList = viewModel.productList.collectAsState().value
+fun ShoesList(
+    releaseProductResponseDtoList: List<ResponseReleaseProductDto.ReleaseProductResponseDto>,
+    postScrapProduct: (Int) -> Unit,
+    deleteScrapProduct: (Int) -> Unit,
+    navigateToProductDetail: (Int) -> Unit
+) {
     Column {
         val items = List(12) { it }
         for (i in items.indices step 2) {
@@ -377,9 +239,9 @@ fun ShoesList(viewModel: ReleaseProductViewModel) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                ShoesItem(shoesList[i])
+                ShoesItem(releaseProductResponseDtoList[i], i, postScrapProduct, deleteScrapProduct, navigateToProductDetail)
                 if (i + 1 < items.size) {
-                    ShoesItem(shoesList[i + 1])
+                    ShoesItem(releaseProductResponseDtoList[i + 1], i + 1, postScrapProduct, deleteScrapProduct, navigateToProductDetail)
                 }
             }
             Spacer(modifier = Modifier.height(14.dp))
@@ -398,10 +260,10 @@ fun CustomShoesText(
         style = body5Regular,
         color = textColor,
         modifier =
-            Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .background(backgroundColor)
-                .padding(10.dp),
+        Modifier
+            .clip(RoundedCornerShape(10.dp))
+            .background(backgroundColor)
+            .padding(10.dp),
     )
 }
 
@@ -413,29 +275,29 @@ fun DrawCard(
     if (cardState == "UPDATE") {
         Column(
             modifier =
-                Modifier
-                    .padding(3.dp)
-                    .alpha(stateVisible),
+            Modifier
+                .padding(3.dp)
+                .alpha(stateVisible),
         ) {
             Box(
                 modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(Color.White)
-                        .size(width = 50.dp, height = 15.dp)
-                        .border(
-                            width = 1.dp,
-                            color = colorResource(id = R.color.gray03),
-                            shape = RoundedCornerShape(10.dp),
-                        ),
+                Modifier
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .size(width = 50.dp, height = 15.dp)
+                    .border(
+                        width = 1.dp,
+                        color = colorResource(id = R.color.gray03),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
                     modifier =
-                        Modifier
-                            .clip(RoundedCornerShape(9.dp))
-                            .background(Color.White)
-                            .fillMaxSize(),
+                    Modifier
+                        .clip(RoundedCornerShape(9.dp))
+                        .background(Color.White)
+                        .fillMaxSize(),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
@@ -450,29 +312,29 @@ fun DrawCard(
     } else {
         Column(
             modifier =
-                Modifier
-                    .padding(3.dp)
-                    .alpha(stateVisible),
+            Modifier
+                .padding(3.dp)
+                .alpha(stateVisible),
         ) {
             Box(
                 modifier =
-                    Modifier
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(Color.White)
-                        .size(width = 35.dp, height = 15.dp)
-                        .border(
-                            width = 1.dp,
-                            color = colorResource(id = R.color.red02),
-                            shape = RoundedCornerShape(10.dp),
-                        ),
+                Modifier
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .size(width = 35.dp, height = 15.dp)
+                    .border(
+                        width = 1.dp,
+                        color = colorResource(id = R.color.red02),
+                        shape = RoundedCornerShape(10.dp),
+                    ),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
                     modifier =
-                        Modifier
-                            .clip(RoundedCornerShape(9.dp))
-                            .background(colorResource(id = R.color.red02))
-                            .fillMaxSize(),
+                    Modifier
+                        .clip(RoundedCornerShape(9.dp))
+                        .background(colorResource(id = R.color.red02))
+                        .fillMaxSize(),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
