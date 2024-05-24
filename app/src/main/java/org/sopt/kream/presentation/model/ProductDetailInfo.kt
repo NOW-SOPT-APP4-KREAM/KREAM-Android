@@ -1,6 +1,6 @@
-package org.sopt.kream.presentation.ui.model
+package org.sopt.kream.presentation.model
 
-import org.sopt.kream.presentation.ui.type.ProductDetailInfoType
+import org.sopt.kream.presentation.type.ProductDetailInfoType
 
 data class ProductDetailInfo(
     val productDetailInfoType: ProductDetailInfoType,

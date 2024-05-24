@@ -1,4 +1,4 @@
-package org.sopt.kream.presentation.ui.type
+package org.sopt.kream.presentation.type
 
 import androidx.annotation.StringRes
 import org.sopt.kream.R

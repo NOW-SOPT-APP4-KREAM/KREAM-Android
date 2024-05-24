@@ -26,7 +26,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.delay
-import org.sopt.kream.presentation.ui.model.Advertisement
+import org.sopt.kream.presentation.model.Advertisement
 import org.sopt.kream.theme.robotoBold
 import java.util.concurrent.TimeUnit
 

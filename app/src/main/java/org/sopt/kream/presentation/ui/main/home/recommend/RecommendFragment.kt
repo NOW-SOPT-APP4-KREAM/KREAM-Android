@@ -16,8 +16,8 @@ import kotlinx.coroutines.flow.onEach
 import org.sopt.kream.R
 import org.sopt.kream.databinding.FragmentRecommendBinding
 import org.sopt.kream.presentation.common.ViewModelFactory
-import org.sopt.kream.presentation.ui.type.RecommendAdvertisementType
-import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
+import org.sopt.kream.presentation.type.RecommendAdvertisementType
+import org.sopt.kream.presentation.type.RecommendCircleMenuType
 import org.sopt.kream.util.base.BindingFragment
 import org.sopt.kream.util.chunkList
 import org.sopt.kream.util.view.UiState

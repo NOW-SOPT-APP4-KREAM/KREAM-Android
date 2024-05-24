@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import org.sopt.kream.databinding.ItemProductDetailInfoBinding
-import org.sopt.kream.presentation.ui.model.ProductDetailInfo
+import org.sopt.kream.presentation.model.ProductDetailInfo
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class ProductDetailInfoAdapter() : ListAdapter<ProductDetailInfo, ProductDetailInfoViewHolder>(
