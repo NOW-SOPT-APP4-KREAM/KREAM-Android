@@ -8,6 +8,7 @@ import org.sopt.kream.data.model.request.RequestDeleteScrapDto
 import org.sopt.kream.data.model.request.RequestPostScrapDto
 import org.sopt.kream.data.model.response.ResponseProductDetailDto
 import org.sopt.kream.data.model.response.ResponseRecommendProductDto
+import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 
 import org.sopt.kream.data.model.response.ResponseSearchProductDto
 import org.sopt.kream.util.base.BaseResponse

@@ -40,9 +40,9 @@ interface ProductService {
 
     @HTTP(method = "DELETE", path = "scrap", hasBody = true)
     suspend fun deleteScrap(
-
-        @Header("memberId") userid: Int,
-    ): BaseResponse<ResponseReleaseProductDto>
+        @Header("memberId") memberId: Int,
+        requestDeleteScrapDto: RequestDeleteScrapDto,
+    ): BaseResponse<Unit>
 
     @GET("product/recommend")
     suspend fun getRecommendProduct(

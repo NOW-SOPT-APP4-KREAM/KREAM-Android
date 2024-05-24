@@ -9,7 +9,7 @@ interface ProductRemoteDataSource {
     suspend fun getSearchProduct(findName: String): BaseResponse<ResponseSearchProductDto>
 
 
-    suspend fun deleteScrap(
+    suspend fun deleteScrap(memberId: Int,productId: Int):BaseResponse<Unit>
 
     suspend fun getProductDetail(productId: Int): BaseResponse<ResponseProductDetailDto>
 
