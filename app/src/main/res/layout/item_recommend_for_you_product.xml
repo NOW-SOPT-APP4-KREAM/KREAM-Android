@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="19dp">
+
+    <ImageView
+        android:id="@+id/iv_for_you"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_border_radius_7"
+        android:backgroundTint="@color/gray06"
+        android:clipToOutline="true"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_for_you_see"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_border_radius_3"
+        android:backgroundTint="@color/blue02"
+        android:paddingHorizontal="3dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="2dp"
+        android:text="@string/item_recommend_for_you_see"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Kream.Body8.Regular"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/iv_for_you"
+        app:layout_constraintTop_toTopOf="@id/iv_for_you" />
+
+    <TextView
+        android:id="@+id/tv_for_you_transaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Regular"
+        android:textColor="@color/black04"
+        app:layout_constraintEnd_toEndOf="@id/iv_for_you"
+        app:layout_constraintTop_toTopOf="@id/iv_for_you"
+        tools:text="거래8.3만" />
+
+    <TextView
+        android:id="@+id/tv_for_you_brand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.Kream.Body7.Bold"
+        android:textColor="@color/black02"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_for_you"
+        tools:text="Nike" />
+
+    <TextView
+        android:id="@+id/tv_for_you_product"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textAppearance="@style/TextAppearance.Kream.Body6.Regular"
+        android:textColor="@color/black02"
+        app:layout_constraintEnd_toEndOf="@id/tv_for_you_brand"
+        app:layout_constraintStart_toStartOf="@id/tv_for_you_brand"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_you_brand"
+        tools:text="Adidas Samba OG Cloud White" />
+
+    <TextView
+        android:id="@+id/tv_for_you_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Kream.Body6.SemiBold"
+        android:textColor="@color/black02"
+        app:layout_constraintEnd_toEndOf="@id/tv_for_you_brand"
+        app:layout_constraintStart_toStartOf="@id/tv_for_you_brand"
+        app:layout_constraintTop_toBottomOf="@id/tv_for_you_product"
+        tools:text="131,000원" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

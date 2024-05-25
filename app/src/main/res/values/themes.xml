@@ -1,0 +1,51 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KREAMAndroid" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="Theme.KREAMAndroid" parent="Base.Theme.KREAMAndroid" />
+
+    <style name="Theme.KREAMAndroid.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipEndPadding">0dp</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="android:checked">false</item>
+        <item name="chipMinHeight">0dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.KREAMAndroid.Chip.Fast" parent="Theme.KREAMAndroid.Chip">
+        <item name="iconStartPadding">4dp</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">8dp</item>
+        <item name="chipIconVisible">true</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipStrokeColor">@color/gray04</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="android:clickable">false</item>
+        <item name="android:paddingVertical">6dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kream.Body5.Regular</item>
+        <item name="android:textColor">@color/black02</item>
+    </style>
+
+    <style name="Theme.KREAMAndroid.Chip.Search" parent="Theme.KREAMAndroid.Chip">
+        <item name="textStartPadding">8dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="closeIconVisible">true</item>
+        <item name="closeIconTint">@color/gray03</item>
+        <item name="closeIconEndPadding">4dp</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipStrokeColor">@color/gray04</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="android:clickable">false</item>
+        <item name="android:paddingVertical">6dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kream.Body5.Regular</item>
+        <item name="android:textColor">@color/black02</item>
+    </style>
+</resources>

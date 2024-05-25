@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Kream" parent="">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Head -->
+    <style name="TextAppearance.Kream.Head1.Bold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Head2.Bold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- Body1 -->
+    <style name="TextAppearance.Kream.Body1.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <!-- Body2 -->
+    <style name="TextAppearance.Kream.Body2.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body2.SemiBold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Body3 -->
+    <style name="TextAppearance.Kream.Body3.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body3.SemiBold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <!-- Body4 -->
+    <style name="TextAppearance.Kream.Body4.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body4.SemiBold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body4.Bold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Body5 -->
+    <style name="TextAppearance.Kream.Body5.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body5.SemiBold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <!-- Body6 -->
+    <style name="TextAppearance.Kream.Body6.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body6.SemiBold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <!-- Body7 -->
+    <style name="TextAppearance.Kream.Body7.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body7.Bold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_bold</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
+    <!-- Body8 -->
+    <style name="TextAppearance.Kream.Body8.Regular" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_regular</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="TextAppearance.Kream.Body8.SemiBold" parent="TextAppearance.Kream">
+        <item name="fontFamily">@font/notosans_semibold</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+</resources>

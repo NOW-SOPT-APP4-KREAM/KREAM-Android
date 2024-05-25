@@ -1,0 +1,118 @@
+[versions]
+# Kotlin
+accompanistPager = "0.20.1"
+accompanistPagerIndicators = "0.24.13-rc"
+accompanistPagerVersion = "0.24.13-rc"
+agp = "8.3.2"
+coilCompose = "2.6.0"
+foundation = "1.9.23"
+foundationVersion = "1.6.7"
+googleAccompanistPager = "0.16.0"
+kotlin = "1.9.23"
+kotlinSerializationJson = "1.5.1"
+kotlinxCoroutines = "1.7.3"
+
+# Compose
+composeBom = "2024.05.00"
+
+# AndroidX
+appcompat = "1.6.1"
+coreKtx = "1.13.1"
+activity = "1.9.0"
+constraintlayout = "2.1.4"
+fragment = "1.7.0"
+materialVersion = "1.6.7"
+navigation = "2.7.7"
+material3Android = "1.2.1"
+recyclerview = "1.2.0"
+
+# Test
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+
+# Google
+material = "1.12.0"
+
+# Third Party
+ktlint = "12.0.3"
+coil = "2.4.0"
+okhttp = "4.11.0"
+retrofit = "2.9.0"
+retrofitKotlinSerializationConverter = "1.0.0"
+foundationAndroid = "1.6.7"
+
+[libraries]
+# Kotlin
+accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
+accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPager" }
+accompanist-pager-indicators-v02413rc = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPagerIndicators" }
+accompanist-pager-v0160 = { module = "com.google.accompanist:accompanist-pager", version.ref = "googleAccompanistPager" }
+accompanist-pager-v02413rc = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPagerVersion" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
+androidx-foundation-v167 = { module = "androidx.compose.foundation:foundation", version.ref = "foundationVersion" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+kotlin-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson" }
+kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+
+# Compose
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-meterial3 = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+
+# AndroidX
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+androidx-recyclerview = {group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview"}
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity" }
+
+# Test
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+# Google
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Third Party
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-kotlin-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinSerializationConverter" }
+androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+
+[bundles]
+androidx = [
+    "androidx-core-ktx",
+    "androidx-appcompat",
+    "androidx-constraintlayout",
+    "androidx-activity",
+    "androidx-fragment",
+    "androidx-navigation-fragment",
+    "androidx-navigation-ui",
+    "androidx-recyclerview"
+]
+okhttp = ["okhttp", "okhttp-logging-interceptor"]
+retrofit = ["retrofit", "retrofit-kotlin-serialization-converter"]
+compose = ["androidx-activity-compose", "compose-ui", "compose-ui-graphics", "compose-ui-tooling-preview", "compose-meterial3", "compose-bom"]
+

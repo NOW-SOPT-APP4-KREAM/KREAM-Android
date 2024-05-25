@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.main.home.recommend.RecommendFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_recommend_advertisement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/include_kream_indicator"
+            layout="@layout/indicator_tab_kream"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginBottom="17dp"
+            app:layout_constraintBottom_toBottomOf="@id/vp_recommend_advertisement"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recommend_circle_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="20dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vp_recommend_advertisement"
+            app:spanCount="5"
+            tools:listitem="@layout/item_recommend_circle_menu" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_circle_menu" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/recommend_for_you_title"
+            android:textAppearance="@style/TextAppearance.Kream.Head2.Bold"
+            android:textColor="@color/black02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_circle_menu" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recommend_for_you_content"
+            android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintStart_toStartOf="@id/tv_recommend_for_you_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_for_you_title" />
+
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_etc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:src="@drawable/ic_etc_q_16"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
+            app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_content"
+            app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_detail_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_for_you_content"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_recommend_for_you_title" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_recommend_for_you_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_for_you_content" />
+
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="29dp"
+            android:background="@drawable/shape_line_gray04_radius_5"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="9dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_etc_back_17"
+            app:layout_constraintEnd_toStartOf="@id/tv_recommend_for_you_current_page"
+            app:layout_constraintTop_toBottomOf="@+id/vp_recommend_for_you_content" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_current_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
+            android:textColor="@color/black02"
+            android:text="@string/recommend_for_you_current_page"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintEnd_toStartOf="@id/tv_recommend_for_you_slash"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_slash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="@string/recommend_for_you_slash"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back" />
+
+        <TextView
+            android:id="@+id/tv_recommend_for_you_total_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_slash"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back"
+            tools:text="2" />
+
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="29dp"
+            android:background="@drawable/shape_line_gray04_radius_5"
+            android:paddingHorizontal="28dp"
+            android:paddingVertical="9dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_etc_next_17"
+            app:layout_constraintBottom_toBottomOf="@id/iv_recommend_for_you_back"
+            app:layout_constraintStart_toEndOf="@id/tv_recommend_for_you_total_page"
+            app:layout_constraintTop_toTopOf="@id/iv_recommend_for_you_back" />
+
+        <View
+            android:id="@+id/view_recommend_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/gray06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_recommend_for_you_back" />
+
+        <TextView
+            android:id="@+id/tv_recommend_just_dropped_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/recommend_just_dropped_title"
+            android:textAppearance="@style/TextAppearance.Kream.Head2.Bold"
+            android:textColor="@color/black02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_recommend_divider" />
+
+        <TextView
+            android:id="@+id/tv_recommend_just_dropped_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/recommend_just_dropped_content"
+            android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintStart_toStartOf="@id/tv_recommend_just_dropped_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_just_dropped_title" />
+
+        <TextView
+            android:id="@+id/tv_recommend_just_dropped_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:padding="14dp"
+            android:text="@string/all_details"
+            android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+            android:textColor="@color/black06"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommend_just_dropped_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_recommend_just_dropped_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recommend_just_dropped_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingBottom="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_just_dropped_more"
+            tools:listitem="@layout/item_recommend_just_dropped_product" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/gray06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_just_dropped_content" />
+
+        <TextView
+            android:id="@+id/tv_recommend_style_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/recommend_style_title"
+            android:textAppearance="@style/TextAppearance.Kream.Body2.SemiBold"
+            android:textColor="@color/black02"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_recommend_just_dropped_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recommend_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp"
+            android:paddingBottom="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommend_style_title"
+            tools:listitem="@layout/item_recommend_style" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

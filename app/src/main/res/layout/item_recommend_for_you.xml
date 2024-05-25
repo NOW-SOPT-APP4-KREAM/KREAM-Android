@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_recommend_for_you_more"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        android:background="@drawable/shape_border_radius_4"
+        android:backgroundTint="@color/gray07"
+        android:paddingVertical="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_recommend_for_you_more"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/shape_oval"
+            android:backgroundTint="@color/gray06"
+            android:clipToOutline="true"
+            android:src="@drawable/img_recommend_for_you_circle"
+            app:layout_constraintBottom_toBottomOf="@id/ll_recommend_for_you_text"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ll_recommend_for_you_text" />
+
+        <LinearLayout
+            android:id="@+id/ll_recommend_for_you_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:paddingVertical="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_recommend_for_you_more"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_recommend_for_you_recent"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+                android:textColor="@color/black01" />
+
+            <TextView
+                android:id="@+id/tv_recommend_for_you_more_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/item_recommend_for_you_more_content"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.SemiBold"
+                android:textColor="@color/blue02" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_recommend_for_you_text"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+                android:textColor="@color/black01" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/item_recommend_for_you_more_recommend"
+                android:textAppearance="@style/TextAppearance.Kream.Body4.Regular"
+                android:textColor="@color/black01" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:text="@string/all_details"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Kream.Body5.Regular"
+            android:textColor="@color/gray02"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_for_you_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="13dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_recommend_for_you_more"
+        app:spanCount="3"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_recommend_for_you_product" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
