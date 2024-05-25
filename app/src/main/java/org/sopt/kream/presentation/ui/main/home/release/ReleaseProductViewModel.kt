@@ -11,8 +11,8 @@ import org.sopt.kream.data.ServicePool
 import org.sopt.kream.data.model.response.ResponseReleaseProductDto
 import org.sopt.kream.data.service.ProductService.Companion.MEMBER_ID
 import org.sopt.kream.domain.repository.ProductRepository
-import org.sopt.kream.presentation.ui.model.Advertisement
-import org.sopt.kream.presentation.ui.type.AdvertisementType
+import org.sopt.kream.presentation.model.Advertisement
+import org.sopt.kream.presentation.type.AdvertisementType
 import org.sopt.kream.util.view.UiState
 
 class ReleaseProductViewModel(

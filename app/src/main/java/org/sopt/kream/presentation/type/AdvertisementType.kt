@@ -1,4 +1,4 @@
-package org.sopt.kream.presentation.ui.type
+package org.sopt.kream.presentation.type
 
 import org.sopt.kream.R
 

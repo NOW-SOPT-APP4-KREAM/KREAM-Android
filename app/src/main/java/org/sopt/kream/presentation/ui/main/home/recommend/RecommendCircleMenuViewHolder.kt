@@ -2,7 +2,7 @@ package org.sopt.kream.presentation.ui.main.home.recommend
 
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.ItemRecommendCircleMenuBinding
-import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
+import org.sopt.kream.presentation.type.RecommendCircleMenuType
 
 class RecommendCircleMenuViewHolder(
     private val binding: ItemRecommendCircleMenuBinding,

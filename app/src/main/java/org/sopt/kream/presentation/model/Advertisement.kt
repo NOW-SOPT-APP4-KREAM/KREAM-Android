@@ -1,4 +1,4 @@
-package org.sopt.kream.presentation.ui.model
+package org.sopt.kream.presentation.model
 
 data class Advertisement(
     val id: Int,

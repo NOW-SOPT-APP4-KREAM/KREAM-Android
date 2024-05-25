@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.kream.databinding.ItemProductDetailInfoBinding
-import org.sopt.kream.presentation.ui.model.ProductDetailInfo
+import org.sopt.kream.presentation.model.ProductDetailInfo
 import org.sopt.kream.util.context.stringOf
 import org.sopt.kream.util.int.toPx
 

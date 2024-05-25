@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import org.sopt.kream.databinding.ButtonDetailProductKreamBinding
-import org.sopt.kream.presentation.ui.type.ProductDetailButtonType
+import org.sopt.kream.presentation.type.ProductDetailButtonType
 import org.sopt.kream.util.view.colorOf
 import org.sopt.kream.util.view.setBackgroundTint
 import org.sopt.kream.util.view.stringOf

@@ -6,7 +6,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.kream.BuildConfig
-import org.sopt.kream.data.service.DummyService
 import org.sopt.kream.data.service.ProductService
 import retrofit2.Retrofit
 
@@ -30,6 +29,5 @@ object ApiFactory {
 }
 
 object ServicePool {
-    val dummyService = ApiFactory.create<DummyService>()
     val productService = ApiFactory.create<ProductService>()
 }

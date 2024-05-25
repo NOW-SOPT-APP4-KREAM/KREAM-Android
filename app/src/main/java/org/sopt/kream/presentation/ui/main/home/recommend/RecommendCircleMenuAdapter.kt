@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import org.sopt.kream.databinding.ItemRecommendCircleMenuBinding
-import org.sopt.kream.presentation.ui.type.RecommendCircleMenuType
+import org.sopt.kream.presentation.type.RecommendCircleMenuType
 import org.sopt.kream.util.view.ItemDiffCallback
 
 class RecommendCircleMenuAdapter() : ListAdapter<RecommendCircleMenuType, RecommendCircleMenuViewHolder>(
