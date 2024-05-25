@@ -56,5 +56,4 @@ https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Android/assets/103172971/34d07a0b-2
 ┃ ┣ 📂 int
 ┃ ┣ 📂 intent
 ┃ ┣ 📂 modifier
-┃ ┣ 📂 modifier
 ```
